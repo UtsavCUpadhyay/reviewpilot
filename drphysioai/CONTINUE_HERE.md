@@ -42,6 +42,13 @@ Built as a **new Next.js 14 app in `drphysioai/`**, alongside the existing
 - **`/consultation`** — 3-step **booking widget**
   (`components/site/booking-widget.tsx`): service → date (live 7 days) → slot,
   with a sticky live summary + total. "Confirm & Pay" is stubbed.
+- **`/login` + `/signup`** — split-screen `AuthShell` + reusable `AuthForm`
+  (Google / WhatsApp-OTP / email). UI-only; `onSubmit` is a stub → wire to
+  Supabase auth.
+- **`/dashboard`** — `DashboardShell` (sidebar + topbar, mobile drawer) with
+  KPI cards (streak, AI questions, accuracy, badges), continue-learning
+  progress, next-consultation card, today's goal, activity feed. Mock data;
+  `robots: noindex`.
 
 All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
 `npm run build` is clean; all routes are static (~100–104 kB first load).
@@ -53,6 +60,10 @@ All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
   Claude-backed route (`@anthropic-ai/sdk` + `ANTHROPIC_API_KEY`).
 - **Booking checkout** — `booking-widget.tsx` `confirm()` fakes success on a
   timer. Replace with a Shopify/Stripe checkout redirect.
+- **Auth** — `auth-form.tsx` `onSubmit` is a no-op. Wire to Supabase auth;
+  gate `/dashboard` behind a session.
+- **Dashboard data** — all mock/hard-coded. Replace with real user data once
+  auth + DB are in place.
 
 ## SHOPIFY — the reason for the fresh session
 

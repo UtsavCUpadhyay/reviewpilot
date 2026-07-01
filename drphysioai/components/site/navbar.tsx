@@ -60,10 +60,10 @@ export function Navbar() {
           <div className="flex items-center gap-2">
             <ThemeToggle className="hidden sm:inline-flex" />
             <Button variant="outline" size="sm" className="hidden md:inline-flex" asChild>
-              <a href="#login">Login</a>
+              <a href="/login">Login</a>
             </Button>
             <Button size="sm" className="hidden sm:inline-flex" asChild>
-              <a href="#pricing">Start Free</a>
+              <a href="/signup">Start Free</a>
             </Button>
             <button
               className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card/60 lg:hidden"
