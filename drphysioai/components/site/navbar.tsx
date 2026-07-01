@@ -41,7 +41,7 @@ export function Navbar() {
             scrolled ? "glass shadow-soft" : "bg-transparent",
           )}
         >
-          <a href="#top" aria-label="DrPhysioAI home">
+          <a href="/" aria-label="DrPhysioAI home">
             <Logo />
           </a>
 

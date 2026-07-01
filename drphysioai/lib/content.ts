@@ -13,11 +13,11 @@ export const site = {
 };
 
 export const nav = [
-  { label: "AI Learning", href: "#ai" },
-  { label: "Consultation", href: "#consultation" },
-  { label: "Exercise Programs", href: "#programs" },
-  { label: "Live Classes", href: "#live" },
-  { label: "Pricing", href: "#pricing" },
+  { label: "AI Learning", href: "/ai" },
+  { label: "Consultation", href: "/#consultation" },
+  { label: "Exercise Programs", href: "/#live" },
+  { label: "Live Classes", href: "/#live" },
+  { label: "Pricing", href: "/#pricing" },
 ];
 
 export const stats = [
@@ -201,3 +201,85 @@ export const faqs = [
     a: "We support UPI, Google Pay, PhonePe, Paytm, cards and net-banking, with GST invoices and easy cancellation.",
   },
 ];
+
+/* ---------------------------------------------------------------------------
+ * AI Learning page
+ * ------------------------------------------------------------------------- */
+
+export const aiSubjects = [
+  { name: "Anatomy", topics: 180, emoji: "🦴" },
+  { name: "Physiology", topics: 160, emoji: "🫀" },
+  { name: "Biomechanics", topics: 120, emoji: "⚙️" },
+  { name: "Neurology", topics: 140, emoji: "🧠" },
+  { name: "Orthopaedics", topics: 150, emoji: "🦵" },
+  { name: "Cardiorespiratory", topics: 110, emoji: "🫁" },
+  { name: "Sports", topics: 95, emoji: "🏃" },
+  { name: "Paediatrics", topics: 80, emoji: "🧒" },
+  { name: "Women's Health", topics: 70, emoji: "🌸" },
+  { name: "Electrotherapy", topics: 90, emoji: "⚡" },
+  { name: "Rehabilitation", topics: 130, emoji: "🩹" },
+  { name: "Evidence-Based Practice", topics: 85, emoji: "📊" },
+];
+
+export const answerFormats = [
+  { key: "Short", desc: "A crisp answer in seconds." },
+  { key: "Detailed", desc: "Deep, exam-ready explanation." },
+  { key: "Table", desc: "Structured, compare-at-a-glance." },
+  { key: "Flowchart", desc: "Step-by-step clinical reasoning." },
+  { key: "Simple", desc: "Plain language, zero jargon." },
+];
+
+export const aiPlans = [
+  {
+    name: "Free",
+    price: "₹0",
+    period: "forever",
+    highlight: false,
+    features: ["Basic AI notes", "Concept learning", "Daily question limit", "Community access"],
+  },
+  {
+    name: "Notes",
+    price: "₹199",
+    period: "/ mo",
+    highlight: false,
+    features: ["Unlimited notes", "Quick answers", "PDF summary", "Revision notes"],
+  },
+  {
+    name: "Concept Learning",
+    price: "₹299",
+    period: "/ mo",
+    highlight: false,
+    features: ["Everything in Notes", "Deep explanations", "Mind maps", "Flashcards"],
+  },
+  {
+    name: "Live Explanation",
+    price: "₹399",
+    period: "/ mo",
+    highlight: false,
+    features: ["AI tutor walkthroughs", "Step-by-step topics", "Interactive Q&A", "Voice answers"],
+  },
+  {
+    name: "Ultimate Student",
+    price: "₹499",
+    period: "/ mo",
+    highlight: true,
+    features: ["Everything unlocked", "Exam & OSCE prep", "Case studies", "Research assistant", "Priority support"],
+  },
+];
+
+/** Canned answers for the interactive tutor demo — no API key required. */
+export const demoAnswer = {
+  question: "Explain the rotator cuff muscles",
+  formats: {
+    Short:
+      "The rotator cuff is 4 muscles — **S**upraspinatus, **I**nfraspinatus, **T**eres minor, **S**ubscapularis (SITS) — that stabilise the shoulder and drive rotation.",
+    Detailed:
+      "The rotator cuff is a group of four muscles and their tendons that surround the glenohumeral joint, holding the humeral head in the shallow glenoid fossa. Supraspinatus initiates abduction (first 15°); infraspinatus and teres minor produce external rotation; subscapularis produces internal rotation. Together they provide dynamic stability and are a common site of impingement and tears.",
+    Table:
+      "| Muscle | Action | Nerve |\n|---|---|---|\n| Supraspinatus | Abduction (0–15°) | Suprascapular |\n| Infraspinatus | External rotation | Suprascapular |\n| Teres minor | External rotation | Axillary |\n| Subscapularis | Internal rotation | Subscapular |",
+    Flowchart:
+      "Shoulder pain on abduction →\n  1. Test painful arc (60–120°)\n  2. Empty-can test → supraspinatus\n  3. External rotation lag → infraspinatus\n  4. Lift-off test → subscapularis\n  → Suspected cuff tear → refer for USG/MRI",
+    Simple:
+      "Think of 4 small muscles like a cuff around your shoulder — they keep the ball of your arm bone snug in its socket and help you rotate and lift your arm. If they get injured, lifting the arm hurts.",
+  } as Record<string, string>,
+};
