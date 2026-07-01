@@ -1,8 +1,8 @@
-import { Check, Sparkles } from "lucide-react";
+import { Check } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
-import { Button } from "@/components/ui/button";
+import { PlanCta } from "./plan-cta";
 import { plans } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
@@ -59,17 +59,12 @@ export function Pricing() {
                     ))}
                   </ul>
 
-                  <Button
-                    variant={p.highlight ? "primary" : "outline"}
-                    size="lg"
-                    className="mt-8 w-full"
-                    asChild
-                  >
-                    <a href="#login">
-                      {p.cta}
-                      {p.highlight && <Sparkles className="h-4 w-4" />}
-                    </a>
-                  </Button>
+                  <PlanCta
+                    name={p.name}
+                    price={p.price}
+                    cta={p.cta}
+                    highlight={p.highlight}
+                  />
                 </div>
               </Card>
             </Reveal>

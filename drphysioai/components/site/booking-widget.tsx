@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Icon } from "./icon";
 import { consultationServices, timeSlots, site } from "@/lib/content";
+import { checkoutUrl } from "@/lib/shopify";
 import { cn } from "@/lib/utils";
 
 type Step = 1 | 2 | 3;
@@ -46,7 +47,19 @@ export function BookingWidget() {
   function confirm() {
     if (!slot) return;
     setStatus("loading");
-    // Placeholder for checkout — becomes a Shopify/Stripe redirect once connected.
+
+    // Real Shopify checkout: redirect to the hosted cart for this service,
+    // carrying the chosen date/time through as an order note.
+    const url = checkoutUrl(
+      [{ key: `service:${selected.title}` }],
+      { note: `${selected.title} · ${selectedDay.dow} ${selectedDay.num} ${selectedDay.mon} · ${slot}` },
+    );
+    if (url) {
+      window.location.href = url;
+      return;
+    }
+
+    // Store not wired yet → confirm locally so the flow still works end-to-end.
     window.setTimeout(() => setStatus("done"), 1100);
   }
 

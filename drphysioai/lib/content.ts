@@ -16,7 +16,7 @@ export const nav = [
   { label: "AI Learning", href: "/ai" },
   { label: "Consultation", href: "/consultation" },
   { label: "Exercise Programs", href: "/consultation#services" },
-  { label: "Live Classes", href: "/#live" },
+  { label: "Live Classes", href: "/live-classes" },
   { label: "Pricing", href: "/#pricing" },
 ];
 
@@ -93,6 +93,58 @@ export const liveClasses = [
   "Stretching", "Weight Loss", "Back Pain", "Neck Pain", "Knee Pain",
   "Arthritis", "Balance", "Senior Fitness", "Prenatal", "Postnatal",
   "Office Workers", "Sports Performance",
+];
+
+/* ---------------------------------------------------------------------------
+ * Live Classes page
+ * ------------------------------------------------------------------------- */
+
+export const liveClassLevels = ["All levels", "Beginner", "Intermediate", "Advanced"] as const;
+export type LiveClassLevel = (typeof liveClassLevels)[number];
+
+/** Filterable categories for the weekly schedule. */
+export const liveClassCategories = [
+  "All", "Pain Relief", "Mobility", "Strength", "Senior", "Prenatal", "Sports",
+] as const;
+export type LiveClassCategory = (typeof liveClassCategories)[number];
+
+export interface LiveClass {
+  day: "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun";
+  time: string;          // IST, 12-hour
+  title: string;
+  focus: string;
+  instructor: string;
+  category: Exclude<LiveClassCategory, "All">;
+  level: LiveClassLevel;
+  mins: number;
+  spots: number;         // spots left (out of capacity)
+  capacity: number;
+  free?: boolean;        // included in every member's free monthly class
+}
+
+/** Weekly live-class timetable (all times IST, hosted on Zoom/Google Meet). */
+export const liveClassSchedule: LiveClass[] = [
+  { day: "Mon", time: "07:00 AM", title: "Morning Mobility Flow", focus: "Full-body gentle stretching to start the day", instructor: "Dr. Utsav Upadhyay", category: "Mobility", level: "All levels", mins: 30, spots: 12, capacity: 40, free: true },
+  { day: "Mon", time: "06:30 PM", title: "Back Pain Relief", focus: "Core activation & spine-safe movement", instructor: "Dr. Sneha Patel", category: "Pain Relief", level: "Beginner", mins: 40, spots: 6, capacity: 40 },
+  { day: "Tue", time: "08:00 AM", title: "Desk Reset for Office Workers", focus: "Neck, shoulder & wrist decompression", instructor: "Dr. Ravi Menon", category: "Pain Relief", level: "All levels", mins: 25, spots: 18, capacity: 50 },
+  { day: "Tue", time: "05:30 PM", title: "Knee & Joint Care", focus: "Arthritis-friendly strengthening", instructor: "Dr. Sneha Patel", category: "Pain Relief", level: "Beginner", mins: 35, spots: 9, capacity: 40 },
+  { day: "Wed", time: "07:00 AM", title: "Prenatal Wellness", focus: "Safe movement & breathing for expecting mothers", instructor: "Dr. Aditi Rao", category: "Prenatal", level: "All levels", mins: 30, spots: 8, capacity: 25 },
+  { day: "Wed", time: "07:00 PM", title: "Weight-Loss Circuit", focus: "Low-impact cardio + mobility", instructor: "Dr. Ravi Menon", category: "Strength", level: "Intermediate", mins: 45, spots: 4, capacity: 45 },
+  { day: "Thu", time: "09:00 AM", title: "Senior Balance & Falls Prevention", focus: "Stability, coordination & confidence", instructor: "Dr. Aditi Rao", category: "Senior", level: "All levels", mins: 30, spots: 14, capacity: 30, free: true },
+  { day: "Thu", time: "06:30 PM", title: "Neck & Posture Fix", focus: "Release tension, rebuild alignment", instructor: "Dr. Utsav Upadhyay", category: "Pain Relief", level: "All levels", mins: 30, spots: 11, capacity: 40 },
+  { day: "Fri", time: "07:00 AM", title: "Athlete Mobility & Prehab", focus: "Injury-proofing for runners & gym-goers", instructor: "Dr. Ravi Menon", category: "Sports", level: "Advanced", mins: 40, spots: 7, capacity: 35 },
+  { day: "Fri", time: "06:00 PM", title: "Full-Body Strength", focus: "Progressive resistance, physio-guided", instructor: "Dr. Sneha Patel", category: "Strength", level: "Intermediate", mins: 45, spots: 10, capacity: 45 },
+  { day: "Sat", time: "08:30 AM", title: "Postnatal Recovery", focus: "Core & pelvic-floor rebuilding", instructor: "Dr. Aditi Rao", category: "Prenatal", level: "Beginner", mins: 35, spots: 6, capacity: 25 },
+  { day: "Sat", time: "05:00 PM", title: "Sports Performance Lab", focus: "Agility, power & return-to-play drills", instructor: "Dr. Utsav Upadhyay", category: "Sports", level: "Advanced", mins: 45, spots: 5, capacity: 35 },
+  { day: "Sun", time: "08:00 AM", title: "Sunday Slow Stretch", focus: "Restorative full-body mobility", instructor: "Dr. Sneha Patel", category: "Mobility", level: "All levels", mins: 30, spots: 20, capacity: 50, free: true },
+  { day: "Sun", time: "10:00 AM", title: "Community Q&A + Guided Session", focus: "Ask a physiotherapist live, then move together", instructor: "Dr. Utsav Upadhyay", category: "Mobility", level: "All levels", mins: 40, spots: 22, capacity: 60, free: true },
+];
+
+export const liveClassHighlights = [
+  { icon: "Radio", title: "Truly live", desc: "Real-time coaching with form correction — not a pre-recorded video." },
+  { icon: "Users", title: "Small groups", desc: "Capped class sizes so the physiotherapist can watch and adjust you." },
+  { icon: "Video", title: "Join from home", desc: "One-tap Zoom/Meet link on any device. Replays available for 7 days." },
+  { icon: "HeartPulse", title: "Physio-designed", desc: "Every session is built and led by licensed physiotherapists." },
 ];
 
 export const steps = [

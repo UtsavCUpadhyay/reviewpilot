@@ -1,13 +1,13 @@
 import {
   Sparkles, FileText, Brain, Mic, Image, Trophy, Video, Activity,
   HeartPulse, Stethoscope, Dumbbell, Accessibility, MousePointerClick,
-  Route, TrendingUp, BrainCircuit, type LucideIcon,
+  Route, TrendingUp, BrainCircuit, Radio, Users, type LucideIcon,
 } from "lucide-react";
 
 const map: Record<string, LucideIcon> = {
   Sparkles, FileText, Brain, Mic, Image, Trophy, Video, Activity,
   HeartPulse, Stethoscope, Dumbbell, Accessibility, MousePointerClick,
-  Route, TrendingUp, BrainCircuit,
+  Route, TrendingUp, BrainCircuit, Radio, Users,
 };
 
 /** Render a lucide icon by name (icons are referenced as strings in content.ts). */

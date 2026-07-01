@@ -1,6 +1,7 @@
-import { Radio, Users } from "lucide-react";
+import { Radio, Users, ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
+import { Button } from "@/components/ui/button";
 import { liveClasses } from "@/lib/content";
 
 export function LiveClasses() {
@@ -19,6 +20,13 @@ export function LiveClasses() {
           }
           description="Join guided sessions from home — from prenatal care to sports performance. One free class every month for every member."
         />
+        <div className="mt-6 flex justify-center">
+          <Button variant="outline" asChild>
+            <a href="/live-classes">
+              See the full weekly schedule <ArrowRight className="h-4 w-4" />
+            </a>
+          </Button>
+        </div>
       </div>
 
       <div className="relative mt-12 flex flex-col gap-4">

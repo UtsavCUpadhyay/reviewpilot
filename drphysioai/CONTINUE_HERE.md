@@ -58,37 +58,53 @@ All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
 - **AI tutor** — `ai-chat-demo.tsx` uses canned answers from `lib/content.ts`
   (`demoAnswer`). Swap `choose()` for a `fetch('/api/tutor')` call. Needs a
   Claude-backed route (`@anthropic-ai/sdk` + `ANTHROPIC_API_KEY`).
-- **Booking checkout** — `booking-widget.tsx` `confirm()` fakes success on a
-  timer. Replace with a Shopify/Stripe checkout redirect.
+- **Shopify checkout** — WIRED but not yet live. `lib/shopify.ts` builds real
+  Shopify cart-permalink checkout URLs; Pricing (`plan-cta.tsx`) and booking
+  (`booking-widget.tsx` `confirm()`) both call it. It stays inert (graceful
+  fallback to sign-up / WhatsApp) until `NEXT_PUBLIC_SHOPIFY_DOMAIN` + the
+  variant-id map are set — see `.env.example`. Fill those once the DrPhysioAI
+  store is re-authorized (Shopify MCP token expired; see below).
+- **Live Classes join** — `/live-classes` + `live-schedule.tsx` are built with
+  a filterable weekly timetable and a reserve dialog; "Reserve my spot" routes
+  to sign-up. Wire the join link + reminders to real backend once auth exists.
 - **Auth** — `auth-form.tsx` `onSubmit` is a no-op. Wire to Supabase auth;
   gate `/dashboard` behind a session.
 - **Dashboard data** — all mock/hard-coded. Replace with real user data once
   auth + DB are in place.
 
-## SHOPIFY — the reason for the fresh session
+## SHOPIFY — still needs re-authorization
 
-In the previous session, calling `switch-shop` revoked the Shopify token and it
-could not be re-authorized inside that running session. **This new session
-should have a valid token.** First actions to try:
+As of the latest session the Shopify MCP token was **expired again**
+(`get-shop-info` / `search_products` both returned "requires re-authorization").
+It can't be re-authorized inside a non-interactive session — the user must
+re-connect Shopify (claude.ai connector settings, or `/mcp` in an interactive
+CLI session). So the store still hasn't been verified and no live product/
+variant ids have been pulled.
+
+The checkout code is nonetheless done and waiting (see `lib/shopify.ts`). Once
+Shopify is back:
 
 1. `mcp__Shopify__get-shop-info` → confirm it's the **DrPhysioAI** store
-   (previously the connection defaulted to "PawHappiness" — a pet store — so
-   verify the name/domain).
-2. If it's the wrong store, the user's other stores include PawHappiness and
-   shrivyajewell; DrPhysioAI is the target.
-3. Then: `search_products` to see catalog, and plan wiring the Pricing +
-   "Confirm & Pay" buttons to real Shopify checkout.
+   (NOT "PawHappiness" or "shrivyajewell").
+2. `search_products` → get the numeric **variant** ids for the plans/services.
+3. Set `NEXT_PUBLIC_SHOPIFY_DOMAIN` + `NEXT_PUBLIC_SHOPIFY_VARIANTS` (JSON map,
+   keys like `plan:Complete Care`, `service:Video Consultation` — see
+   `.env.example` and the `codeDefaults` map in `lib/shopify.ts`). Checkout goes
+   live with no further code changes.
 
 > Note: Shopify is a storefront/checkout system, not a foundation for the AI +
 > consultation app. Use it as the payments/subscription layer only.
 
 ## SUGGESTED NEXT STEPS (user is open to "keep going")
 
-1. Connect Shopify → wire Pricing & booking "Pay" to checkout.
-2. **Auth + user dashboard** shell (progress, streaks, consultations, history).
-3. **Live Classes** page (schedule + join flow).
+1. ~~Connect Shopify → wire Pricing & booking "Pay" to checkout.~~ Checkout is
+   **wired** (`lib/shopify.ts`); just needs the store re-authorized + env ids.
+2. ~~Auth + user dashboard shell.~~ Auth screens + dashboard shell done (auth
+   `onSubmit` still a stub → Supabase).
+3. ~~**Live Classes** page (schedule + join flow).~~ Done → `/live-classes`.
 4. Make the AI tutor real (`/api/tutor` with Claude).
-5. i18n (Hindi/Gujarati) using `lib/content.ts`.
+5. Wire auth to Supabase; gate `/dashboard`.
+6. i18n (Hindi/Gujarati) using `lib/content.ts`.
 
 ## How to run
 
