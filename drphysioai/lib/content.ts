@@ -14,8 +14,8 @@ export const site = {
 
 export const nav = [
   { label: "AI Learning", href: "/ai" },
-  { label: "Consultation", href: "/#consultation" },
-  { label: "Exercise Programs", href: "/#live" },
+  { label: "Consultation", href: "/consultation" },
+  { label: "Exercise Programs", href: "/consultation#services" },
   { label: "Live Classes", href: "/#live" },
   { label: "Pricing", href: "/#pricing" },
 ];
@@ -76,12 +76,17 @@ export const aiFeatures = [
 ];
 
 export const consultationServices = [
-  { icon: "Video", title: "Video Consultation", desc: "Face-to-face with licensed physiotherapists." },
-  { icon: "Activity", title: "Exercise Prescription", desc: "A personalised home program that adapts to you." },
-  { icon: "HeartPulse", title: "Pain Management", desc: "Back, neck, knee and joint pain — done right." },
-  { icon: "Stethoscope", title: "Post-Surgical Rehab", desc: "Guided recovery after surgery, step by step." },
-  { icon: "Dumbbell", title: "Sports Injury Rehab", desc: "Return to play, stronger and safer." },
-  { icon: "Accessibility", title: "Neuro & Elderly Care", desc: "Gentle, expert care for every age." },
+  { icon: "Video", title: "Video Consultation", desc: "Face-to-face with licensed physiotherapists.", price: 499, mins: 30 },
+  { icon: "Activity", title: "Exercise Prescription", desc: "A personalised home program that adapts to you.", price: 699, mins: 30 },
+  { icon: "HeartPulse", title: "Pain Management", desc: "Back, neck, knee and joint pain — done right.", price: 599, mins: 40 },
+  { icon: "Stethoscope", title: "Post-Surgical Rehab", desc: "Guided recovery after surgery, step by step.", price: 799, mins: 45 },
+  { icon: "Dumbbell", title: "Sports Injury Rehab", desc: "Return to play, stronger and safer.", price: 799, mins: 45 },
+  { icon: "Accessibility", title: "Neuro & Elderly Care", desc: "Gentle, expert care for every age.", price: 699, mins: 45 },
+];
+
+export const timeSlots = [
+  "09:00 AM", "10:30 AM", "12:00 PM", "02:00 PM",
+  "03:30 PM", "05:00 PM", "06:30 PM", "08:00 PM",
 ];
 
 export const liveClasses = [
