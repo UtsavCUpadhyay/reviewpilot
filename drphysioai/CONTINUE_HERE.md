@@ -55,9 +55,12 @@ All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
 
 ## KNOWN STUBS (wire these when ready)
 
-- **AI tutor** — `ai-chat-demo.tsx` uses canned answers from `lib/content.ts`
-  (`demoAnswer`). Swap `choose()` for a `fetch('/api/tutor')` call. Needs a
-  Claude-backed route (`@anthropic-ai/sdk` + `ANTHROPIC_API_KEY`).
+- **AI tutor** — WIRED. `ai-chat-demo.tsx` is now a real input that POSTs to
+  `app/api/tutor/route.ts` (Claude via `@anthropic-ai/sdk`, model
+  `claude-opus-4-8`). Set `ANTHROPIC_API_KEY` (server-side; see `.env.example`)
+  to go live — without it the route returns 503 and the UI falls back to the
+  canned `demoAnswer` samples with a notice. Format toggles re-ask live; in
+  fallback they swap the canned sample.
 - **Shopify checkout** — WIRED but not yet live. `lib/shopify.ts` builds real
   Shopify cart-permalink checkout URLs; Pricing (`plan-cta.tsx`) and booking
   (`booking-widget.tsx` `confirm()`) both call it. It stays inert (graceful
@@ -102,7 +105,8 @@ Shopify is back:
 2. ~~Auth + user dashboard shell.~~ Auth screens + dashboard shell done (auth
    `onSubmit` still a stub → Supabase).
 3. ~~**Live Classes** page (schedule + join flow).~~ Done → `/live-classes`.
-4. Make the AI tutor real (`/api/tutor` with Claude).
+4. ~~Make the AI tutor real (`/api/tutor` with Claude).~~ Done → just needs
+   `ANTHROPIC_API_KEY` set to switch from sample answers to live.
 5. Wire auth to Supabase; gate `/dashboard`.
 6. i18n (Hindi/Gujarati) using `lib/content.ts`.
 
