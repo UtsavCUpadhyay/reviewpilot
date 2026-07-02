@@ -3,7 +3,7 @@
 import * as React from "react";
 import {
   LayoutDashboard, Sparkles, CalendarDays, Activity, FileText,
-  Trophy, Bookmark, CreditCard, Settings, Menu, X, Bell, Search,
+  Trophy, Bookmark, CreditCard, Settings, Menu, X, Bell, Search, LogOut,
 } from "lucide-react";
 import { Logo } from "@/components/site/logo";
 import { ThemeToggle } from "@/components/site/theme-toggle";
@@ -21,8 +21,15 @@ const navItems = [
   { icon: Settings, label: "Settings" },
 ];
 
-export function DashboardShell({ children }: { children: React.ReactNode }) {
+export function DashboardShell({
+  children,
+  user,
+}: {
+  children: React.ReactNode;
+  user?: { name: string; email?: string | null };
+}) {
   const [open, setOpen] = React.useState(false);
+  const initial = (user?.name || "A").trim().charAt(0).toUpperCase();
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -96,7 +103,22 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               <Bell className="h-[1.15rem] w-[1.15rem]" />
               <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-coral-500" />
             </button>
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-gradient font-bold text-white">A</span>
+            <span
+              title={user?.email ?? undefined}
+              className="grid h-10 w-10 place-items-center rounded-full bg-brand-gradient font-bold text-white"
+            >
+              {initial}
+            </span>
+            <form action="/auth/signout" method="post">
+              <button
+                type="submit"
+                aria-label="Sign out"
+                title="Sign out"
+                className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                <LogOut className="h-[1.15rem] w-[1.15rem]" />
+              </button>
+            </form>
           </div>
         </header>
 

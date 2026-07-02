@@ -72,10 +72,18 @@ All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
 - **Live Classes join** — `/live-classes` + `live-schedule.tsx` are built with
   a filterable weekly timetable and a reserve dialog; "Reserve my spot" routes
   to sign-up. Wire the join link + reminders to real backend once auth exists.
-- **Auth** — `auth-form.tsx` `onSubmit` is a no-op. Wire to Supabase auth;
-  gate `/dashboard` behind a session.
-- **Dashboard data** — all mock/hard-coded. Replace with real user data once
-  auth + DB are in place.
+- **Auth** — WIRED to Supabase. `auth-form.tsx` does real email+password
+  sign-up/login (+ Google OAuth button) via `@supabase/ssr`; `middleware.ts`
+  gates `/dashboard` (redirects to `/login?next=…`); `app/auth/callback` and
+  `app/auth/signout` handle the OAuth/magic-link and sign-out flows. Project:
+  `uapvekifcptnqzqtfawq` (ACTIVE). Config (public URL + publishable key) is
+  baked into `lib/supabase/config.ts` with env override. Notes: Google OAuth
+  needs a provider client id/secret set in the Supabase dashboard to work;
+  email confirmation is ON by default (signup shows a "check your email"
+  state) — disable it in Supabase Auth settings for instant signup if wanted.
+- **Dashboard data** — greeting + avatar now use the real signed-in user
+  (`user_metadata.full_name`/email). KPI/activity numbers are still mock —
+  replace with real data once a schema exists.
 
 ## SHOPIFY — connected & catalog live
 
@@ -133,8 +141,9 @@ Shopify is back:
 3. ~~**Live Classes** page (schedule + join flow).~~ Done → `/live-classes`.
 4. ~~Make the AI tutor real (`/api/tutor` with Claude).~~ Done → just needs
    `ANTHROPIC_API_KEY` set to switch from sample answers to live.
-5. Wire auth to Supabase; gate `/dashboard`.
+5. ~~Wire auth to Supabase; gate `/dashboard`.~~ Done.
 6. i18n (Hindi/Gujarati) using `lib/content.ts`.
+7. Real dashboard/user data (schema + RLS) now that auth exists.
 
 ## How to run
 

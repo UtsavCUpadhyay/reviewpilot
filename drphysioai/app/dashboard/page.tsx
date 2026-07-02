@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 import {
   Flame, Sparkles, CalendarClock, Trophy, ArrowRight, Video,
   BookOpen, Target, CheckCircle2, PlayCircle,
@@ -6,6 +7,7 @@ import {
 import { DashboardShell } from "@/components/dashboard/shell";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/server";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -40,14 +42,28 @@ const activity = [
   { icon: Trophy, text: "Earned badge: 7-day streak 🔥", time: "2 days ago", tone: "amber" },
 ];
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  // Middleware already gates this route; this is a defence-in-depth check.
+  if (!user) redirect("/login?next=/dashboard");
+
+  const fullName =
+    (user.user_metadata?.full_name as string | undefined)?.trim() ||
+    user.email?.split("@")[0] ||
+    "there";
+  const firstName = fullName.split(" ")[0];
+
   return (
-    <DashboardShell>
+    <DashboardShell user={{ name: fullName, email: user.email }}>
       {/* Greeting */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
-            Good evening, Aarav 👋
+            Good evening, {firstName} 👋
           </h1>
           <p className="mt-1 text-muted-foreground">
             You&apos;re on a 7-day streak. 2 tasks left to hit today&apos;s goal.

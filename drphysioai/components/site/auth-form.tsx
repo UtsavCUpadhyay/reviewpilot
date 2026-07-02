@@ -1,30 +1,94 @@
 "use client";
 
 import * as React from "react";
-import { Mail, Lock, User, Eye, EyeOff, MessageCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import {
+  Mail, Lock, User, Eye, EyeOff, MessageCircle, Loader2, AlertCircle, CheckCircle2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/client";
 import { site } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 /**
- * Login / signup form. UI-only for now — `onSubmit` is a stub; wire it to
- * Supabase / your auth provider later. Kept as one component with a `mode`.
+ * Login / signup form wired to Supabase auth (email + password, Google OAuth).
+ * Signup stores the full name in user metadata; if the project requires email
+ * confirmation, we show a "check your email" state instead of redirecting.
  */
 export function AuthForm({ mode }: { mode: "login" | "signup" }) {
   const isSignup = mode === "signup";
+  const router = useRouter();
+  const supabase = React.useMemo(() => createClient(), []);
+
+  const [name, setName] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
   const [show, setShow] = React.useState(false);
+  const [status, setStatus] = React.useState<"idle" | "loading">("idle");
+  const [error, setError] = React.useState<string | null>(null);
+  const [info, setInfo] = React.useState<string | null>(null);
+
+  function nextUrl() {
+    if (typeof window === "undefined") return "/dashboard";
+    return new URLSearchParams(window.location.search).get("next") || "/dashboard";
+  }
+
+  async function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (status === "loading") return;
+    setError(null);
+    setInfo(null);
+    setStatus("loading");
+
+    try {
+      if (isSignup) {
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            data: { full_name: name.trim() || null },
+            emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextUrl())}`,
+          },
+        });
+        if (error) throw error;
+        if (data.session) {
+          router.push(nextUrl());
+          router.refresh();
+        } else {
+          setInfo("Almost there! Check your email to confirm your account, then log in.");
+          setStatus("idle");
+        }
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        router.push(nextUrl());
+        router.refresh();
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setStatus("idle");
+    }
+  }
+
+  async function google() {
+    setError(null);
+    setInfo(null);
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextUrl())}`,
+      },
+    });
+    if (error) {
+      setError("Google sign-in isn't enabled yet — please use email for now.");
+    }
+  }
 
   return (
-    <form
-      className="space-y-4"
-      onSubmit={(e) => {
-        e.preventDefault();
-        // TODO: connect to auth provider (Supabase is available in the repo).
-      }}
-    >
+    <form className="space-y-4" onSubmit={onSubmit}>
       {/* social */}
       <div className="grid gap-2.5 sm:grid-cols-2">
-        <SocialButton label="Google">
+        <SocialButton label="Google" onClick={google}>
           <GoogleGlyph />
         </SocialButton>
         <a
@@ -40,9 +104,26 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
       </div>
 
       {isSignup && (
-        <Field icon={<User className="h-4 w-4" />} label="Full name" type="text" placeholder="Aarav Sharma" autoComplete="name" />
+        <Field
+          icon={<User className="h-4 w-4" />}
+          label="Full name"
+          type="text"
+          placeholder="Aarav Sharma"
+          autoComplete="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
       )}
-      <Field icon={<Mail className="h-4 w-4" />} label="Email" type="email" placeholder="you@example.com" autoComplete="email" />
+      <Field
+        icon={<Mail className="h-4 w-4" />}
+        label="Email"
+        type="email"
+        placeholder="you@example.com"
+        autoComplete="email"
+        required
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
 
       <div>
         <label className="mb-1.5 block text-sm font-semibold">Password</label>
@@ -54,6 +135,10 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
             type={show ? "text" : "password"}
             placeholder="••••••••"
             autoComplete={isSignup ? "new-password" : "current-password"}
+            required
+            minLength={6}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="h-11 w-full rounded-xl border border-input bg-background px-10 text-sm outline-none transition-shadow placeholder:text-muted-foreground focus:ring-2 focus:ring-ring"
           />
           <button
@@ -76,8 +161,25 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
         </div>
       )}
 
-      <Button type="submit" size="lg" className="w-full">
-        {isSignup ? "Create free account" : "Log in"}
+      {error && (
+        <p className="flex items-start gap-2 rounded-xl border border-coral-500/30 bg-coral-500/10 px-3 py-2.5 text-sm text-coral-600">
+          <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" /> {error}
+        </p>
+      )}
+      {info && (
+        <p className="flex items-start gap-2 rounded-xl border border-teal-500/30 bg-teal-500/10 px-3 py-2.5 text-sm text-teal-700 dark:text-teal-300">
+          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0" /> {info}
+        </p>
+      )}
+
+      <Button type="submit" size="lg" className="w-full" disabled={status === "loading"}>
+        {status === "loading" ? (
+          <><Loader2 className="h-4 w-4 animate-spin" /> Please wait…</>
+        ) : isSignup ? (
+          "Create free account"
+        ) : (
+          "Log in"
+        )}
       </Button>
 
       <p className="text-center text-sm text-muted-foreground">
@@ -120,10 +222,13 @@ function Field({
   );
 }
 
-function SocialButton({ label, children }: { label: string; children: React.ReactNode }) {
+function SocialButton({
+  label, children, onClick,
+}: { label: string; children: React.ReactNode; onClick?: () => void }) {
   return (
     <button
       type="button"
+      onClick={onClick}
       className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-border bg-card text-sm font-semibold transition-colors hover:bg-muted"
     >
       {children} {label}
