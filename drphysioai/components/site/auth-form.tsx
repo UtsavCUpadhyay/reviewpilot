@@ -126,12 +126,13 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
       />
 
       <div>
-        <label className="mb-1.5 block text-sm font-semibold">Password</label>
+        <label htmlFor="auth-password" className="mb-1.5 block text-sm font-semibold">Password</label>
         <div className="relative">
           <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground">
             <Lock className="h-4 w-4" />
           </span>
           <input
+            id="auth-password"
             type={show ? "text" : "password"}
             placeholder="••••••••"
             autoComplete={isSignup ? "new-password" : "current-password"}
@@ -157,7 +158,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
           <label className="inline-flex items-center gap-2 text-muted-foreground">
             <input type="checkbox" className="h-4 w-4 rounded border-border accent-teal-500" /> Remember me
           </label>
-          <a href="#" className="font-semibold text-teal-600 hover:underline">Forgot?</a>
+          <a href="/forgot-password" className="font-semibold text-teal-600 hover:underline">Forgot?</a>
         </div>
       )}
 
@@ -204,14 +205,16 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
 function Field({
   icon, label, ...props
 }: { icon: React.ReactNode; label: string } & React.InputHTMLAttributes<HTMLInputElement>) {
+  const id = React.useId();
   return (
     <div>
-      <label className="mb-1.5 block text-sm font-semibold">{label}</label>
+      <label htmlFor={id} className="mb-1.5 block text-sm font-semibold">{label}</label>
       <div className="relative">
         <span className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground">
           {icon}
         </span>
         <input
+          id={id}
           {...props}
           className={cn(
             "h-11 w-full rounded-xl border border-input bg-background px-10 text-sm outline-none transition-shadow placeholder:text-muted-foreground focus:ring-2 focus:ring-ring",
