@@ -15,13 +15,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const kpis = [
-  { icon: Flame, label: "Day streak", value: "7", sub: "Keep it going!", tone: "coral" },
-  { icon: Sparkles, label: "AI questions", value: "342", sub: "this month", tone: "teal" },
-  { icon: Target, label: "Quiz accuracy", value: "88%", sub: "+6% vs last week", tone: "violet" },
-  { icon: Trophy, label: "Badges", value: "12", sub: "3 new", tone: "amber" },
-];
-
 const toneMap: Record<string, string> = {
   coral: "bg-coral-500/15 text-coral-500",
   teal: "bg-teal-500/15 text-teal-600",
@@ -51,11 +44,26 @@ export default async function DashboardPage() {
   // Middleware already gates this route; this is a defence-in-depth check.
   if (!user) redirect("/login?next=/dashboard");
 
+  // Real per-user stats from the profiles table (auto-created on signup).
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("full_name, streak_days, ai_questions, quiz_accuracy, badges")
+    .eq("id", user.id)
+    .maybeSingle();
+
   const fullName =
+    profile?.full_name?.trim() ||
     (user.user_metadata?.full_name as string | undefined)?.trim() ||
     user.email?.split("@")[0] ||
     "there";
   const firstName = fullName.split(" ")[0];
+
+  const kpis = [
+    { icon: Flame, label: "Day streak", value: `${profile?.streak_days ?? 0}`, sub: "days in a row", tone: "coral" },
+    { icon: Sparkles, label: "AI questions", value: `${profile?.ai_questions ?? 0}`, sub: "this month", tone: "teal" },
+    { icon: Target, label: "Quiz accuracy", value: `${profile?.quiz_accuracy ?? 0}%`, sub: "across quizzes", tone: "violet" },
+    { icon: Trophy, label: "Badges", value: `${profile?.badges ?? 0}`, sub: "earned", tone: "amber" },
+  ];
 
   return (
     <DashboardShell user={{ name: fullName, email: user.email }}>
@@ -66,7 +74,9 @@ export default async function DashboardPage() {
             Good evening, {firstName} 👋
           </h1>
           <p className="mt-1 text-muted-foreground">
-            You&apos;re on a 7-day streak. 2 tasks left to hit today&apos;s goal.
+            {(profile?.streak_days ?? 0) > 0
+              ? `You're on a ${profile?.streak_days}-day streak — keep it going!`
+              : "Ask the AI tutor or book a consultation to get started."}
           </p>
         </div>
         <div className="flex gap-2">

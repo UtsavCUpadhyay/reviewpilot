@@ -75,15 +75,21 @@ All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
 - **Auth** — WIRED to Supabase. `auth-form.tsx` does real email+password
   sign-up/login (+ Google OAuth button) via `@supabase/ssr`; `middleware.ts`
   gates `/dashboard` (redirects to `/login?next=…`); `app/auth/callback` and
-  `app/auth/signout` handle the OAuth/magic-link and sign-out flows. Project:
-  `uapvekifcptnqzqtfawq` (ACTIVE). Config (public URL + publishable key) is
-  baked into `lib/supabase/config.ts` with env override. Notes: Google OAuth
-  needs a provider client id/secret set in the Supabase dashboard to work;
-  email confirmation is ON by default (signup shows a "check your email"
-  state) — disable it in Supabase Auth settings for instant signup if wanted.
-- **Dashboard data** — greeting + avatar now use the real signed-in user
-  (`user_metadata.full_name`/email). KPI/activity numbers are still mock —
-  replace with real data once a schema exists.
+  `app/auth/signout` handle the OAuth/magic-link and sign-out flows.
+  **Dedicated project `DrPhysioAI` = `uyakkdalfopuamkacxqd`** (Mumbai
+  ap-south-1, ACTIVE) — its own auth users, isolated from the ReviewPilot
+  project. Public URL + publishable key baked into `lib/supabase/config.ts`
+  (env overridable). Notes: Google OAuth needs a provider client id/secret set
+  in the Supabase dashboard; email confirmation is ON by default (signup shows
+  a "check your email" state) — disable it in Auth settings for instant signup.
+- **`profiles` table** — created in the DrPhysioAI project with RLS + an
+  `on_auth_user_created` trigger that auto-inserts a profile (with `full_name`
+  from signup metadata). Columns: `streak_days`, `ai_questions`,
+  `quiz_accuracy`, `badges` (default 0). The dashboard reads these for the
+  greeting + KPI cards, so a new user sees an honest zero-state.
+- **Dashboard data** — name, greeting and KPI cards are now real (from
+  `profiles`). The "continue learning", "next consultation", "today's goal"
+  and activity feed are still illustrative placeholders (no data pipeline yet).
 
 ## SHOPIFY — connected & catalog live
 
