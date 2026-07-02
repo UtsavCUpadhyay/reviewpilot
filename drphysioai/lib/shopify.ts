@@ -21,8 +21,10 @@
  * WhatsApp / sign-up flow, so nothing breaks in the meantime.
  */
 
-/** Storefront domain, e.g. `drphysioai.myshopify.com`. Empty until configured. */
-export const SHOPIFY_DOMAIN = (process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN ?? "").trim();
+/** Storefront domain. Defaults to the live DrPhysioAI store; env can override. */
+export const SHOPIFY_DOMAIN = (
+  process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN ?? "drphysioai.com"
+).trim();
 
 /**
  * DrPhysioAI catalog key → Shopify variant id (numeric, as a string).
@@ -30,16 +32,17 @@ export const SHOPIFY_DOMAIN = (process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN ?? "").tri
  * Leave a value empty to keep that item on the WhatsApp fallback.
  */
 const codeDefaults: Record<string, string> = {
+  // Live variant ids from the DrPhysioAI Shopify store (drphysioai.com).
   // Subscription plans (Pricing section) — Free has no variant (it's sign-up only).
-  "plan:Ultimate Student": "",
-  "plan:Complete Care": "",
+  "plan:Ultimate Student": "48044581552315",
+  "plan:Complete Care": "48044581585083",
   // Consultation services (booking widget).
-  "service:Video Consultation": "",
-  "service:Exercise Prescription": "",
-  "service:Pain Management": "",
-  "service:Post-Surgical Rehab": "",
-  "service:Sports Injury Rehab": "",
-  "service:Neuro & Elderly Care": "",
+  "service:Video Consultation": "48044581617851",
+  "service:Exercise Prescription": "48044581650619",
+  "service:Pain Management": "48044581683387",
+  "service:Post-Surgical Rehab": "48044581716155",
+  "service:Sports Injury Rehab": "48044581748923",
+  "service:Neuro & Elderly Care": "48044581781691",
 };
 
 /** Optional JSON override from env, merged over the in-code defaults. */

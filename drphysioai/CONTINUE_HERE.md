@@ -61,12 +61,14 @@ All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
   to go live — without it the route returns 503 and the UI falls back to the
   canned `demoAnswer` samples with a notice. Format toggles re-ask live; in
   fallback they swap the canned sample.
-- **Shopify checkout** — WIRED but not yet live. `lib/shopify.ts` builds real
-  Shopify cart-permalink checkout URLs; Pricing (`plan-cta.tsx`) and booking
-  (`booking-widget.tsx` `confirm()`) both call it. It stays inert (graceful
-  fallback to sign-up / WhatsApp) until `NEXT_PUBLIC_SHOPIFY_DOMAIN` + the
-  variant-id map are set — see `.env.example`. Fill those once the DrPhysioAI
-  store is re-authorized (Shopify MCP token expired; see below).
+- **Shopify checkout** — LIVE. `lib/shopify.ts` now ships the real DrPhysioAI
+  store domain (`drphysioai.com`) + live variant ids for all 8 products, so the
+  Pricing (`plan-cta.tsx`) and booking (`booking-widget.tsx` `confirm()`)
+  buttons redirect to real Shopify hosted checkout. Env vars still override.
+  ⚠️ **Currency:** the store's base currency is **AUD**, but the app UI is
+  priced in **₹ INR** — checkout will show A$ amounts until the store currency
+  is switched to INR (Settings → General; possible while the store has no real
+  orders) or an Indian market is configured. See the Shopify section below.
 - **Live Classes join** — `/live-classes` + `live-schedule.tsx` are built with
   a filterable weekly timetable and a reserve dialog; "Reserve my spot" routes
   to sign-up. Wire the join link + reminders to real backend once auth exists.
@@ -75,7 +77,31 @@ All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
 - **Dashboard data** — all mock/hard-coded. Replace with real user data once
   auth + DB are in place.
 
-## SHOPIFY — still needs re-authorization
+## SHOPIFY — connected & catalog live
+
+Store **DrPhysioAI** (`drphysioai.com`, myshopify `gyvjr4-qz.myshopify.com`).
+8 products created (ACTIVE, published to Online Store, availableForSale) and
+wired into `lib/shopify.ts` by catalog key → variant id:
+
+| Catalog key | Product | Variant id | Price |
+|---|---|---|---|
+| `plan:Ultimate Student` | Ultimate Student — Monthly Membership | 48044581552315 | 499 |
+| `plan:Complete Care` | Complete Care — Monthly Membership | 48044581585083 | 1499 |
+| `service:Video Consultation` | Video Consultation | 48044581617851 | 499 |
+| `service:Exercise Prescription` | Exercise Prescription | 48044581650619 | 699 |
+| `service:Pain Management` | Pain Management | 48044581683387 | 599 |
+| `service:Post-Surgical Rehab` | Post-Surgical Rehab | 48044581716155 | 799 |
+| `service:Sports Injury Rehab` | Sports Injury Rehab | 48044581748923 | 799 |
+| `service:Neuro & Elderly Care` | Neuro & Elderly Care | 48044581781691 | 699 |
+
+**Open items:**
+- **Currency is AUD, app is ₹ INR** — switch store base currency to INR, or set
+  up an India market, so checkout amounts match the UI.
+- **Plans are one-time products** — real recurring billing needs a Shopify
+  subscription app/Selling Plans API (follow-up).
+- 4 leftover "Example product" samples can be deleted from the store.
+
+## (historical) SHOPIFY — earlier re-authorization notes
 
 As of the latest session the Shopify MCP token was **expired again**
 (`get-shop-info` / `search_products` both returned "requires re-authorization").
