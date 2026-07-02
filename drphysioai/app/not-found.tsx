@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Home, Sparkles, Stethoscope, Radio } from "lucide-react";
 import { Navbar } from "@/components/site/navbar";
+import { getLocale } from "@/lib/i18n-server";
 import { Footer } from "@/components/site/footer";
 import { Button } from "@/components/ui/button";
 
@@ -18,7 +19,7 @@ const links = [
 export default function NotFound() {
   return (
     <>
-      <Navbar />
+      <Navbar locale={getLocale()} />
       <main className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 bg-mesh" aria-hidden />
         <section className="container-page relative flex min-h-[70vh] flex-col items-center justify-center py-32 text-center">

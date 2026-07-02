@@ -4,13 +4,23 @@ import * as React from "react";
 import { Menu, X, MessageCircle } from "lucide-react";
 import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
+import { LanguageSwitcher } from "./language-switcher";
 import { Button } from "@/components/ui/button";
-import { nav, site } from "@/lib/content";
+import { site } from "@/lib/content";
+import { getDict, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export function Navbar() {
+export function Navbar({ locale = "en" }: { locale?: Locale }) {
   const [scrolled, setScrolled] = React.useState(false);
   const [open, setOpen] = React.useState(false);
+  const d = getDict(locale);
+  const nav = [
+    { label: d.nav.aiLearning, href: "/ai" },
+    { label: d.nav.consultation, href: "/consultation" },
+    { label: d.nav.exercise, href: "/consultation#services" },
+    { label: d.nav.liveClasses, href: "/live-classes" },
+    { label: d.nav.pricing, href: "/#pricing" },
+  ];
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -58,12 +68,13 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
+            <LanguageSwitcher locale={locale} className="hidden sm:block" />
             <ThemeToggle className="hidden sm:inline-flex" />
             <Button variant="outline" size="sm" className="hidden md:inline-flex" asChild>
-              <a href="/login">Login</a>
+              <a href="/login">{d.actions.login}</a>
             </Button>
             <Button size="sm" className="hidden sm:inline-flex" asChild>
-              <a href="/signup">Start Free</a>
+              <a href="/signup">{d.actions.startFree}</a>
             </Button>
             <button
               className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card/60 lg:hidden"
@@ -95,9 +106,10 @@ export function Navbar() {
             </div>
             <div className="mt-3 flex items-center gap-2 border-t border-border pt-3">
               <ThemeToggle />
+              <LanguageSwitcher locale={locale} />
               <Button className="flex-1" asChild>
                 <a href={site.whatsappLink} onClick={() => setOpen(false)}>
-                  <MessageCircle className="h-4 w-4" /> WhatsApp us
+                  <MessageCircle className="h-4 w-4" /> {d.actions.whatsapp}
                 </a>
               </Button>
             </div>

@@ -148,8 +148,15 @@ Shopify is back:
 4. ~~Make the AI tutor real (`/api/tutor` with Claude).~~ Done → just needs
    `ANTHROPIC_API_KEY` set to switch from sample answers to live.
 5. ~~Wire auth to Supabase; gate `/dashboard`.~~ Done.
-6. i18n (Hindi/Gujarati) using `lib/content.ts`.
-7. Real dashboard/user data (schema + RLS) now that auth exists.
+6. **i18n (Hindi/Gujarati)** — STARTED. Cookie-based locale (`lib/i18n.ts` +
+   `lib/i18n-server.ts`), a `LanguageSwitcher` in the navbar (EN/हिं/ગુ), and
+   full translations for the shared **navbar** + homepage **hero** (SSR, no
+   flash). Extend by adding keys to the three dicts in `lib/i18n.ts` and
+   swapping literals for `d.*` in more components (stats/features/pricing/faq/
+   footer still English). Localized pages read `getLocale()` and are now
+   dynamically rendered.
+7. Real dashboard/user data (schema + RLS) — profiles table done; wire more
+   real data pipelines (progress, activity) as features ship.
 
 ## How to run
 

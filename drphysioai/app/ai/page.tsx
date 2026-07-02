@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Check, Sparkles, ArrowRight } from "lucide-react";
 import { Navbar } from "@/components/site/navbar";
+import { getLocale } from "@/lib/i18n-server";
 import { Footer } from "@/components/site/footer";
 import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 import { AiChatDemo } from "@/components/site/ai-chat-demo";
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 export default function AiLearningPage() {
   return (
     <>
-      <Navbar />
+      <Navbar locale={getLocale()} />
       <main>
         {/* Hero + live demo */}
         <section className="relative overflow-hidden pt-32 sm:pt-36">

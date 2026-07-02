@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Radio, CalendarDays, Gift } from "lucide-react";
 import { Navbar } from "@/components/site/navbar";
+import { getLocale } from "@/lib/i18n-server";
 import { Footer } from "@/components/site/footer";
 import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 import { LiveSchedule } from "@/components/site/live-schedule";
@@ -23,7 +24,7 @@ const weeklyCount = liveClassSchedule.length;
 export default function LiveClassesPage() {
   return (
     <>
-      <Navbar />
+      <Navbar locale={getLocale()} />
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden pt-32 sm:pt-36">

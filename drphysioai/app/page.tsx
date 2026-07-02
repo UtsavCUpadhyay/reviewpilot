@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/site/navbar";
+import { getLocale } from "@/lib/i18n-server";
 import { Hero } from "@/components/site/hero";
 import { Stats } from "@/components/site/stats";
 import { Features } from "@/components/site/features";
@@ -15,7 +16,7 @@ import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 export default function HomePage() {
   return (
     <>
-      <Navbar />
+      <Navbar locale={getLocale()} />
       <main>
         <Hero />
         <Stats />

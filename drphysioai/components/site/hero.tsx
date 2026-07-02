@@ -9,9 +9,12 @@ import {
   Stethoscope,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { audiences, site } from "@/lib/content";
+import { site } from "@/lib/content";
+import { getDict } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 export function Hero() {
+  const d = getDict(getLocale());
   return (
     <section id="top" className="relative overflow-hidden pt-32 sm:pt-36 lg:pt-40">
       <div className="pointer-events-none absolute inset-0 bg-mesh" aria-hidden />
@@ -31,29 +34,28 @@ export function Hero() {
           <div className="animate-fade-up">
             <span className="eyebrow">
               <Sparkles className="h-3.5 w-3.5 text-teal-500" />
-              AI + Expert Physiotherapists · Made in India
+              {d.hero.badge}
             </span>
 
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-              Your Personal <br className="hidden sm:block" />
-              <span className="text-gradient">AI Physiotherapist</span>
+              {d.hero.titleLead} <br className="hidden sm:block" />
+              <span className="text-gradient">{d.hero.titleAccent}</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              <span className="font-semibold text-foreground">Learn. Recover. Move better.</span>{" "}
-              Study smarter with an AI tutor, or book a real physiotherapist — all
-              in one beautifully simple app for every age.
+              <span className="font-semibold text-foreground">{d.hero.subtitleStrong}</span>{" "}
+              {d.hero.subtitleRest}
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Button size="lg" asChild>
                 <a href="#pricing">
-                  Start Free <Sparkles className="h-4 w-4" />
+                  {d.hero.ctaStart} <Sparkles className="h-4 w-4" />
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="#consultation">
-                  <Stethoscope className="h-4 w-4" /> Book Consultation
+                  <Stethoscope className="h-4 w-4" /> {d.hero.ctaBook}
                 </a>
               </Button>
               <a
@@ -63,7 +65,7 @@ export function Hero() {
                 <span className="grid h-9 w-9 place-items-center rounded-full border border-border bg-card shadow-soft">
                   <Play className="h-4 w-4 fill-current" />
                 </span>
-                Watch Demo
+                {d.hero.watchDemo}
               </a>
             </div>
 
@@ -78,19 +80,19 @@ export function Hero() {
                     />
                   ))}
                 </div>
-                Loved by 1.7L+ users
+                {d.hero.trustUsers}
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <Star className="h-4 w-4 fill-amber-400 text-amber-400" /> 4.9/5 rating
+                <Star className="h-4 w-4 fill-amber-400 text-amber-400" /> {d.hero.trustRating}
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4 text-teal-500" /> Doctor-reviewed
+                <ShieldCheck className="h-4 w-4 text-teal-500" /> {d.hero.trustReviewed}
               </span>
             </div>
 
             {/* audience chips */}
             <div className="mt-7 flex flex-wrap gap-2">
-              {audiences.map((a) => (
+              {d.audiences.map((a) => (
                 <span
                   key={a}
                   className="rounded-full border border-border bg-card/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur"

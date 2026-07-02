@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Stethoscope, CalendarCheck, Video, FileText, BellRing } from "lucide-react";
 import { Navbar } from "@/components/site/navbar";
+import { getLocale } from "@/lib/i18n-server";
 import { Footer } from "@/components/site/footer";
 import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 import { BookingWidget } from "@/components/site/booking-widget";
@@ -27,7 +28,7 @@ const included = [
 export default function ConsultationPage() {
   return (
     <>
-      <Navbar />
+      <Navbar locale={getLocale()} />
       <main>
         {/* Hero */}
         <section className="relative overflow-hidden pt-32 sm:pt-36">
