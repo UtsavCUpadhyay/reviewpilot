@@ -4,20 +4,23 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { PlanCta } from "./plan-cta";
 import { plans } from "@/lib/content";
+import { getDict } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 import { cn } from "@/lib/utils";
 
 export function Pricing() {
+  const t = getDict(getLocale()).home.pricing;
   return (
     <section id="pricing" className="relative py-20 sm:py-28">
       <div className="container-page">
         <SectionHeading
-          eyebrow="Pricing"
+          eyebrow={t.eyebrow}
           title={
             <>
-              Premium care at an <span className="text-gradient">Indian price</span>
+              {t.titlePre} <span className="text-gradient">{t.titleAccent}</span>
             </>
           }
-          description="Start free forever. Upgrade any time. UPI, cards & net-banking with GST invoices — cancel whenever you like."
+          description={t.desc}
         />
 
         <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
@@ -34,22 +37,22 @@ export function Pricing() {
                   <>
                     <div className="pointer-events-none absolute inset-0 rounded-3xl bg-brand-soft" />
                     <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-brand-gradient px-3 py-1 text-xs font-bold text-white shadow-glow">
-                      Most popular
+                      {t.mostPopular}
                     </span>
                   </>
                 )}
                 <div className="relative">
                   <h3 className="font-display text-lg font-bold">{p.name}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">{t.plans[i].desc}</p>
                   <div className="mt-5 flex items-end gap-1">
                     <span className="font-display text-4xl font-extrabold tracking-tight">
                       {p.price}
                     </span>
-                    <span className="pb-1 text-sm text-muted-foreground">{p.period}</span>
+                    <span className="pb-1 text-sm text-muted-foreground">{t.plans[i].period}</span>
                   </div>
 
                   <ul className="mt-6 space-y-3">
-                    {p.features.map((f) => (
+                    {t.plans[i].features.map((f) => (
                       <li key={f} className="flex items-start gap-2.5 text-sm">
                         <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-teal-500/15 text-teal-600">
                           <Check className="h-3.5 w-3.5" />
@@ -62,7 +65,7 @@ export function Pricing() {
                   <PlanCta
                     name={p.name}
                     price={p.price}
-                    cta={p.cta}
+                    cta={t.plans[i].cta}
                     highlight={p.highlight}
                   />
                 </div>
@@ -72,9 +75,7 @@ export function Pricing() {
         </div>
 
         <p className="mt-8 text-center text-sm text-muted-foreground">
-          Every registered user gets{" "}
-          <span className="font-semibold text-foreground">1 free 5-min consultation</span> &{" "}
-          <span className="font-semibold text-foreground">1 free live class</span> every month.
+          {t.footNote}
         </p>
       </div>
     </section>

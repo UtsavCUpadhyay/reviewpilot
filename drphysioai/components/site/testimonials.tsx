@@ -3,36 +3,39 @@ import { Card } from "@/components/ui/card";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { testimonials } from "@/lib/content";
+import { getDict } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 export function Testimonials() {
+  const t = getDict(getLocale()).home.testimonials;
   return (
     <section className="relative py-20 sm:py-28">
       <div className="container-page">
         <SectionHeading
-          eyebrow="Loved across India"
+          eyebrow={t.eyebrow}
           title={
             <>
-              Students recover their marks. <br className="hidden sm:block" />
-              <span className="text-gradient">Patients recover their lives.</span>
+              {t.titlePre} <br className="hidden sm:block" />
+              <span className="text-gradient">{t.titleAccent}</span>
             </>
           }
         />
 
         <div className="mt-14 grid gap-5 lg:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 100}>
+          {testimonials.map((tm, i) => (
+            <Reveal key={tm.name} delay={i * 100}>
               <Card className="flex h-full flex-col p-7 card-hover">
                 <Quote className="h-8 w-8 text-teal-500/40" />
                 <p className="mt-4 flex-1 text-[15px] leading-relaxed text-foreground">
-                  “{t.quote}”
+                  “{t.items[i].quote}”
                 </p>
                 <div className="mt-6 flex items-center gap-3 border-t border-border pt-5">
                   <span className="grid h-11 w-11 place-items-center rounded-full bg-brand-gradient font-bold text-white">
-                    {t.name.charAt(0)}
+                    {tm.name.charAt(0)}
                   </span>
                   <div>
-                    <p className="text-sm font-bold">{t.name}</p>
-                    <p className="text-xs text-muted-foreground">{t.role}</p>
+                    <p className="text-sm font-bold">{tm.name}</p>
+                    <p className="text-xs text-muted-foreground">{t.items[i].role}</p>
                   </div>
                   <div className="ml-auto flex gap-0.5">
                     {Array.from({ length: 5 }).map((_, s) => (

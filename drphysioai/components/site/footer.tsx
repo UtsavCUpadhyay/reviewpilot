@@ -1,37 +1,18 @@
 import { MessageCircle, Mail, MapPin } from "lucide-react";
 import { Logo } from "./logo";
 import { site } from "@/lib/content";
-
-const columns = [
-  {
-    title: "Platform",
-    links: ["AI Learning", "Doctor Consultation", "Exercise Programs", "Live Classes", "Pricing"],
-  },
-  {
-    title: "Company",
-    links: ["About Us", "Our Story", "Careers", "Blog", "Contact"],
-  },
-  {
-    title: "For",
-    links: ["Students", "Patients", "Doctors", "Elderly Care", "Fitness"],
-  },
-  {
-    title: "Legal",
-    links: ["Privacy Policy", "Terms", "Refund Policy", "Medical Disclaimer", "Cookie Policy"],
-  },
-];
+import { getDict } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 export function Footer() {
+  const t = getDict(getLocale()).home.footer;
   return (
     <footer className="relative mt-10 border-t border-border bg-muted/40">
       <div className="container-page py-16">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(4,1fr)]">
           <div>
             <Logo />
-            <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              India&apos;s AI-powered physiotherapy platform for learning, recovery
-              and expert online consultation.
-            </p>
+            <p className="mt-4 max-w-xs text-sm text-muted-foreground">{t.tagline}</p>
 
             <a
               href={site.whatsappLink}
@@ -48,12 +29,12 @@ export function Footer() {
                 <Mail className="h-4 w-4" /> {site.email}
               </a>
               <p className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" /> Gujarat, India · Serving all of India
+                <MapPin className="h-4 w-4" /> {t.location}
               </p>
             </div>
           </div>
 
-          {columns.map((col) => (
+          {t.columns.map((col) => (
             <div key={col.title}>
               <h4 className="text-sm font-bold">{col.title}</h4>
               <ul className="mt-4 space-y-2.5">
@@ -74,12 +55,9 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {site.name}. Founded by {site.founder}.
+            © {new Date().getFullYear()} {site.name}. {t.foundedBy} {site.founder}.
           </p>
-          <p className="text-xs">
-            Not a substitute for emergency medical care. For emergencies, contact
-            your local hospital.
-          </p>
+          <p className="text-xs">{t.disclaimer}</p>
         </div>
       </div>
     </footer>

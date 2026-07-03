@@ -2,8 +2,11 @@ import { Sparkles, MessageCircle, Stethoscope } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/content";
+import { getDict } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 export function CTA() {
+  const t = getDict(getLocale()).home.cta;
   return (
     <section id="demo" className="relative py-20 sm:py-28">
       <div className="container-page">
@@ -13,15 +16,12 @@ export function CTA() {
             <div className="pointer-events-none absolute -bottom-12 -right-8 h-56 w-56 rounded-full bg-white/10 blur-2xl" />
 
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-semibold">
-              <Sparkles className="h-3.5 w-3.5" /> Join 1.7 lakh+ learners & patients
+              <Sparkles className="h-3.5 w-3.5" /> {t.badge}
             </span>
             <h2 className="mx-auto mt-5 max-w-2xl font-display text-3xl font-extrabold leading-tight sm:text-4xl md:text-5xl">
-              Learn. Recover. Move better — starting today.
+              {t.title}
             </h2>
-            <p className="mx-auto mt-4 max-w-xl text-white/85">
-              Your personal AI physiotherapist and a real doctor, in one app.
-              Free to start — no card needed.
-            </p>
+            <p className="mx-auto mt-4 max-w-xl text-white/85">{t.subtitle}</p>
 
             <div className="mt-8 flex flex-wrap justify-center gap-3">
               <Button
@@ -31,7 +31,7 @@ export function CTA() {
                 asChild
               >
                 <a href="#pricing">
-                  Start Free <Sparkles className="h-4 w-4" />
+                  {t.start} <Sparkles className="h-4 w-4" />
                 </a>
               </Button>
               <Button
@@ -41,14 +41,14 @@ export function CTA() {
                 asChild
               >
                 <a href="#consultation">
-                  <Stethoscope className="h-4 w-4" /> Book Consultation
+                  <Stethoscope className="h-4 w-4" /> {t.book}
                 </a>
               </Button>
               <a
                 href={site.whatsappLink}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-sm font-bold shadow-card transition-transform hover:scale-[1.03]"
               >
-                <MessageCircle className="h-4 w-4" /> WhatsApp us
+                <MessageCircle className="h-4 w-4" /> {t.whatsapp}
               </a>
             </div>
           </div>

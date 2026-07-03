@@ -2,20 +2,23 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Icon } from "./icon";
 import { steps } from "@/lib/content";
+import { getDict } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 export function HowItWorks() {
+  const t = getDict(getLocale()).home.how;
   return (
     <section className="relative py-20 sm:py-28">
       <div className="container-page">
         <SectionHeading
-          eyebrow="How it works"
+          eyebrow={t.eyebrow}
           title={
             <>
-              Simple enough for a 12-year-old, <br className="hidden sm:block" />
-              <span className="text-gradient">powerful enough for a professor</span>
+              {t.titlePre} <br className="hidden sm:block" />
+              <span className="text-gradient">{t.titleAccent}</span>
             </>
           }
-          description="Three steps. No jargon. No confusion."
+          description={t.desc}
         />
 
         <div className="relative mt-16 grid gap-8 md:grid-cols-3">
@@ -28,11 +31,11 @@ export function HowItWorks() {
                 <Icon name={s.icon} className="h-7 w-7" />
               </div>
               <span className="mt-4 block font-display text-sm font-extrabold tracking-widest text-muted-foreground">
-                STEP {s.n}
+                {t.stepWord} {s.n}
               </span>
-              <h3 className="mt-1 font-display text-xl font-bold">{s.title}</h3>
+              <h3 className="mt-1 font-display text-xl font-bold">{t.steps[i].title}</h3>
               <p className="mx-auto mt-2 max-w-xs text-sm text-muted-foreground">
-                {s.desc}
+                {t.steps[i].desc}
               </p>
             </Reveal>
           ))}

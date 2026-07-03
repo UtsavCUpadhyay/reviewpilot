@@ -3,19 +3,20 @@
 import * as React from "react";
 import { ChevronDown } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { faqs } from "@/lib/content";
+import { getDict, type Locale } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export function FAQ() {
+export function FAQ({ locale = "en" }: { locale?: Locale }) {
   const [open, setOpen] = React.useState<number | null>(0);
+  const t = getDict(locale).home.faq;
 
   return (
     <section className="relative py-20 sm:py-28">
       <div className="container-page max-w-3xl">
-        <SectionHeading eyebrow="FAQ" title="Questions, answered" />
+        <SectionHeading eyebrow={t.eyebrow} title={t.title} />
 
         <div className="mt-12 divide-y divide-border overflow-hidden rounded-3xl border border-border bg-card/60 shadow-soft backdrop-blur">
-          {faqs.map((f, i) => {
+          {t.items.map((f, i) => {
             const isOpen = open === i;
             return (
               <div key={f.q}>

@@ -3,8 +3,11 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { liveClasses } from "@/lib/content";
+import { getDict } from "@/lib/i18n";
+import { getLocale } from "@/lib/i18n-server";
 
 export function LiveClasses() {
+  const t = getDict(getLocale()).home.live;
   // duplicate the list so the marquee loops seamlessly
   const row = [...liveClasses, ...liveClasses];
 
@@ -12,18 +15,18 @@ export function LiveClasses() {
     <section id="live" className="relative overflow-hidden py-20 sm:py-28">
       <div className="container-page">
         <SectionHeading
-          eyebrow="Live Classes"
+          eyebrow={t.eyebrow}
           title={
             <>
-              Weekly live exercise classes <span className="text-gradient">for everyone</span>
+              {t.titlePre} <span className="text-gradient">{t.titleAccent}</span>
             </>
           }
-          description="Join guided sessions from home — from prenatal care to sports performance. One free class every month for every member."
+          description={t.desc}
         />
         <div className="mt-6 flex justify-center">
           <Button variant="outline" asChild>
             <a href="/live-classes">
-              See the full weekly schedule <ArrowRight className="h-4 w-4" />
+              {t.seeSchedule} <ArrowRight className="h-4 w-4" />
             </a>
           </Button>
         </div>

@@ -26,7 +26,7 @@ export default function HomePage() {
         <LiveClasses />
         <Testimonials />
         <Pricing />
-        <FAQ />
+        <FAQ locale={getLocale()} />
         <CTA />
       </main>
       <Footer />
