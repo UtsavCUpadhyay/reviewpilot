@@ -41,6 +41,7 @@ export interface Dict {
     conditions: string;
     exercise: string;
     liveClasses: string;
+    blog: string;
     pricing: string;
   };
   actions: { login: string; startFree: string; whatsapp: string };
@@ -92,8 +93,9 @@ const en: Dict = {
     aiLearning: "AI Learning",
     consultation: "Consultation",
     conditions: "Conditions",
-    exercise: "Exercise Programs",
+    exercise: "Exercises",
     liveClasses: "Live Classes",
+    blog: "Blog",
     pricing: "Pricing",
   },
   actions: { login: "Login", startFree: "Start Free", whatsapp: "WhatsApp us" },
@@ -243,8 +245,9 @@ const hi: Dict = {
     aiLearning: "एआई लर्निंग",
     consultation: "परामर्श",
     conditions: "बीमारियाँ",
-    exercise: "एक्सरसाइज़ प्रोग्राम",
+    exercise: "एक्सरसाइज़",
     liveClasses: "लाइव क्लासेस",
+    blog: "ब्लॉग",
     pricing: "मूल्य",
   },
   actions: { login: "लॉग इन", startFree: "फ्री शुरू करें", whatsapp: "व्हाट्सएप करें" },
@@ -394,8 +397,9 @@ const gu: Dict = {
     aiLearning: "એઆઈ લર્નિંગ",
     consultation: "પરામર્શ",
     conditions: "સ્થિતિઓ",
-    exercise: "એક્સરસાઇઝ પ્રોગ્રામ",
+    exercise: "એક્સરસાઇઝ",
     liveClasses: "લાઇવ ક્લાસ",
+    blog: "બ્લોગ",
     pricing: "કિંમત",
   },
   actions: { login: "લૉગ ઇન", startFree: "ફ્રી શરૂ કરો", whatsapp: "વ્હૉટ્સએપ કરો" },
