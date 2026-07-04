@@ -21,9 +21,14 @@
  * WhatsApp / sign-up flow, so nothing breaks in the meantime.
  */
 
-/** Storefront domain. Defaults to the live DrPhysioAI store; env can override. */
+/**
+ * Shopify checkout domain. Defaults to the store's permanent myshopify.com
+ * address so checkout keeps working even after drphysioai.com is pointed at the
+ * website (Vercel). Set NEXT_PUBLIC_SHOPIFY_DOMAIN to a branded checkout
+ * subdomain (e.g. shop.drphysioai.com) later if desired.
+ */
 export const SHOPIFY_DOMAIN = (
-  process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN ?? "drphysioai.com"
+  process.env.NEXT_PUBLIC_SHOPIFY_DOMAIN ?? "gyvjr4-qz.myshopify.com"
 ).trim();
 
 /**
