@@ -4,6 +4,15 @@ import { site } from "@/lib/content";
 import { getDict } from "@/lib/i18n";
 import { getLocale } from "@/lib/i18n-server";
 
+// Destinations for each footer link, by column then row (language-independent),
+// aligned with the dict's column order: Platform, Company, For, Legal.
+const FOOTER_HREFS: string[][] = [
+  ["/ai", "/consultation", "/consultation#services", "/live-classes", "/#pricing"],
+  ["/about", "/about", "/contact", "/contact", "/contact"],
+  ["/ai", "/consultation", "/consultation", "/consultation", "/live-classes"],
+  ["/privacy", "/terms", "/refund-policy", "/medical-disclaimer", "/cookie-policy"],
+];
+
 export function Footer() {
   const t = getDict(getLocale()).home.footer;
   return (
@@ -34,14 +43,14 @@ export function Footer() {
             </div>
           </div>
 
-          {t.columns.map((col) => (
+          {t.columns.map((col, ci) => (
             <div key={col.title}>
               <h4 className="text-sm font-bold">{col.title}</h4>
               <ul className="mt-4 space-y-2.5">
-                {col.links.map((l) => (
+                {col.links.map((l, li) => (
                   <li key={l}>
                     <a
-                      href="#"
+                      href={FOOTER_HREFS[ci]?.[li] ?? "/"}
                       className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
                       {l}

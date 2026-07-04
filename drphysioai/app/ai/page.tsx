@@ -92,15 +92,17 @@ export default function AiLearningPage() {
             <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
               {aiSubjects.map((s, i) => (
                 <Reveal key={s.name} delay={(i % 4) * 80}>
-                  <Card className="group flex h-full items-center gap-3 p-4 card-hover">
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-soft text-xl transition-transform group-hover:scale-110">
-                      {s.emoji}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="truncate text-sm font-bold">{s.name}</p>
-                      <p className="text-xs text-muted-foreground">{s.topics}+ topics</p>
-                    </div>
-                  </Card>
+                  <a href="/signup" className="block h-full">
+                    <Card className="group flex h-full items-center gap-3 p-4 card-hover">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand-soft text-xl transition-transform group-hover:scale-110">
+                        {s.emoji}
+                      </span>
+                      <div className="min-w-0">
+                        <p className="truncate text-sm font-bold">{s.name}</p>
+                        <p className="text-xs text-muted-foreground">{s.topics}+ topics</p>
+                      </div>
+                    </Card>
+                  </a>
                 </Reveal>
               ))}
             </div>
@@ -151,7 +153,7 @@ export default function AiLearningPage() {
                       className="mt-6 w-full"
                       asChild
                     >
-                      <a href="#login">
+                      <a href="/signup">
                         Choose {p.name} <ArrowRight className="h-3.5 w-3.5" />
                       </a>
                     </Button>

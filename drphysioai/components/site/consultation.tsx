@@ -27,15 +27,17 @@ export function Consultation() {
         <div className="mt-14 grid gap-5 lg:grid-cols-3">
           {consultationServices.map((s, i) => (
             <Reveal key={s.icon} delay={(i % 3) * 90}>
-              <Card className="flex h-full items-start gap-4 p-6 card-hover">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-soft text-violet-600">
-                  <Icon name={s.icon} className="h-6 w-6" />
-                </span>
-                <div>
-                  <h3 className="font-display text-base font-bold">{t.services[i].title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{t.services[i].desc}</p>
-                </div>
-              </Card>
+              <a href="/consultation" className="block h-full">
+                <Card className="flex h-full items-start gap-4 p-6 card-hover">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-soft text-violet-600">
+                    <Icon name={s.icon} className="h-6 w-6" />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-base font-bold">{t.services[i].title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{t.services[i].desc}</p>
+                  </div>
+                </Card>
+              </a>
             </Reveal>
           ))}
         </div>

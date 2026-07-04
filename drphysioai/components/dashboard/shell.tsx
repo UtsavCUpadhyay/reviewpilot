@@ -10,15 +10,15 @@ import { ThemeToggle } from "@/components/site/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { icon: LayoutDashboard, label: "Overview", active: true },
-  { icon: Sparkles, label: "AI Learning" },
-  { icon: CalendarDays, label: "Consultations" },
-  { icon: Activity, label: "Exercise Programs" },
-  { icon: Trophy, label: "Achievements" },
-  { icon: FileText, label: "Reports" },
-  { icon: Bookmark, label: "Bookmarks" },
-  { icon: CreditCard, label: "Payments" },
-  { icon: Settings, label: "Settings" },
+  { icon: LayoutDashboard, label: "Overview", href: "/dashboard", active: true },
+  { icon: Sparkles, label: "AI Learning", href: "/ai" },
+  { icon: CalendarDays, label: "Consultations", href: "/consultation" },
+  { icon: Activity, label: "Exercise Programs", href: "/consultation#services" },
+  { icon: Trophy, label: "Achievements", href: "/dashboard" },
+  { icon: FileText, label: "Reports", href: "/dashboard" },
+  { icon: Bookmark, label: "Bookmarks", href: "/dashboard" },
+  { icon: CreditCard, label: "Payments", href: "/#pricing" },
+  { icon: Settings, label: "Settings", href: "/dashboard" },
 ];
 
 export function DashboardShell({
@@ -50,7 +50,7 @@ export function DashboardShell({
           {navItems.map((item) => (
             <a
               key={item.label}
-              href="#"
+              href={item.href}
               className={cn(
                 "flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors",
                 item.active
