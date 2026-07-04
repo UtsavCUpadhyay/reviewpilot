@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "./icon";
 import { consultationServices, timeSlots, site } from "@/lib/content";
 import { checkoutUrl } from "@/lib/shopify";
+import { razorpayEnabled, payWithRazorpay } from "@/lib/razorpay-client";
 import { cn } from "@/lib/utils";
 
 type Step = 1 | 2 | 3;
@@ -44,22 +45,33 @@ export function BookingWidget() {
   const selected = consultationServices.find((s) => s.title === service)!;
   const selectedDay = days.find((d) => d.key === day)!;
 
-  function confirm() {
+  async function confirm() {
     if (!slot) return;
     setStatus("loading");
 
-    // Real Shopify checkout: redirect to the hosted cart for this service,
-    // carrying the chosen date/time through as an order note.
+    const when = `${selectedDay.dow} ${selectedDay.num} ${selectedDay.mon} · ${slot}`;
+
+    // Native ₹ / UPI checkout via Razorpay when configured.
+    if (razorpayEnabled) {
+      const result = await payWithRazorpay({
+        itemKey: `service:${selected.title}`,
+        description: `${selected.title} · ${when}`,
+      });
+      setStatus(result === "success" ? "done" : "idle");
+      return;
+    }
+
+    // Fallback: Shopify hosted checkout, carrying the date/time as an order note.
     const url = checkoutUrl(
       [{ key: `service:${selected.title}` }],
-      { note: `${selected.title} · ${selectedDay.dow} ${selectedDay.num} ${selectedDay.mon} · ${slot}` },
+      { note: `${selected.title} · ${when}` },
     );
     if (url) {
       window.location.href = url;
       return;
     }
 
-    // Store not wired yet → confirm locally so the flow still works end-to-end.
+    // Nothing wired yet → confirm locally so the flow still works end-to-end.
     window.setTimeout(() => setStatus("done"), 1100);
   }
 
