@@ -18,7 +18,9 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
     { label: d.nav.aiLearning, href: "/ai" },
     { label: d.nav.consultation, href: "/consultation" },
     { label: d.nav.conditions, href: "/conditions" },
+    { label: d.nav.exercise, href: "/exercises" },
     { label: d.nav.liveClasses, href: "/live-classes" },
+    { label: d.nav.blog, href: "/blog" },
     { label: d.nav.pricing, href: "/#pricing" },
   ];
 

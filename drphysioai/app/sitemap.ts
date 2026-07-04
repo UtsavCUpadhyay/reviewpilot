@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { conditions } from "@/lib/conditions";
+import { blogPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://drphysioai.com";
@@ -18,6 +19,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/physiotherapists`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/find-program`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/live-classes`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/exercises`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/posture-check`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/refer`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    ...blogPosts.map((p) => ({
+      url: `${base}/blog/${p.slug}`,
+      lastModified: new Date(p.date),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     { url: `${base}/#pricing`, lastModified: now, priority: 0.7 },
     { url: `${base}/about`, lastModified: now, priority: 0.5 },
     { url: `${base}/contact`, lastModified: now, priority: 0.5 },

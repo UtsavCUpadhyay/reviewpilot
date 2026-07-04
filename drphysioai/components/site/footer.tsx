@@ -7,9 +7,9 @@ import { getLocale } from "@/lib/i18n-server";
 // Destinations for each footer link, by column then row (language-independent),
 // aligned with the dict's column order: Platform, Company, For, Legal.
 const FOOTER_HREFS: string[][] = [
-  ["/ai", "/consultation", "/consultation#services", "/live-classes", "/#pricing"],
-  ["/about", "/about", "/contact", "/contact", "/contact"],
-  ["/ai", "/consultation", "/consultation", "/consultation", "/live-classes"],
+  ["/ai", "/consultation", "/exercises", "/live-classes", "/#pricing"],
+  ["/about", "/about", "/contact", "/blog", "/contact"],
+  ["/ai", "/consultation", "/consultation", "/conditions/neuro-elderly-care", "/exercises"],
   ["/privacy", "/terms", "/refund-policy", "/medical-disclaimer", "/cookie-policy"],
 ];
 
