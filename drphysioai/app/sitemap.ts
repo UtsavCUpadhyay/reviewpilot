@@ -9,5 +9,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/consultation`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/live-classes`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/#pricing`, lastModified: now, priority: 0.7 },
+    { url: `${base}/about`, lastModified: now, priority: 0.5 },
+    { url: `${base}/contact`, lastModified: now, priority: 0.5 },
+    { url: `${base}/privacy`, lastModified: now, priority: 0.3 },
+    { url: `${base}/terms`, lastModified: now, priority: 0.3 },
+    { url: `${base}/refund-policy`, lastModified: now, priority: 0.3 },
+    { url: `${base}/medical-disclaimer`, lastModified: now, priority: 0.3 },
+    { url: `${base}/cookie-policy`, lastModified: now, priority: 0.3 },
   ];
 }

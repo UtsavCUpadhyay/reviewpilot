@@ -1,6 +1,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { NextResponse } from "next/server";
 import { answerFormats } from "@/lib/content";
+import { clientIp, rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -36,15 +37,29 @@ Rules:
 - Output plain text with light markdown only (**bold**, and pipe tables when asked). Do not use headings (#) or code fences.`;
 
 export async function POST(req: Request) {
+  // Anti-abuse: cap requests per IP so bots can't run up AI costs.
+  const rl = rateLimit(`tutor:${clientIp(req)}`, 20, 60_000);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "rate_limited" },
+      { status: 429, headers: { "Retry-After": String(rl.retryAfter) } },
+    );
+  }
+
   if (!process.env.ANTHROPIC_API_KEY) {
     return NextResponse.json({ error: "not_configured" }, { status: 503 });
   }
 
-  let body: { question?: unknown; format?: unknown };
+  let body: { question?: unknown; format?: unknown; hp?: unknown };
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
+  }
+
+  // Honeypot: real users never fill the hidden field; bots often do.
+  if (typeof body.hp === "string" && body.hp.trim() !== "") {
+    return NextResponse.json({ error: "bot" }, { status: 400 });
   }
 
   const question = typeof body.question === "string" ? body.question.trim() : "";

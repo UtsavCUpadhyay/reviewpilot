@@ -20,6 +20,7 @@ export function AiChatDemo() {
   const [status, setStatus] = React.useState<"idle" | "loading">("idle");
   const [live, setLive] = React.useState(false);
   const [notice, setNotice] = React.useState<string | null>(null);
+  const [hp, setHp] = React.useState(""); // honeypot — stays empty for real users
 
   const canned = (fmt: string) => demoAnswer.formats[fmt] ?? demoAnswer.formats["Short"];
 
@@ -33,7 +34,7 @@ export function AiChatDemo() {
       const res = await fetch("/api/tutor", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: query, format: fmt }),
+        body: JSON.stringify({ question: query, format: fmt, hp }),
       });
       if (res.ok) {
         const data = (await res.json()) as { answer: string };
@@ -134,6 +135,17 @@ export function AiChatDemo() {
         }}
         className="flex items-center gap-2 border-t border-border px-5 py-4"
       >
+        {/* honeypot: hidden from users, tempting to bots */}
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          value={hp}
+          onChange={(e) => setHp(e.target.value)}
+          className="hidden"
+        />
         <input
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
