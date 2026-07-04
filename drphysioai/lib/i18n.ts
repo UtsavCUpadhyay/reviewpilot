@@ -38,6 +38,7 @@ export interface Dict {
   nav: {
     aiLearning: string;
     consultation: string;
+    conditions: string;
     exercise: string;
     liveClasses: string;
     pricing: string;
@@ -90,6 +91,7 @@ const en: Dict = {
   nav: {
     aiLearning: "AI Learning",
     consultation: "Consultation",
+    conditions: "Conditions",
     exercise: "Exercise Programs",
     liveClasses: "Live Classes",
     pricing: "Pricing",
@@ -240,6 +242,7 @@ const hi: Dict = {
   nav: {
     aiLearning: "एआई लर्निंग",
     consultation: "परामर्श",
+    conditions: "बीमारियाँ",
     exercise: "एक्सरसाइज़ प्रोग्राम",
     liveClasses: "लाइव क्लासेस",
     pricing: "मूल्य",
@@ -390,6 +393,7 @@ const gu: Dict = {
   nav: {
     aiLearning: "એઆઈ લર્નિંગ",
     consultation: "પરામર્શ",
+    conditions: "સ્થિતિઓ",
     exercise: "એક્સરસાઇઝ પ્રોગ્રામ",
     liveClasses: "લાઇવ ક્લાસ",
     pricing: "કિંમત",

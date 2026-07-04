@@ -51,6 +51,10 @@ export default function ConsultationPage() {
                 </span>
               ))}
             </div>
+            <div className="mx-auto mt-6 flex flex-wrap justify-center gap-4 text-sm font-semibold">
+              <a href="/physiotherapists" className="text-teal-600 hover:underline">Meet our physiotherapists →</a>
+              <a href="/find-program" className="text-teal-600 hover:underline">Find your program →</a>
+            </div>
           </div>
         </section>
 

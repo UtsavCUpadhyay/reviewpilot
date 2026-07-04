@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { conditions } from "@/lib/conditions";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://drphysioai.com";
@@ -7,6 +8,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
     { url: `${base}/ai`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/consultation`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/conditions`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    ...conditions.map((c) => ({
+      url: `${base}/conditions/${c.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    { url: `${base}/physiotherapists`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${base}/find-program`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/live-classes`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/#pricing`, lastModified: now, priority: 0.7 },
     { url: `${base}/about`, lastModified: now, priority: 0.5 },
