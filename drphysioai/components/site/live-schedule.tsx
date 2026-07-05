@@ -93,7 +93,7 @@ function ClassCard({ c, onJoin }: { c: LiveClass; onJoin: () => void }) {
         </span>
         {c.free && (
           <span className="rounded-full bg-teal-500/15 px-2.5 py-1 text-[11px] font-bold text-teal-600">
-            Free monthly class
+            Included with membership
           </span>
         )}
       </div>
@@ -194,7 +194,7 @@ function JoinDialog({ c, onClose }: { c: LiveClass; onClose: () => void }) {
 
             <p className="mt-3 text-xs text-muted-foreground">
               {c.free
-                ? "Included free with every DrPhysioAI membership — one free class each month."
+                ? "Included with every DrPhysioAI membership — one class each month."
                 : "Included in Complete Care, or reserve a single seat at checkout."}
             </p>
 

@@ -98,7 +98,7 @@ const en: Dict = {
     blog: "Blog",
     pricing: "Pricing",
   },
-  actions: { login: "Login", startFree: "Start Free", whatsapp: "WhatsApp us" },
+  actions: { login: "Login", startFree: "Get Started", whatsapp: "WhatsApp us" },
   hero: {
     badge: "AI + Expert Physiotherapists · Made in India",
     titleLead: "Your Personal",
@@ -106,7 +106,7 @@ const en: Dict = {
     subtitleStrong: "Learn. Recover. Move better.",
     subtitleRest:
       "Study smarter with an AI tutor, or book a real physiotherapist — all in one beautifully simple app for every age.",
-    ctaStart: "Start Free",
+    ctaStart: "Get Started",
     ctaBook: "Book Consultation",
     watchDemo: "Watch Demo",
     trustUsers: "Loved by 1.7L+ users",
@@ -169,7 +169,7 @@ const en: Dict = {
         { title: "Neuro & Elderly Care", desc: "Gentle, expert care for every age." },
       ],
       band: {
-        badge: "Free 5-min consult every month",
+        badge: "Expert physiotherapists from ₹199/mo",
         title: "Book your first session in under a minute",
         desc: "Calendar slots, UPI payment, confirmation & WhatsApp reminder — done.",
         book: "Book Consultation",
@@ -189,11 +189,11 @@ const en: Dict = {
       eyebrow: "Pricing",
       titlePre: "Premium care at an",
       titleAccent: "Indian price",
-      desc: "Start free forever. Upgrade any time. UPI, cards & net-banking with GST invoices — cancel whenever you like.",
-      footNote: "Every registered user gets 1 free 5-min consultation & 1 free live class every month.",
+      desc: "Simple monthly plans from ₹199. Upgrade any time. UPI, cards & net-banking with GST invoices — cancel whenever you like.",
+      footNote: "Every plan includes a monthly video consultation & live class. Cancel anytime.",
       mostPopular: "Most popular",
       plans: [
-        { desc: "Start learning & healing today.", period: "forever", cta: "Start Free", features: ["Basic AI notes & concepts", "Daily AI question limit", "1 free 5-min consultation / month", "1 free live exercise class / month"] },
+        { desc: "Start learning & healing today.", period: "/ month", cta: "Get Started", features: ["AI notes & concept learning", "Daily AI question quota", "1 video consultation / month", "1 live exercise class / month"] },
         { desc: "Everything a physio student needs to top the class.", period: "/ month", cta: "Go Ultimate", features: ["Unlimited AI notes & voice tutor", "Exam prep, OSCE, case studies", "PDF → designed notes (Drive)", "Flashcards, MCQs & mind-maps", "Priority support"] },
         { desc: "AI + doctor + exercise + live, all-in-one.", period: "/ month", cta: "Get Complete Care", features: ["Everything in Ultimate", "Monthly 1:1 physio consultation", "Personalised exercise program", "Unlimited live classes", "Personal physiotherapist"] },
       ],
@@ -204,7 +204,7 @@ const en: Dict = {
       items: [
         { q: "Is DrPhysioAI a replacement for seeing a doctor?", a: "No. Our AI helps you learn and manage everyday care, and our licensed physiotherapists provide real consultations. For emergencies or medical diagnosis, always consult a qualified doctor in person." },
         { q: "Which languages are supported?", a: "English, Hindi and Gujarati today — with more regional Indian languages coming. The voice tutor understands and replies in your language." },
-        { q: "How does the free plan work?", a: "Every registered user gets basic AI learning, one free 5-minute consultation, and one free live exercise class every month — no card required." },
+        { q: "What's included in the ₹199 Starter plan?", a: "The ₹199/month Starter plan gives you AI learning, one video consultation, and one live exercise class every month. Upgrade to Ultimate Student or Complete Care any time." },
         { q: "Can I use it on my phone?", a: "Yes. DrPhysioAI is mobile-first, works offline for downloads, installs as an app (PWA), and native Android & iOS apps are on the way." },
         { q: "How do payments work in India?", a: "We support UPI, Google Pay, PhonePe, Paytm, cards and net-banking, with GST invoices and easy cancellation." },
       ],
@@ -212,8 +212,8 @@ const en: Dict = {
     cta: {
       badge: "Join 1.7 lakh+ learners & patients",
       title: "Learn. Recover. Move better — starting today.",
-      subtitle: "Your personal AI physiotherapist and a real doctor, in one app. Free to start — no card needed.",
-      start: "Start Free",
+      subtitle: "Your personal AI physiotherapist and a real doctor, in one app. Plans from ₹199/month — cancel anytime.",
+      start: "Get Started",
       book: "Book Consultation",
       whatsapp: "WhatsApp us",
     },
@@ -221,7 +221,7 @@ const en: Dict = {
       eyebrow: "Live Classes",
       titlePre: "Weekly live exercise classes",
       titleAccent: "for everyone",
-      desc: "Join guided sessions from home — from prenatal care to sports performance. One free class every month for every member.",
+      desc: "Join guided sessions from home — from prenatal care to sports performance. One live class every month included with membership.",
       seeSchedule: "See the full weekly schedule",
     },
     footer: {
@@ -250,7 +250,7 @@ const hi: Dict = {
     blog: "ब्लॉग",
     pricing: "मूल्य",
   },
-  actions: { login: "लॉग इन", startFree: "फ्री शुरू करें", whatsapp: "व्हाट्सएप करें" },
+  actions: { login: "लॉग इन", startFree: "शुरू करें", whatsapp: "व्हाट्सएप करें" },
   hero: {
     badge: "एआई + विशेषज्ञ फिजियोथेरेपिस्ट · मेड इन इंडिया",
     titleLead: "आपका अपना",
@@ -258,7 +258,7 @@ const hi: Dict = {
     subtitleStrong: "सीखें। ठीक हों। बेहतर चलें।",
     subtitleRest:
       "एआई ट्यूटर के साथ स्मार्ट पढ़ाई करें, या असली फिजियोथेरेपिस्ट बुक करें — हर उम्र के लिए एक ही सुंदर, सरल ऐप में।",
-    ctaStart: "फ्री शुरू करें",
+    ctaStart: "शुरू करें",
     ctaBook: "परामर्श बुक करें",
     watchDemo: "डेमो देखें",
     trustUsers: "1.7 लाख+ यूज़र्स का भरोसा",
@@ -321,7 +321,7 @@ const hi: Dict = {
         { title: "न्यूरो और बुज़ुर्ग देखभाल", desc: "हर उम्र के लिए कोमल, विशेषज्ञ देखभाल।" },
       ],
       band: {
-        badge: "हर महीने मुफ़्त 5-मिनट परामर्श",
+        badge: "विशेषज्ञ फिजियोथेरेपिस्ट ₹199/माह से",
         title: "एक मिनट से कम में अपना पहला सेशन बुक करें",
         desc: "कैलेंडर स्लॉट, UPI भुगतान, पुष्टि और व्हाट्सएप रिमाइंडर — हो गया।",
         book: "परामर्श बुक करें",
@@ -341,11 +341,11 @@ const hi: Dict = {
       eyebrow: "मूल्य",
       titlePre: "प्रीमियम देखभाल, एक",
       titleAccent: "भारतीय कीमत पर",
-      desc: "हमेशा के लिए फ्री शुरू करें। कभी भी अपग्रेड करें। UPI, कार्ड और नेट-बैंकिंग, GST इनवॉइस के साथ — जब चाहें रद्द करें।",
-      footNote: "हर रजिस्टर्ड यूज़र को हर महीने 1 मुफ़्त 5-मिनट परामर्श और 1 मुफ़्त लाइव क्लास मिलती है।",
+      desc: "₹199 से आसान मासिक प्लान। कभी भी अपग्रेड करें। UPI, कार्ड और नेट-बैंकिंग, GST इनवॉइस के साथ — जब चाहें रद्द करें।",
+      footNote: "हर प्लान में हर महीने एक वीडियो परामर्श और एक लाइव क्लास शामिल है। कभी भी रद्द करें।",
       mostPopular: "सबसे लोकप्रिय",
       plans: [
-        { desc: "आज ही सीखना और ठीक होना शुरू करें।", period: "हमेशा के लिए", cta: "फ्री शुरू करें", features: ["बेसिक एआई नोट्स और कॉन्सेप्ट", "रोज़ाना एआई सवाल सीमा", "1 मुफ़्त 5-मिनट परामर्श / माह", "1 मुफ़्त लाइव एक्सरसाइज़ क्लास / माह"] },
+        { desc: "आज ही सीखना और ठीक होना शुरू करें।", period: "/ माह", cta: "शुरू करें", features: ["एआई नोट्स और कॉन्सेप्ट लर्निंग", "रोज़ाना एआई सवाल कोटा", "1 वीडियो परामर्श / माह", "1 लाइव एक्सरसाइज़ क्लास / माह"] },
         { desc: "क्लास में टॉप करने के लिए हर ज़रूरत।", period: "/ माह", cta: "अल्टीमेट लें", features: ["असीमित एआई नोट्स और वॉइस ट्यूटर", "परीक्षा तैयारी, OSCE, केस स्टडी", "PDF → डिज़ाइन नोट्स (ड्राइव)", "फ्लैशकार्ड, MCQ और माइंड-मैप", "प्राथमिकता सहायता"] },
         { desc: "एआई + डॉक्टर + एक्सरसाइज़ + लाइव, सब एक साथ।", period: "/ माह", cta: "कम्प्लीट केयर लें", features: ["अल्टीमेट का सब कुछ", "मासिक 1:1 फिजियो परामर्श", "निजी एक्सरसाइज़ प्रोग्राम", "असीमित लाइव क्लास", "निजी फिजियोथेरेपिस्ट"] },
       ],
@@ -356,7 +356,7 @@ const hi: Dict = {
       items: [
         { q: "क्या DrPhysioAI डॉक्टर को दिखाने का विकल्प है?", a: "नहीं। हमारा एआई आपको सीखने और रोज़मर्रा की देखभाल में मदद करता है, और हमारे लाइसेंस-प्राप्त फिजियोथेरेपिस्ट असली परामर्श देते हैं। आपात स्थिति या निदान के लिए हमेशा योग्य डॉक्टर से व्यक्तिगत रूप से मिलें।" },
         { q: "कौन-सी भाषाएँ समर्थित हैं?", a: "आज अंग्रेज़ी, हिंदी और गुजराती — और भी भारतीय भाषाएँ जल्द आ रही हैं। वॉइस ट्यूटर आपकी भाषा समझता और उसी में जवाब देता है।" },
-        { q: "फ्री प्लान कैसे काम करता है?", a: "हर रजिस्टर्ड यूज़र को बेसिक एआई लर्निंग, एक मुफ़्त 5-मिनट परामर्श और हर महीने एक मुफ़्त लाइव एक्सरसाइज़ क्लास मिलती है — बिना कार्ड के।" },
+        { q: "₹199 स्टार्टर प्लान में क्या शामिल है?", a: "₹199/माह स्टार्टर प्लान में आपको एआई लर्निंग, एक वीडियो परामर्श और हर महीने एक लाइव एक्सरसाइज़ क्लास मिलती है। आप कभी भी अल्टीमेट स्टूडेंट या कम्प्लीट केयर में अपग्रेड कर सकते हैं।" },
         { q: "क्या मैं इसे फ़ोन पर इस्तेमाल कर सकता/सकती हूँ?", a: "हाँ। DrPhysioAI मोबाइल-फर्स्ट है, डाउनलोड के लिए ऑफ़लाइन चलता है, ऐप (PWA) के रूप में इंस्टॉल होता है, और नेटिव Android व iOS ऐप जल्द आ रहे हैं।" },
         { q: "भारत में भुगतान कैसे होता है?", a: "हम UPI, Google Pay, PhonePe, Paytm, कार्ड और नेट-बैंकिंग का समर्थन करते हैं, GST इनवॉइस और आसान रद्दीकरण के साथ।" },
       ],
@@ -364,8 +364,8 @@ const hi: Dict = {
     cta: {
       badge: "1.7 लाख+ शिक्षार्थियों और मरीज़ों से जुड़ें",
       title: "सीखें। ठीक हों। बेहतर चलें — आज से।",
-      subtitle: "आपका निजी एआई फिजियोथेरेपिस्ट और एक असली डॉक्टर, एक ही ऐप में। फ्री शुरू करें — कार्ड की ज़रूरत नहीं।",
-      start: "फ्री शुरू करें",
+      subtitle: "आपका निजी एआई फिजियोथेरेपिस्ट और एक असली डॉक्टर, एक ही ऐप में। प्लान ₹199/माह से — कभी भी रद्द करें।",
+      start: "शुरू करें",
       book: "परामर्श बुक करें",
       whatsapp: "व्हाट्सएप करें",
     },
@@ -373,7 +373,7 @@ const hi: Dict = {
       eyebrow: "लाइव क्लासेस",
       titlePre: "साप्ताहिक लाइव एक्सरसाइज़ क्लास",
       titleAccent: "सबके लिए",
-      desc: "घर से ही मार्गदर्शित सेशन में शामिल हों — प्रीनेटल देखभाल से लेकर स्पोर्ट्स परफ़ॉर्मेंस तक। हर सदस्य को हर महीने एक मुफ़्त क्लास।",
+      desc: "घर से ही मार्गदर्शित सेशन में शामिल हों — प्रीनेटल देखभाल से लेकर स्पोर्ट्स परफ़ॉर्मेंस तक। हर सदस्यता में हर महीने एक लाइव क्लास शामिल।",
       seeSchedule: "पूरा साप्ताहिक शेड्यूल देखें",
     },
     footer: {
@@ -402,7 +402,7 @@ const gu: Dict = {
     blog: "બ્લોગ",
     pricing: "કિંમત",
   },
-  actions: { login: "લૉગ ઇન", startFree: "ફ્રી શરૂ કરો", whatsapp: "વ્હૉટ્સએપ કરો" },
+  actions: { login: "લૉગ ઇન", startFree: "શરૂ કરો", whatsapp: "વ્હૉટ્સએપ કરો" },
   hero: {
     badge: "એઆઈ + નિષ્ણાત ફિઝિયોથેરાપિસ્ટ · મેડ ઇન ઇન્ડિયા",
     titleLead: "તમારો પોતાનો",
@@ -410,7 +410,7 @@ const gu: Dict = {
     subtitleStrong: "શીખો. સાજા થાઓ. સારી રીતે ચાલો.",
     subtitleRest:
       "એઆઈ ટ્યુટર સાથે સ્માર્ટ અભ્યાસ કરો, અથવા સાચા ફિઝિયોથેરાપિસ્ટને બુક કરો — દરેક ઉંમર માટે એક જ સુંદર, સરળ એપમાં.",
-    ctaStart: "ફ્રી શરૂ કરો",
+    ctaStart: "શરૂ કરો",
     ctaBook: "પરામર્શ બુક કરો",
     watchDemo: "ડેમો જુઓ",
     trustUsers: "1.7 લાખ+ યુઝર્સનો વિશ્વાસ",
@@ -473,7 +473,7 @@ const gu: Dict = {
         { title: "ન્યુરો અને વૃદ્ધ સંભાળ", desc: "દરેક ઉંમર માટે કોમળ, નિષ્ણાત સંભાળ." },
       ],
       band: {
-        badge: "દર મહિને મફત 5-મિનિટ પરામર્શ",
+        badge: "નિષ્ણાત ફિઝિયોથેરાપિસ્ટ ₹199/મહિનેથી",
         title: "એક મિનિટથી ઓછામાં તમારું પહેલું સેશન બુક કરો",
         desc: "કૅલેન્ડર સ્લોટ, UPI ચુકવણી, પુષ્ટિ અને વ્હૉટ્સએપ રિમાઇન્ડર — થઈ ગયું.",
         book: "પરામર્શ બુક કરો",
@@ -493,11 +493,11 @@ const gu: Dict = {
       eyebrow: "કિંમત",
       titlePre: "પ્રીમિયમ સંભાળ, એક",
       titleAccent: "ભારતીય કિંમતે",
-      desc: "હંમેશ માટે ફ્રી શરૂ કરો. ગમે ત્યારે અપગ્રેડ કરો. UPI, કાર્ડ અને નેટ-બેન્કિંગ, GST ઇન્વૉઇસ સાથે — ગમે ત્યારે રદ કરો.",
-      footNote: "દરેક રજિસ્ટર્ડ યુઝરને દર મહિને 1 મફત 5-મિનિટ પરામર્શ અને 1 મફત લાઇવ ક્લાસ મળે છે.",
+      desc: "₹199 થી સરળ માસિક પ્લાન. ગમે ત્યારે અપગ્રેડ કરો. UPI, કાર્ડ અને નેટ-બેન્કિંગ, GST ઇન્વૉઇસ સાથે — ગમે ત્યારે રદ કરો.",
+      footNote: "દરેક પ્લાનમાં દર મહિને એક વિડિયો પરામર્શ અને એક લાઇવ ક્લાસ સામેલ છે. ગમે ત્યારે રદ કરો.",
       mostPopular: "સૌથી લોકપ્રિય",
       plans: [
-        { desc: "આજે જ શીખવાનું અને સાજા થવાનું શરૂ કરો.", period: "હંમેશ માટે", cta: "ફ્રી શરૂ કરો", features: ["બેઝિક એઆઈ નોટ્સ અને કૉન્સેપ્ટ", "રોજની એઆઈ પ્રશ્ન મર્યાદા", "1 મફત 5-મિનિટ પરામર્શ / મહિને", "1 મફત લાઇવ એક્સરસાઇઝ ક્લાસ / મહિને"] },
+        { desc: "આજે જ શીખવાનું અને સાજા થવાનું શરૂ કરો.", period: "/ મહિને", cta: "શરૂ કરો", features: ["એઆઈ નોટ્સ અને કૉન્સેપ્ટ લર્નિંગ", "રોજની એઆઈ પ્રશ્ન ક્વોટા", "1 વિડિયો પરામર્શ / મહિને", "1 લાઇવ એક્સરસાઇઝ ક્લાસ / મહિને"] },
         { desc: "ક્લાસમાં ટોપ કરવા માટે દરેક જરૂરિયાત.", period: "/ મહિને", cta: "અલ્ટિમેટ લો", features: ["અમર્યાદિત એઆઈ નોટ્સ અને વૉઇસ ટ્યુટર", "પરીક્ષા તૈયારી, OSCE, કેસ સ્ટડી", "PDF → ડિઝાઇન નોટ્સ (ડ્રાઇવ)", "ફ્લેશકાર્ડ, MCQ અને માઇન્ડ-મેપ", "પ્રાથમિકતા સહાય"] },
         { desc: "એઆઈ + ડૉક્ટર + એક્સરસાઇઝ + લાઇવ, બધું એકસાથે.", period: "/ મહિને", cta: "કમ્પ્લીટ કેર લો", features: ["અલ્ટિમેટનું બધું", "માસિક 1:1 ફિઝિયો પરામર્શ", "વ્યક્તિગત એક્સરસાઇઝ પ્રોગ્રામ", "અમર્યાદિત લાઇવ ક્લાસ", "વ્યક્તિગત ફિઝિયોથેરાપિસ્ટ"] },
       ],
@@ -508,7 +508,7 @@ const gu: Dict = {
       items: [
         { q: "શું DrPhysioAI ડૉક્ટરને મળવાનો વિકલ્પ છે?", a: "ના. અમારું એઆઈ તમને શીખવામાં અને રોજિંદી સંભાળમાં મદદ કરે છે, અને અમારા લાઇસન્સ-પ્રાપ્ત ફિઝિયોથેરાપિસ્ટ સાચા પરામર્શ આપે છે. કટોકટી કે નિદાન માટે હંમેશા લાયક ડૉક્ટરને રૂબરૂ મળો." },
         { q: "કઈ ભાષાઓ સપોર્ટેડ છે?", a: "આજે અંગ્રેજી, હિન્દી અને ગુજરાતી — વધુ ભારતીય ભાષાઓ ટૂંક સમયમાં આવી રહી છે. વૉઇસ ટ્યુટર તમારી ભાષા સમજે છે અને તેમાં જ જવાબ આપે છે." },
-        { q: "ફ્રી પ્લાન કેવી રીતે કામ કરે છે?", a: "દરેક રજિસ્ટર્ડ યુઝરને બેઝિક એઆઈ લર્નિંગ, એક મફત 5-મિનિટ પરામર્શ અને દર મહિને એક મફત લાઇવ એક્સરસાઇઝ ક્લાસ મળે છે — કાર્ડ વગર." },
+        { q: "₹199 સ્ટાર્ટર પ્લાનમાં શું સામેલ છે?", a: "₹199/મહિને સ્ટાર્ટર પ્લાનમાં તમને એઆઈ લર્નિંગ, એક વિડિયો પરામર્શ અને દર મહિને એક લાઇવ એક્સરસાઇઝ ક્લાસ મળે છે. તમે ગમે ત્યારે અલ્ટિમેટ સ્ટૂડન્ટ કે કમ્પ્લીટ કેરમાં અપગ્રેડ કરી શકો છો." },
         { q: "શું હું તેને મારા ફોન પર વાપરી શકું?", a: "હા. DrPhysioAI મોબાઇલ-ફર્સ્ટ છે, ડાઉનલોડ માટે ઓફલાઇન ચાલે છે, એપ (PWA) તરીકે ઇન્સ્ટૉલ થાય છે, અને નેટિવ Android અને iOS એપ ટૂંક સમયમાં આવી રહી છે." },
         { q: "ભારતમાં ચુકવણી કેવી રીતે થાય છે?", a: "અમે UPI, Google Pay, PhonePe, Paytm, કાર્ડ અને નેટ-બેન્કિંગ સપોર્ટ કરીએ છીએ, GST ઇન્વૉઇસ અને સરળ રદ્દીકરણ સાથે." },
       ],
@@ -516,8 +516,8 @@ const gu: Dict = {
     cta: {
       badge: "1.7 લાખ+ શીખનારા અને દર્દીઓ સાથે જોડાઓ",
       title: "શીખો. સાજા થાઓ. સારી રીતે ચાલો — આજથી.",
-      subtitle: "તમારો વ્યક્તિગત એઆઈ ફિઝિયોથેરાપિસ્ટ અને એક સાચો ડૉક્ટર, એક જ એપમાં. ફ્રી શરૂ કરો — કાર્ડની જરૂર નથી.",
-      start: "ફ્રી શરૂ કરો",
+      subtitle: "તમારો વ્યક્તિગત એઆઈ ફિઝિયોથેરાપિસ્ટ અને એક સાચો ડૉક્ટર, એક જ એપમાં. પ્લાન ₹199/મહિનેથી — ગમે ત્યારે રદ કરો.",
+      start: "શરૂ કરો",
       book: "પરામર્શ બુક કરો",
       whatsapp: "વ્હૉટ્સએપ કરો",
     },
@@ -525,7 +525,7 @@ const gu: Dict = {
       eyebrow: "લાઇવ ક્લાસ",
       titlePre: "સાપ્તાહિક લાઇવ એક્સરસાઇઝ ક્લાસ",
       titleAccent: "બધા માટે",
-      desc: "ઘરેથી જ માર્ગદર્શિત સેશનમાં જોડાઓ — પ્રિનેટલ સંભાળથી સ્પોર્ટ્સ પર્ફોર્મન્સ સુધી. દરેક સભ્યને દર મહિને એક મફત ક્લાસ.",
+      desc: "ઘરેથી જ માર્ગદર્શિત સેશનમાં જોડાઓ — પ્રિનેટલ સંભાળથી સ્પોર્ટ્સ પર્ફોર્મન્સ સુધી. દરેક સભ્યપદમાં દર મહિને એક લાઇવ ક્લાસ સામેલ.",
       seeSchedule: "આખું સાપ્તાહિક શેડ્યૂલ જુઓ",
     },
     footer: {

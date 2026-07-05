@@ -136,8 +136,8 @@ export default function ConditionPage({ params }: { params: { slug: string } }) 
                 Start your {c.name.toLowerCase()} recovery today
               </h2>
               <p className="mx-auto mt-3 max-w-xl text-white/85">
-                Talk to a licensed physiotherapist online and get a personalised plan — plus one free
-                5-minute consultation every month.
+                Talk to a licensed physiotherapist online and get a personalised plan — with a
+                monthly consultation included in membership from ₹199.
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <Button variant="secondary" size="lg" className="bg-white text-teal-700 hover:bg-white/90" asChild>

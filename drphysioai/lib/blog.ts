@@ -84,7 +84,7 @@ export const blogPosts: BlogPost[] = [
         "Set your screen at eye level so you stop looking down.",
       ] },
       { type: "tip", text: "Take a 20-second posture break every 30 minutes — set a phone reminder until it becomes a habit." },
-      { type: "p", text: "Try our free AI posture check to see how far your head sits forward, then follow the exercises above." },
+      { type: "p", text: "Try our AI posture check to see how far your head sits forward, then follow the exercises above." },
     ],
   },
   {
@@ -108,8 +108,8 @@ export const blogPosts: BlogPost[] = [
       ] },
       { type: "h2", text: "Why online is cheaper" },
       { type: "p", text: "Online physiotherapy removes clinic overheads and travel time. For most conditions — back and neck pain, posture, and exercise-based rehab — a video consultation plus a home exercise plan is just as effective." },
-      { type: "tip", text: "At DrPhysioAI, every registered user gets a free 5-minute consultation each month, and video sessions start at ₹499 — payable instantly by UPI." },
-      { type: "p", text: "You also get a free AI study tutor, an exercise library, and posture screening at no cost — so you can do a lot before you ever pay." },
+      { type: "tip", text: "At DrPhysioAI, membership starts at ₹199/month and includes a monthly video consultation, with additional sessions from ₹499 — payable instantly by UPI." },
+      { type: "p", text: "You also get an AI study tutor, an exercise library and posture screening — so you get a lot of value for a small monthly price." },
     ],
   },
   {
@@ -160,7 +160,7 @@ export const blogPosts: BlogPost[] = [
         "Get case studies broken down into assessment → diagnosis → plan.",
       ] },
       { type: "tip", text: "Don't just read answers — explain them back in your own words. Teaching the concept is the fastest way to lock it in." },
-      { type: "p", text: "DrPhysioAI's tutor is free for students and tuned for the Indian BPT/MPT syllabus. Try it and pick the answer style that suits how you learn." },
+      { type: "p", text: "DrPhysioAI's tutor is built for students and tuned for the Indian BPT/MPT syllabus, from ₹199/month. Try it and pick the answer style that suits how you learn." },
     ],
   },
 ];

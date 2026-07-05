@@ -140,8 +140,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
               <Card className="relative overflow-hidden bg-brand-gradient p-8 text-center text-white sm:p-10">
                 <h2 className="font-display text-2xl font-bold">Get a plan built for you</h2>
                 <p className="mx-auto mt-2 max-w-xl text-sm text-white/90">
-                  Talk to a licensed physiotherapist online — one free 5-minute consult every month,
-                  video sessions from ₹499, paid instantly by UPI.
+                  Talk to a licensed physiotherapist online — a monthly consult included with
+                  membership, video sessions from ₹499, paid instantly by UPI.
                 </p>
                 <div className="mt-5 flex flex-wrap justify-center gap-3">
                   <Button variant="secondary" className="bg-white text-teal-700 hover:bg-white/90" asChild>

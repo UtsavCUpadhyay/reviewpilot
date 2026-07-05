@@ -47,7 +47,7 @@ export function ReferralWidget() {
   }
 
   const shareText = encodeURIComponent(
-    `I'm using DrPhysioAI for online physiotherapy & free AI health tools 💪 Sign up with my link and we both get ₹100 off: ${link}`,
+    `I'm using DrPhysioAI for online physiotherapy & AI health tools 💪 Sign up with my link and we both get ₹100 off: ${link}`,
   );
   const whatsappShare = `https://wa.me/?text=${shareText}`;
 

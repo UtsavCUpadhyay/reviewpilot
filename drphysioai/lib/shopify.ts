@@ -38,7 +38,8 @@ export const SHOPIFY_DOMAIN = (
  */
 const codeDefaults: Record<string, string> = {
   // Live variant ids from the DrPhysioAI Shopify store (drphysioai.com).
-  // Subscription plans (Pricing section) — Free has no variant (it's sign-up only).
+  // Subscription plans (Pricing section) — Starter (₹199) has no Shopify variant
+  // (handled via Razorpay / sign-up).
   "plan:Ultimate Student": "48044581552315",
   "plan:Complete Care": "48044581585083",
   // Consultation services (booking widget).
