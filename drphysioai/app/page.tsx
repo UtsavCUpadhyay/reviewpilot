@@ -8,6 +8,7 @@ import { HowItWorks } from "@/components/site/how-it-works";
 import { Consultation } from "@/components/site/consultation";
 import { LiveClasses } from "@/components/site/live-classes";
 import { Testimonials } from "@/components/site/testimonials";
+import { Founder } from "@/components/site/founder";
 import { Pricing } from "@/components/site/pricing";
 import { FAQ } from "@/components/site/faq";
 import { CTA } from "@/components/site/cta";
@@ -27,6 +28,7 @@ export default function HomePage() {
         <Consultation />
         <LiveClasses />
         <Testimonials />
+        <Founder />
         <Pricing />
         <FAQ locale={getLocale()} />
         <CTA />
