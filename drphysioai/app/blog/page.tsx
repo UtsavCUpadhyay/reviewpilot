@@ -52,6 +52,10 @@ export default function BlogIndexPage() {
               Evidence-based physiotherapy tips for pain relief, recovery and healthy movement —
               written by licensed physiotherapists.
             </p>
+            <div className="mx-auto mt-6 flex flex-wrap justify-center gap-4 text-sm font-semibold">
+              <a href="/glossary" className="text-teal-600 hover:underline">Browse the physiotherapy glossary →</a>
+              <a href="/conditions" className="text-teal-600 hover:underline">Explore conditions →</a>
+            </div>
           </div>
         </section>
 

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Check, AlertCircle, Activity, ArrowRight, MessageCircle, Stethoscope } from "lucide-react";
+import { Check, AlertCircle, Activity, ArrowRight, MessageCircle, Stethoscope, Dumbbell, HelpCircle, Clock, Repeat } from "lucide-react";
 import { Navbar } from "@/components/site/navbar";
 import { Footer } from "@/components/site/footer";
 import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getLocale } from "@/lib/i18n-server";
-import { conditions, getCondition } from "@/lib/conditions";
+import { conditions, getCondition, conditionExercises, conditionFaqs } from "@/lib/conditions";
+import { getExercise } from "@/lib/exercises";
 import { site } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -28,6 +29,11 @@ export default function ConditionPage({ params }: { params: { slug: string } }) 
   const c = getCondition(params.slug);
   if (!c) notFound();
 
+  const program = (conditionExercises[c.slug] ?? [])
+    .map(getExercise)
+    .filter((e): e is NonNullable<typeof e> => Boolean(e));
+  const faqs = conditionFaqs[c.slug] ?? [];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
@@ -38,9 +44,24 @@ export default function ConditionPage({ params }: { params: { slug: string } }) 
     provider: { "@type": "MedicalBusiness", name: "DrPhysioAI" },
   };
 
+  const faqJsonLd = faqs.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {faqJsonLd && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      )}
       <Navbar locale={getLocale()} />
       <main>
         {/* Hero */}
@@ -127,6 +148,70 @@ export default function ConditionPage({ params }: { params: { slug: string } }) 
             </Card>
           </div>
         </section>
+
+        {/* Home exercise program */}
+        {program.length > 0 && (
+          <section className="pb-4 sm:pb-8">
+            <div className="container-page">
+              <div className="flex items-center gap-2">
+                <Dumbbell className="h-5 w-5 text-teal-600" />
+                <h2 className="font-display text-xl font-bold sm:text-2xl">
+                  Home exercise program for {c.name.toLowerCase()}
+                </h2>
+              </div>
+              <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
+                A safe starting routine. Always ease off anything that causes sharp pain, and check
+                with a physiotherapist for a plan matched to you.
+              </p>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {program.map((ex) => (
+                  <Card key={ex.slug} className="flex items-start gap-4 p-5">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-brand-soft text-xl">
+                      {ex.emoji}
+                    </span>
+                    <div className="min-w-0">
+                      <h3 className="font-display text-base font-bold">{ex.name}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{ex.target}</p>
+                      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground">
+                        <span className="inline-flex items-center gap-1"><Clock className="h-3.5 w-3.5 text-teal-500" /> {ex.durationMin} min</span>
+                        <span className="inline-flex items-center gap-1"><Repeat className="h-3.5 w-3.5 text-teal-500" /> {ex.reps}</span>
+                      </div>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+              <div className="mt-6">
+                <Button variant="outline" asChild>
+                  <a href="/exercises">
+                    <Dumbbell className="h-4 w-4" /> See full exercise library &amp; track progress
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* FAQs */}
+        {faqs.length > 0 && (
+          <section className="py-12 sm:py-16">
+            <div className="container-page">
+              <div className="flex items-center gap-2">
+                <HelpCircle className="h-5 w-5 text-violet-600" />
+                <h2 className="font-display text-xl font-bold sm:text-2xl">
+                  {c.name} — frequently asked questions
+                </h2>
+              </div>
+              <div className="mt-6 grid gap-4 lg:grid-cols-2">
+                {faqs.map((f) => (
+                  <Card key={f.q} className="p-6">
+                    <h3 className="font-display text-base font-bold">{f.q}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* CTA band */}
         <section className="pb-16 sm:pb-24">
