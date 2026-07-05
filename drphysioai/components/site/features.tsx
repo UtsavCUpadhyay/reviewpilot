@@ -10,7 +10,8 @@ export function Features() {
   const t = getDict(getLocale()).home.features;
   return (
     <section id="ai" className="relative py-20 sm:py-28">
-      <div className="container-page">
+      <div className="pointer-events-none absolute inset-0 bg-dot-grid opacity-40" aria-hidden />
+      <div className="container-page relative">
         <SectionHeading
           eyebrow={t.eyebrow}
           title={
@@ -24,7 +25,7 @@ export function Features() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {aiFeatures.map((f, i) => (
             <Reveal key={f.icon} delay={(i % 3) * 90}>
-              <Card className="group h-full p-6 card-hover">
+              <Card className="group h-full p-6 card-glow card-hover">
                 <div className="flex items-center justify-between">
                   <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft text-teal-600 transition-transform duration-300 group-hover:scale-110">
                     <Icon name={f.icon} className="h-6 w-6" />

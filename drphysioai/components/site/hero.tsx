@@ -39,7 +39,7 @@ export function Hero() {
 
             <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
               {d.hero.titleLead} <br className="hidden sm:block" />
-              <span className="text-gradient">{d.hero.titleAccent}</span>
+              <span className="text-gradient-animated">{d.hero.titleAccent}</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
@@ -48,7 +48,7 @@ export function Hero() {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Button size="lg" asChild>
+              <Button size="lg" className="shine" asChild>
                 <a href="#pricing">
                   {d.hero.ctaStart} <Sparkles className="h-4 w-4" />
                 </a>

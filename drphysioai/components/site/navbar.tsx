@@ -57,12 +57,12 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
             <Logo />
           </a>
 
-          <div className="hidden items-center gap-1 lg:flex">
+          <div className="hidden items-center gap-0.5 xl:flex">
             {nav.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                className="whitespace-nowrap rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
               >
                 {item.label}
               </a>
@@ -79,7 +79,7 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
               <a href="/signup">{d.actions.startFree}</a>
             </Button>
             <button
-              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card/60 lg:hidden"
+              className="grid h-10 w-10 place-items-center rounded-full border border-border bg-card/60 xl:hidden"
               aria-label="Open menu"
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
@@ -92,7 +92,7 @@ export function Navbar({ locale = "en" }: { locale?: Locale }) {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="container-page lg:hidden">
+        <div className="container-page xl:hidden">
           <div className="mt-2 animate-fade-up rounded-2xl glass p-4 shadow-card">
             <div className="flex flex-col gap-1">
               {nav.map((item) => (
