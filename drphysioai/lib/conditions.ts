@@ -252,6 +252,147 @@ export const conditions: Condition[] = [
     service: "Neuro & Elderly Care",
     price: 699,
   },
+  {
+    slug: "arthritis",
+    name: "Arthritis & Joint Pain",
+    emoji: "🦿",
+    tagline: "Stay active and pain-free with physiotherapy for arthritis.",
+    overview:
+      "Arthritis — most commonly osteoarthritis of the knees, hips and hands — is a leading cause of pain and stiffness with age. Research is clear: the right strengthening and gentle daily movement reduce pain and keep joints working, often as effectively as medication.",
+    symptoms: [
+      "Joint pain and stiffness, worse in the morning or after rest",
+      "Swelling or a grinding sensation in the joint",
+      "Reduced range of movement",
+      "Difficulty with stairs, squatting or gripping",
+      "Pain that eases with gentle activity",
+    ],
+    causes: [
+      "Age-related wear of joint cartilage (osteoarthritis)",
+      "Previous joint injury or overuse",
+      "Excess load on weight-bearing joints",
+      "Inflammatory conditions such as rheumatoid arthritis",
+    ],
+    howWeHelp: [
+      "A physiotherapist grades your exercises so you build strength safely",
+      "Low-impact routines that protect the joint while improving fitness",
+      "Weight-management and activity coaching to reduce joint load",
+      "Flare-up strategies with warmth, pacing and gentle mobility",
+    ],
+    service: "Exercise Prescription",
+    price: 699,
+  },
+  {
+    slug: "plantar-fasciitis",
+    name: "Plantar Fasciitis (Heel Pain)",
+    emoji: "🦶",
+    tagline: "End that first-step morning heel pain with guided care.",
+    overview:
+      "Plantar fasciitis is the most common cause of heel pain — an irritation of the tissue along the sole of the foot. It responds very well to a simple, consistent stretching and strengthening routine, with most people improving within a few weeks.",
+    symptoms: [
+      "Sharp heel pain with the first steps in the morning",
+      "Pain that eases with movement but returns after rest",
+      "Tenderness under the heel or along the arch",
+      "Discomfort after long standing or walking",
+    ],
+    causes: [
+      "Tight calves and stiff ankles",
+      "Long hours standing on hard surfaces",
+      "Unsupportive footwear or sudden increase in activity",
+      "Foot mechanics such as flat or high arches",
+    ],
+    howWeHelp: [
+      "A physiotherapist checks your foot and ankle mechanics",
+      "Targeted calf and plantar-fascia stretching program",
+      "Strengthening for the foot and lower leg",
+      "Footwear and load-management advice to stop it returning",
+    ],
+    service: "Pain Management",
+    price: 599,
+  },
+  {
+    slug: "cervical-spondylosis",
+    name: "Cervical Spondylosis",
+    emoji: "🦴",
+    tagline: "Manage age-related neck pain and stiffness from home.",
+    overview:
+      "Cervical spondylosis is age-related wear in the neck's joints and discs — very common after 50. With gentle exercise, posture care and the right guidance, most people keep it well-managed and stay comfortable.",
+    symptoms: [
+      "Neck stiffness, especially in the morning",
+      "Headaches starting at the base of the skull",
+      "Grinding or clicking when turning the head",
+      "Occasional pins-and-needles into the arms",
+    ],
+    causes: [
+      "Age-related changes in the cervical spine",
+      "Years of forward-head 'tech neck' posture",
+      "Weak deep neck and upper-back muscles",
+      "Previous neck strain or injury",
+    ],
+    howWeHelp: [
+      "A physiotherapist builds a safe, progressive neck routine",
+      "Posture and workstation coaching to reduce strain",
+      "Strengthening for the deep neck and shoulder-blade muscles",
+      "Guidance on warning signs that need further assessment",
+    ],
+    service: "Pain Management",
+    price: 599,
+  },
+  {
+    slug: "tennis-elbow",
+    name: "Tennis & Golfer's Elbow",
+    emoji: "💪",
+    tagline: "Relieve stubborn elbow pain with loading-based physiotherapy.",
+    overview:
+      "Tennis elbow (outer) and golfer's elbow (inner) are overuse injuries of the forearm tendons — and you don't need to play either sport to get them. Gradual, guided strengthening is the most effective treatment.",
+    symptoms: [
+      "Pain on the outer or inner side of the elbow",
+      "Weak, painful grip",
+      "Discomfort when lifting, twisting or typing",
+      "Tenderness over the bony part of the elbow",
+    ],
+    causes: [
+      "Repetitive gripping, typing or lifting",
+      "Sudden increase in a new activity",
+      "Weak forearm and shoulder muscles",
+      "Poor technique in sport or work tasks",
+    ],
+    howWeHelp: [
+      "A physiotherapist confirms the cause and rules out other issues",
+      "A progressive tendon-loading program that actually resolves it",
+      "Activity and grip modifications to calm the pain",
+      "Return-to-work and return-to-sport guidance",
+    ],
+    service: "Pain Management",
+    price: 599,
+  },
+  {
+    slug: "carpal-tunnel",
+    name: "Carpal Tunnel Syndrome",
+    emoji: "🖐️",
+    tagline: "Ease wrist and hand tingling with conservative physiotherapy.",
+    overview:
+      "Carpal tunnel syndrome is compression of a nerve at the wrist, causing tingling and weakness in the hand. Many mild-to-moderate cases improve with nerve-gliding exercises, splinting and workstation changes — before surgery is ever needed.",
+    symptoms: [
+      "Tingling or numbness in the thumb, index and middle fingers",
+      "Symptoms that wake you at night",
+      "Weak grip or dropping objects",
+      "Discomfort after typing or phone use",
+    ],
+    causes: [
+      "Repetitive wrist and hand use",
+      "Sustained awkward wrist positions",
+      "Fluid retention (e.g. in pregnancy)",
+      "Wrist injury or arthritis",
+    ],
+    howWeHelp: [
+      "A physiotherapist assesses your symptoms and severity",
+      "Nerve-gliding and tendon-gliding exercise programs",
+      "Splinting and ergonomic advice for work and sleep",
+      "Guidance on when a specialist referral is worthwhile",
+    ],
+    service: "Pain Management",
+    price: 599,
+  },
 ];
 
 export function getCondition(slug: string): Condition | undefined {
