@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "About Us",
   description:
     "DrPhysioAI — India's AI-powered physiotherapy platform for students and patients, founded by Dr. Utsav Chiragkumar Upadhyay.",
-  alternates: { canonical: "https://drphysioai.com/about" },
+  alternates: { canonical: "https://www.drphysioai.com/about" },
 };
 
 export default function AboutPage() {

@@ -21,7 +21,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   return {
     title: `${c.name} — Online Physiotherapy Treatment in India`,
     description: c.tagline + " " + c.overview.slice(0, 110),
-    alternates: { canonical: `https://drphysioai.com/conditions/${c.slug}` },
+    alternates: { canonical: `https://www.drphysioai.com/conditions/${c.slug}` },
   };
 }
 
@@ -40,7 +40,7 @@ export default function ConditionPage({ params }: { params: { slug: string } }) 
     name: `${c.name} — Physiotherapy Treatment`,
     about: { "@type": "MedicalCondition", name: c.name },
     audience: "https://schema.org/Patient",
-    url: `https://drphysioai.com/conditions/${c.slug}`,
+    url: `https://www.drphysioai.com/conditions/${c.slug}`,
     provider: { "@type": "MedicalBusiness", name: "DrPhysioAI" },
   };
 

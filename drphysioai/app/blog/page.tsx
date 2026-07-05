@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Physiotherapy Blog — Exercises, Pain Relief & Recovery Tips",
   description:
     "Expert physiotherapy advice for India: back and neck pain relief, knee recovery, posture fixes, and study tips for physiotherapy students. Evidence-based guides.",
-  alternates: { canonical: "https://drphysioai.com/blog" },
+  alternates: { canonical: "https://www.drphysioai.com/blog" },
 };
 
 export default function BlogIndexPage() {
@@ -23,11 +23,11 @@ export default function BlogIndexPage() {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "DrPhysioAI Blog",
-    url: "https://drphysioai.com/blog",
+    url: "https://www.drphysioai.com/blog",
     blogPost: posts.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
-      url: `https://drphysioai.com/blog/${p.slug}`,
+      url: `https://www.drphysioai.com/blog/${p.slug}`,
       datePublished: p.date,
       author: { "@type": "Person", name: p.author },
     })),

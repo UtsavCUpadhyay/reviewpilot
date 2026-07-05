@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "AI Posture Check — Screen Your Posture in Seconds",
   description:
     "Upload a photo and get an instant AI posture screening. DrPhysioAI's AI physiotherapist spots forward head, rounded shoulders and uneven hips — with simple tips. Private, India.",
-  alternates: { canonical: "https://drphysioai.com/posture-check" },
+  alternates: { canonical: "https://www.drphysioai.com/posture-check" },
 };
 
 const steps = [
@@ -24,7 +24,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   name: "AI Posture Check",
-  url: "https://drphysioai.com/posture-check",
+  url: "https://www.drphysioai.com/posture-check",
   description:
     "AI posture screening tool. Upload a photo to spot common posture patterns and get simple correction tips from DrPhysioAI.",
   about: { "@type": "MedicalCondition", name: "Posture assessment" },

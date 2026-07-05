@@ -22,7 +22,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
     title: `${p.title} — DrPhysioAI`,
     description: p.excerpt,
     keywords: p.keywords,
-    alternates: { canonical: `https://drphysioai.com/blog/${p.slug}` },
+    alternates: { canonical: `https://www.drphysioai.com/blog/${p.slug}` },
     openGraph: { title: p.title, description: p.excerpt, type: "article" },
   };
 }
@@ -41,7 +41,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     datePublished: post.date,
     author: { "@type": "Person", name: post.author },
     publisher: { "@type": "Organization", name: "DrPhysioAI" },
-    mainEntityOfPage: `https://drphysioai.com/blog/${post.slug}`,
+    mainEntityOfPage: `https://www.drphysioai.com/blog/${post.slug}`,
     keywords: post.keywords.join(", "),
   };
 

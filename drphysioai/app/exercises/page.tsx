@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Home Exercise Library — Physiotherapist-Approved Routines",
   description:
     "Follow safe, equipment-free physiotherapy exercises for back, neck, knee, shoulder and posture. Track your progress and build a daily streak on DrPhysioAI.",
-  alternates: { canonical: "https://drphysioai.com/exercises" },
+  alternates: { canonical: "https://www.drphysioai.com/exercises" },
 };
 
 const jsonLd = {

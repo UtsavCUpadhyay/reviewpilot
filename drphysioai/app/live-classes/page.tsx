@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Live Exercise Classes — Join Physio-Led Sessions from Home",
   description:
     "Weekly live physiotherapy-led exercise classes in India — back & neck pain relief, senior balance, prenatal, mobility and sports performance. Join from home; one class every month included with membership.",
-  alternates: { canonical: "https://drphysioai.com/live-classes" },
+  alternates: { canonical: "https://www.drphysioai.com/live-classes" },
 };
 
 const weeklyCount = liveClassSchedule.length;

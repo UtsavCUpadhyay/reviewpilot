@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Doctor Consultation — Online Physiotherapy from Home",
   description:
     "Book a licensed physiotherapist online in India. Video consultations, exercise prescriptions, post-surgical & sports rehab, with UPI payment and WhatsApp reminders.",
-  alternates: { canonical: "https://drphysioai.com/consultation" },
+  alternates: { canonical: "https://www.drphysioai.com/consultation" },
 };
 
 const included = [

@@ -5,7 +5,7 @@ import { site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Refund & Cancellation Policy",
   description: "How cancellations and refunds work at DrPhysioAI.",
-  alternates: { canonical: "https://drphysioai.com/refund-policy" },
+  alternates: { canonical: "https://www.drphysioai.com/refund-policy" },
 };
 
 export default function RefundPolicyPage() {

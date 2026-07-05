@@ -6,7 +6,7 @@ import { site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Get in touch with DrPhysioAI — WhatsApp, email, or reach out about careers and partnerships.",
-  alternates: { canonical: "https://drphysioai.com/contact" },
+  alternates: { canonical: "https://www.drphysioai.com/contact" },
 };
 
 export default function ContactPage() {
