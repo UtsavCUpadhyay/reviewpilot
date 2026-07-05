@@ -18,7 +18,7 @@ function makeCode(): string {
 export function ReferralWidget() {
   const [code, setCode] = React.useState("PHYSIO-••••");
   const [copied, setCopied] = React.useState(false);
-  const [link, setLink] = React.useState("https://drphysioai.com/?ref=PHYSIO");
+  const [link, setLink] = React.useState("https://www.drphysioai.com/?ref=PHYSIO");
 
   React.useEffect(() => {
     let c = "";
@@ -32,7 +32,7 @@ export function ReferralWidget() {
       c = makeCode();
     }
     setCode(c);
-    const origin = typeof window !== "undefined" ? window.location.origin : "https://drphysioai.com";
+    const origin = typeof window !== "undefined" ? window.location.origin : "https://www.drphysioai.com";
     setLink(`${origin}/?ref=${c}`);
   }, []);
 

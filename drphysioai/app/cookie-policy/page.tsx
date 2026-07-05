@@ -5,7 +5,7 @@ import { site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description: "How DrPhysioAI uses cookies and similar technologies.",
-  alternates: { canonical: "https://drphysioai.com/cookie-policy" },
+  alternates: { canonical: "https://www.drphysioai.com/cookie-policy" },
 };
 
 export default function CookiePolicyPage() {

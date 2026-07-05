@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Conditions We Treat — Online Physiotherapy in India",
   description:
     "Physiotherapy for back pain, neck pain, knee pain, sciatica, frozen shoulder, sports injuries, post-surgical and neuro rehab — online with licensed physiotherapists across India.",
-  alternates: { canonical: "https://drphysioai.com/conditions" },
+  alternates: { canonical: "https://www.drphysioai.com/conditions" },
 };
 
 export default function ConditionsPage() {

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Refer & Earn — Give ₹100, Get ₹100 | DrPhysioAI",
   description:
     "Invite friends to DrPhysioAI. They get ₹100 off their first online physiotherapy consultation, and you get ₹100 too. Share your link on WhatsApp in seconds.",
-  alternates: { canonical: "https://drphysioai.com/refer" },
+  alternates: { canonical: "https://www.drphysioai.com/refer" },
 };
 
 const steps = [

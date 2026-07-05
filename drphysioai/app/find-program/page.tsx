@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Find Your Program — Personalised Physiotherapy Recommendation",
   description:
     "Answer 3 quick questions and get a personalised physiotherapy recommendation — pain relief, sports rehab, post-surgery, senior care or student learning.",
-  alternates: { canonical: "https://drphysioai.com/find-program" },
+  alternates: { canonical: "https://www.drphysioai.com/find-program" },
 };
 
 export default function FindProgramPage() {

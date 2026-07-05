@@ -5,7 +5,7 @@ import { site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How DrPhysioAI collects, uses and protects your personal and health information.",
-  alternates: { canonical: "https://drphysioai.com/privacy" },
+  alternates: { canonical: "https://www.drphysioai.com/privacy" },
 };
 
 export default function PrivacyPage() {

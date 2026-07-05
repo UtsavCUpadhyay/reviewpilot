@@ -3,7 +3,7 @@ import { conditions } from "@/lib/conditions";
 import { blogPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = "https://drphysioai.com";
+  const base = "https://www.drphysioai.com";
   const now = new Date();
   return [
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },

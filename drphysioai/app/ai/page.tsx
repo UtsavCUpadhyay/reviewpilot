@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "AI Learning — Your 24/7 Physiotherapy Tutor",
   description:
     "Notes, concepts, MCQs, OSCE and case studies for physiotherapy students — explained short, detailed, in tables or flowcharts. Powered by AI, reviewed by doctors.",
-  alternates: { canonical: "https://drphysioai.com/ai" },
+  alternates: { canonical: "https://www.drphysioai.com/ai" },
 };
 
 export default function AiLearningPage() {

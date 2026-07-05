@@ -5,7 +5,7 @@ import { site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "The terms that govern your use of DrPhysioAI.",
-  alternates: { canonical: "https://drphysioai.com/terms" },
+  alternates: { canonical: "https://www.drphysioai.com/terms" },
 };
 
 export default function TermsPage() {

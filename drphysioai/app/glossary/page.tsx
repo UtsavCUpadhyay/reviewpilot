@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Physiotherapy Glossary — Common Terms Explained Simply",
   description:
     "A plain-English A–Z of physiotherapy terms — from arthritis and sciatica to range of motion and tendinopathy. Understand your diagnosis and treatment.",
-  alternates: { canonical: "https://drphysioai.com/glossary" },
+  alternates: { canonical: "https://www.drphysioai.com/glossary" },
 };
 
 export default function GlossaryPage() {
@@ -21,7 +21,7 @@ export default function GlossaryPage() {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
     name: "DrPhysioAI Physiotherapy Glossary",
-    url: "https://drphysioai.com/glossary",
+    url: "https://www.drphysioai.com/glossary",
     hasDefinedTerm: glossary.map((t) => ({
       "@type": "DefinedTerm",
       name: t.term,

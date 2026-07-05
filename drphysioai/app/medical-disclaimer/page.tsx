@@ -4,7 +4,7 @@ import { ContentPage, ContentHeading } from "@/components/site/content-page";
 export const metadata: Metadata = {
   title: "Medical Disclaimer",
   description: "Important information about the educational nature of DrPhysioAI.",
-  alternates: { canonical: "https://drphysioai.com/medical-disclaimer" },
+  alternates: { canonical: "https://www.drphysioai.com/medical-disclaimer" },
 };
 
 export default function MedicalDisclaimerPage() {

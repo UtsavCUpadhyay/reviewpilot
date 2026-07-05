@@ -15,7 +15,7 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
-const SITE_URL = "https://drphysioai.com";
+const SITE_URL = "https://www.drphysioai.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

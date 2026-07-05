@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: "Our Physiotherapists — Licensed Experts Online",
   description:
     "Meet DrPhysioAI's licensed physiotherapists — sports, orthopaedic, pain, post-surgical, prenatal and senior-care experts consulting online across India in English, Hindi and Gujarati.",
-  alternates: { canonical: "https://drphysioai.com/physiotherapists" },
+  alternates: { canonical: "https://www.drphysioai.com/physiotherapists" },
 };
 
 export default function PhysiotherapistsPage() {
