@@ -35,6 +35,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = "primary", size = "md", asChild, children, ...props }, ref) => {
     const classes = cn(
       "group relative inline-flex select-none items-center justify-center gap-2 rounded-full font-semibold outline-none transition-all duration-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50",
+      // Tactile press feedback — a subtle scale-down on click
+      "active:scale-[0.97] active:duration-100 hover:-translate-y-0.5",
       variants[variant],
       sizes[size],
       className,
