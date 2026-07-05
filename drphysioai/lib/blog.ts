@@ -317,7 +317,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-04-20",
     author: "Dr. Ravi Menon",
     keywords: ["knee osteoarthritis exercises", "arthritis knee pain", "OA knee management"],
-    related: ["knee-pain"],
+    related: ["arthritis", "knee-pain"],
     body: [
       { type: "p", text: "Osteoarthritis is wear-and-tear of the joint cartilage, and it's very common with age. It can feel scary, but research is clear: staying active and building strength is one of the most effective treatments — often as good as medication for pain." },
       { type: "h2", text: "What helps most" },
@@ -348,6 +348,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-04-05",
     author: "Dr. Ravi Menon",
     keywords: ["plantar fasciitis", "heel pain treatment", "morning heel pain"],
+    related: ["plantar-fasciitis"],
     body: [
       { type: "p", text: "If your first steps out of bed bring a sharp pain under the heel that eases as you walk, plantar fasciitis is the usual culprit. It's an irritation of the thick band of tissue along the sole of your foot, and it responds well to simple home care." },
       { type: "h2", text: "What eases it" },
@@ -372,7 +373,7 @@ export const blogPosts: BlogPost[] = [
     date: "2026-03-22",
     author: "Dr. Sneha Patel",
     keywords: ["cervical spondylosis exercises", "neck arthritis", "cervical pain relief"],
-    related: ["neck-pain"],
+    related: ["cervical-spondylosis", "neck-pain"],
     body: [
       { type: "p", text: "Cervical spondylosis is age-related wear in the neck's joints and discs. It's extremely common after 50 and often shows on scans even in people with no pain. When it does cause symptoms, gentle exercise and posture care usually keep it manageable." },
       { type: "h2", text: "Common symptoms" },
