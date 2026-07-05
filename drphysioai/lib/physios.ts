@@ -14,13 +14,13 @@ export interface Physio {
 export const physios: Physio[] = [
   {
     name: "Dr. Utsav Upadhyay",
-    title: "Founder · Sports & Orthopaedic Physiotherapist",
-    specialties: ["Sports Injury", "Orthopaedics", "Post-Surgical Rehab"],
+    title: "Founder · Physiotherapist (BPT) · MPH",
+    specialties: ["Physiotherapy", "Public Health", "Rehabilitation"],
     experienceYears: 10,
     languages: ["English", "Hindi", "Gujarati"],
     rating: 4.9,
     reviews: 1240,
-    bio: "Founder of DrPhysioAI, passionate about making expert physiotherapy accessible to every Indian. Specialises in sports and post-surgical rehabilitation.",
+    bio: "Founder of DrPhysioAI. BPT from Sumandeep Vidyapeeth Deemed University, Vadodara, with a Master of Advanced Public Health from Queensland, Australia. On a mission to make expert physiotherapy accessible to every Indian.",
   },
   {
     name: "Dr. Sneha Patel",
