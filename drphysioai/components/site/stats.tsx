@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/ui/reveal";
+import { CountUp } from "@/components/ui/count-up";
 import { stats } from "@/lib/content";
 import { getDict } from "@/lib/i18n";
 import { getLocale } from "@/lib/i18n-server";
@@ -12,11 +13,12 @@ export function Stats() {
           <Reveal
             key={s.label}
             delay={i * 90}
-            className="flex flex-col items-center text-center"
+            className="group flex flex-col items-center text-center"
           >
-            <span className="font-display text-3xl font-extrabold tracking-tight text-gradient sm:text-4xl">
-              {s.value}
-            </span>
+            <CountUp
+              value={s.value}
+              className="font-display text-3xl font-extrabold tracking-tight text-gradient transition-transform duration-300 group-hover:scale-110 sm:text-4xl"
+            />
             <span className="mt-1 text-sm font-semibold">{t[i].label}</span>
             <span className="text-xs text-muted-foreground">{t[i].hint}</span>
           </Reveal>

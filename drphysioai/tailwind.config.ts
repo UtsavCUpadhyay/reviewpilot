@@ -110,6 +110,10 @@ const config: Config = {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
         },
+        "marquee-reverse": {
+          from: { transform: "translateX(-50%)" },
+          to: { transform: "translateX(0)" },
+        },
         shimmer: {
           "100%": { transform: "translateX(100%)" },
         },
@@ -120,7 +124,8 @@ const config: Config = {
         "float-slow": "float-slow 9s ease-in-out infinite",
         "gradient-pan": "gradient-pan 8s ease infinite",
         "pulse-ring": "pulse-ring 2.4s cubic-bezier(0.4,0,0.6,1) infinite",
-        marquee: "marquee 32s linear infinite",
+        marquee: "marquee 38s linear infinite",
+        "marquee-reverse": "marquee-reverse 34s linear infinite",
       },
     },
   },

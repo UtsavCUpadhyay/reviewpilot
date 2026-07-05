@@ -29,8 +29,9 @@ export function Pricing() {
               <Card
                 className={cn(
                   "relative flex h-full flex-col p-7 card-hover",
-                  p.highlight &&
-                    "border-transparent shadow-glow ring-2 ring-teal-500/40",
+                  p.highlight
+                    ? "border-transparent shadow-glow ring-2 ring-teal-500/40"
+                    : "card-glow",
                 )}
               >
                 {p.highlight && (

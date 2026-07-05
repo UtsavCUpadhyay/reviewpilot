@@ -90,6 +90,10 @@
     @apply bg-brand-gradient bg-clip-text text-transparent;
     background-size: 200% 200%;
   }
+  /* Slowly panning brand gradient — for hero headings */
+  .text-gradient-animated {
+    @apply text-gradient animate-gradient-pan;
+  }
 
   /* Frosted glass surface */
   .glass {
@@ -107,6 +111,43 @@
   /* Card lift on hover */
   .card-hover {
     @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-card;
+  }
+
+  /* Premium card: gradient hairline border that glows on hover (CRED-style) */
+  .card-glow {
+    @apply relative transition-all duration-300 hover:-translate-y-1;
+  }
+  .card-glow::before {
+    content: "";
+    @apply pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-300;
+    padding: 1px;
+    background: linear-gradient(120deg, #0fbfb4, #2563eb, #7c3aed);
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+  .card-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Shine sweep on hover — for primary CTAs */
+  .shine {
+    @apply relative overflow-hidden;
+  }
+  .shine::after {
+    content: "";
+    @apply pointer-events-none absolute inset-0 -translate-x-full;
+    background: linear-gradient(
+      100deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 70%
+    );
+  }
+  .shine:hover::after {
+    animation: shimmer 0.9s ease;
   }
 }
 
@@ -139,5 +180,32 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Fade the left/right edges of a horizontal marquee */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 8%,
+      #000 92%,
+      transparent
+    );
+  }
+
+  /* Subtle dotted grid texture for section backgrounds */
+  .bg-dot-grid {
+    background-image: radial-gradient(
+      hsl(var(--foreground) / 0.06) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
   }
 }

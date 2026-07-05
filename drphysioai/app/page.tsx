@@ -2,6 +2,7 @@ import { Navbar } from "@/components/site/navbar";
 import { getLocale } from "@/lib/i18n-server";
 import { Hero } from "@/components/site/hero";
 import { Stats } from "@/components/site/stats";
+import { MarqueeBand } from "@/components/site/marquee-band";
 import { Features } from "@/components/site/features";
 import { HowItWorks } from "@/components/site/how-it-works";
 import { Consultation } from "@/components/site/consultation";
@@ -20,6 +21,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <Stats />
+        <MarqueeBand />
         <Features />
         <HowItWorks />
         <Consultation />
