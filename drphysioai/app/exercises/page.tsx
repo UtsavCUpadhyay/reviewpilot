@@ -9,9 +9,9 @@ import { getLocale } from "@/lib/i18n-server";
 import { exercises } from "@/lib/exercises";
 
 export const metadata: Metadata = {
-  title: "Free Home Exercise Library — Physiotherapist-Approved Routines",
+  title: "Home Exercise Library — Physiotherapist-Approved Routines",
   description:
-    "Follow safe, equipment-free physiotherapy exercises for back, neck, knee, shoulder and posture. Track your progress and build a daily streak — free on DrPhysioAI.",
+    "Follow safe, equipment-free physiotherapy exercises for back, neck, knee, shoulder and posture. Track your progress and build a daily streak on DrPhysioAI.",
   alternates: { canonical: "https://drphysioai.com/exercises" },
 };
 
@@ -42,7 +42,7 @@ export default function ExercisesPage() {
               <Dumbbell className="h-3.5 w-3.5 text-teal-500" /> Exercise Library
             </span>
             <h1 className="mx-auto mt-5 max-w-3xl font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl">
-              Move better every day, <span className="text-gradient">for free</span>
+              Move better, <span className="text-gradient">every single day</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
               Safe, equipment-free routines approved by physiotherapists. Mark each one done,

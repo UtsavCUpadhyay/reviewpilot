@@ -177,7 +177,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
         {status === "loading" ? (
           <><Loader2 className="h-4 w-4 animate-spin" /> Please wait…</>
         ) : isSignup ? (
-          "Create free account"
+          "Create account"
         ) : (
           "Log in"
         )}
@@ -189,7 +189,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
           href={isSignup ? "/login" : "/signup"}
           className="font-semibold text-teal-600 hover:underline"
         >
-          {isSignup ? "Log in" : "Create one free"}
+          {isSignup ? "Log in" : "Create one"}
         </a>
       </p>
 

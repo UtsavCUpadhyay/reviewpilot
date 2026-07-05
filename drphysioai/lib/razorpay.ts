@@ -31,6 +31,7 @@ export const isRazorpayConfigured = Boolean(RAZORPAY_KEY_ID);
  * (plans) and consultationServices. This is the source of truth for charges.
  */
 export const itemAmountsPaise: Record<string, number> = {
+  "plan:Starter": 19900, // ₹199 / month
   "plan:Ultimate Student": 49900, // ₹499 / month
   "plan:Complete Care": 149900, // ₹1,499 / month
   "service:Video Consultation": 49900, // ₹499

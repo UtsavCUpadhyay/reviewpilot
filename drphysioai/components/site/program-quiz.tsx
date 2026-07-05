@@ -61,7 +61,7 @@ const RESULTS: Record<RecKey, { title: string; desc: string; href: string; cta: 
   "post-surgery-rehab": { title: "Post-Surgical rehab", desc: "Safe, staged recovery after surgery, supervised by a physio.", href: "/conditions/post-surgery-rehab", cta: "See post-surgery care" },
   "neuro-elderly-care": { title: "Neuro & Elderly care", desc: "Gentle balance, strength and mobility care for seniors and neuro conditions.", href: "/conditions/neuro-elderly-care", cta: "See senior care" },
   "prenatal": { title: "Prenatal & Postnatal care", desc: "Safe movement and recovery for expecting and new mothers.", href: "/consultation", cta: "Book a consultation" },
-  "student": { title: "AI Study Tutor", desc: "Notes, OSCE prep, quizzes and a voice tutor built for physio students.", href: "/ai", cta: "Start learning free" },
+  "student": { title: "AI Study Tutor", desc: "Notes, OSCE prep, quizzes and a voice tutor built for physio students.", href: "/ai", cta: "Start learning" },
 };
 
 export function ProgramQuiz() {

@@ -15,7 +15,7 @@ import { liveClassHighlights, liveClassSchedule, site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Live Exercise Classes — Join Physio-Led Sessions from Home",
   description:
-    "Weekly live physiotherapy-led exercise classes in India — back & neck pain relief, senior balance, prenatal, mobility and sports performance. Join from home; one free class every month for every member.",
+    "Weekly live physiotherapy-led exercise classes in India — back & neck pain relief, senior balance, prenatal, mobility and sports performance. Join from home; one class every month included with membership.",
   alternates: { canonical: "https://drphysioai.com/live-classes" },
 };
 
@@ -39,7 +39,7 @@ export default function LiveClassesPage() {
             <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
               {weeklyCount} guided sessions every week — from back-pain relief and senior
               balance to prenatal care and sports performance. Real-time coaching, small
-              groups, one free class every month for every member.
+              groups, one class every month included with membership.
             </p>
             <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
               <Button size="lg" asChild>
@@ -49,7 +49,7 @@ export default function LiveClassesPage() {
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="/signup">
-                  <Gift className="h-4 w-4" /> Claim your free class
+                  <Gift className="h-4 w-4" /> Join for ₹199/month
                 </a>
               </Button>
             </div>
@@ -101,7 +101,7 @@ export default function LiveClassesPage() {
                     Unlimited live classes with <span className="text-gradient">Complete Care</span>
                   </h2>
                   <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-                    Every membership includes one free class a month. Go unlimited — plus a
+                    Every membership includes one class a month. Go unlimited — plus a
                     personal physiotherapist and monthly 1:1 consultations — with Complete Care.
                   </p>
                   <div className="mt-6 flex flex-wrap items-center justify-center gap-3">

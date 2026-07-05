@@ -44,7 +44,7 @@ export default function AiLearningPage() {
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button size="lg" asChild>
                   <a href="#ai-plans">
-                    Start Free <Sparkles className="h-4 w-4" />
+                    Get Started <Sparkles className="h-4 w-4" />
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
@@ -117,10 +117,10 @@ export default function AiLearningPage() {
           <div className="container-page">
             <SectionHeading
               eyebrow="AI Subscriptions"
-              title={<>Learn free, upgrade when you&apos;re <span className="text-gradient">ready to top the class</span></>}
-              description="Start on Free forever. Every tier unlocks more of the AI tutor — priced for Indian students."
+              title={<>Learn smart, upgrade when you&apos;re <span className="text-gradient">ready to top the class</span></>}
+              description="Plans from ₹199/month. Every tier unlocks more of the AI tutor — priced for Indian students."
             />
-            <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {aiPlans.map((p, i) => (
                 <Reveal key={p.name} delay={(i % 5) * 80} className="h-full">
                   <Card

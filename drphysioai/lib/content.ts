@@ -119,7 +119,7 @@ export interface LiveClass {
   mins: number;
   spots: number;         // spots left (out of capacity)
   capacity: number;
-  free?: boolean;        // included in every member's free monthly class
+  free?: boolean;        // counts toward a member's included monthly class
 }
 
 /** Weekly live-class timetable (all times IST, hosted on Zoom/Google Meet). */
@@ -191,18 +191,18 @@ export const testimonials = [
 
 export const plans = [
   {
-    name: "Free",
-    price: "₹0",
-    period: "forever",
+    name: "Starter",
+    price: "₹199",
+    period: "/ month",
     highlight: false,
     desc: "Start learning & healing today.",
     features: [
-      "Basic AI notes & concepts",
-      "Daily AI question limit",
-      "1 free 5-min consultation / month",
-      "1 free live exercise class / month",
+      "AI notes & concept learning",
+      "Daily AI question quota",
+      "1 video consultation / month",
+      "1 live exercise class / month",
     ],
-    cta: "Start Free",
+    cta: "Get Started",
   },
   {
     name: "Ultimate Student",
@@ -246,8 +246,8 @@ export const faqs = [
     a: "English, Hindi and Gujarati today — with more regional Indian languages coming. The voice tutor understands and replies in your language.",
   },
   {
-    q: "How does the free plan work?",
-    a: "Every registered user gets basic AI learning, one free 5-minute consultation, and one free live exercise class every month — no card required.",
+    q: "What's included in the ₹199 Starter plan?",
+    a: "The ₹199/month Starter plan gives you AI learning, one video consultation, and one live exercise class every month. You can upgrade to Ultimate Student or Complete Care any time.",
   },
   {
     q: "Can I use it on my phone?",
@@ -287,13 +287,6 @@ export const answerFormats = [
 ];
 
 export const aiPlans = [
-  {
-    name: "Free",
-    price: "₹0",
-    period: "forever",
-    highlight: false,
-    features: ["Basic AI notes", "Concept learning", "Daily question limit", "Community access"],
-  },
   {
     name: "Notes",
     price: "₹199",

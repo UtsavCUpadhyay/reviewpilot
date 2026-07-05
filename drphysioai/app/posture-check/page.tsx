@@ -8,9 +8,9 @@ import { Reveal } from "@/components/ui/reveal";
 import { getLocale } from "@/lib/i18n-server";
 
 export const metadata: Metadata = {
-  title: "Free AI Posture Check — Screen Your Posture in Seconds",
+  title: "AI Posture Check — Screen Your Posture in Seconds",
   description:
-    "Upload a photo and get an instant AI posture screening. DrPhysioAI's AI physiotherapist spots forward head, rounded shoulders and uneven hips — with simple tips. Free, private, India.",
+    "Upload a photo and get an instant AI posture screening. DrPhysioAI's AI physiotherapist spots forward head, rounded shoulders and uneven hips — with simple tips. Private, India.",
   alternates: { canonical: "https://drphysioai.com/posture-check" },
 };
 
@@ -26,7 +26,7 @@ const jsonLd = {
   name: "AI Posture Check",
   url: "https://drphysioai.com/posture-check",
   description:
-    "Free AI posture screening tool. Upload a photo to spot common posture patterns and get simple correction tips from DrPhysioAI.",
+    "AI posture screening tool. Upload a photo to spot common posture patterns and get simple correction tips from DrPhysioAI.",
   about: { "@type": "MedicalCondition", name: "Posture assessment" },
   publisher: { "@type": "MedicalBusiness", name: "DrPhysioAI" },
 };
@@ -49,7 +49,7 @@ export default function PostureCheckPage() {
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
               Upload one photo and our AI physiotherapist screens your standing posture —
-              forward head, rounded shoulders, uneven hips — with a simple tip for each. Free and private.
+              forward head, rounded shoulders, uneven hips — with a simple tip for each. Private and instant.
             </p>
             <div className="mx-auto mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-1.5"><Sparkles className="h-4 w-4 text-teal-500" /> Instant result</span>

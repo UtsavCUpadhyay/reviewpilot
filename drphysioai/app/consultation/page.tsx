@@ -41,8 +41,8 @@ export default function ConsultationPage() {
               Real physiotherapists, <span className="text-gradient">booked in a minute</span>
             </h1>
             <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">
-              Licensed experts, from the comfort of home. Every registered user gets a
-              free 5-minute consultation each month — no card needed.
+              Licensed experts, from the comfort of home. Every membership includes a
+              monthly video consultation — book yours in a minute.
             </p>
             <div className="mx-auto mt-6 flex flex-wrap justify-center gap-x-5 gap-y-2 text-sm text-muted-foreground">
               {included.map((i) => (

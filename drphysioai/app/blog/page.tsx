@@ -11,7 +11,7 @@ import { sortedPosts } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Physiotherapy Blog — Exercises, Pain Relief & Recovery Tips",
   description:
-    "Expert physiotherapy advice for India: back and neck pain relief, knee recovery, posture fixes, and study tips for physiotherapy students. Free, evidence-based guides.",
+    "Expert physiotherapy advice for India: back and neck pain relief, knee recovery, posture fixes, and study tips for physiotherapy students. Evidence-based guides.",
   alternates: { canonical: "https://drphysioai.com/blog" },
 };
 

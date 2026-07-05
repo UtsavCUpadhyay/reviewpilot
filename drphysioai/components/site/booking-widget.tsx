@@ -205,7 +205,7 @@ export function BookingWidget() {
                   <ShieldCheck className="h-3.5 w-3.5 text-teal-500" /> UPI · Cards · Net-banking · GST invoice
                 </p>
                 <p className="flex items-center gap-1.5">
-                  <Check className="h-3.5 w-3.5 text-teal-500" /> Free cancellation up to 4 hours before
+                  <Check className="h-3.5 w-3.5 text-teal-500" /> Cancel up to 4 hours before, no charge
                 </p>
               </div>
 
