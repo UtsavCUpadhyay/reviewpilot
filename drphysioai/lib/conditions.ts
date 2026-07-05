@@ -398,3 +398,93 @@ export const conditions: Condition[] = [
 export function getCondition(slug: string): Condition | undefined {
   return conditions.find((c) => c.slug === slug);
 }
+
+/**
+ * Recommended home-exercise program per condition — a curated list of slugs
+ * from lib/exercises. Rendered on each condition page and links into the
+ * exercise library.
+ */
+export const conditionExercises: Record<string, string[]> = {
+  "back-pain": ["pelvic-tilt", "cat-cow-stretch", "bird-dog", "glute-bridge", "dead-bug"],
+  "neck-pain": ["chin-tucks", "neck-side-stretch", "wall-angels", "thoracic-extension"],
+  "knee-pain": ["quad-sets", "straight-leg-raise", "glute-bridge", "standing-calf-raise"],
+  "sciatica": ["piriformis-stretch", "sciatic-nerve-glide", "pelvic-tilt", "hamstring-stretch", "glute-bridge"],
+  "frozen-shoulder": ["pendulum-swings", "towel-shoulder-stretch", "wall-finger-walk"],
+  "sports-injury": ["hamstring-stretch", "glute-bridge", "side-plank", "clamshell", "ankle-mobility"],
+  "post-surgery-rehab": ["quad-sets", "straight-leg-raise", "glute-bridge", "ankle-mobility"],
+  "neuro-elderly-care": ["standing-calf-raise", "glute-bridge", "clamshell", "ankle-mobility"],
+  "arthritis": ["quad-sets", "straight-leg-raise", "glute-bridge", "clamshell"],
+  "plantar-fasciitis": ["calf-stretch", "plantar-fascia-roll", "standing-calf-raise", "ankle-mobility"],
+  "cervical-spondylosis": ["chin-tucks", "neck-side-stretch", "wall-angels", "thoracic-extension"],
+  "tennis-elbow": ["wrist-flexor-extensor-stretch"],
+  "carpal-tunnel": ["wrist-flexor-extensor-stretch"],
+};
+
+/** Condition-specific FAQs — rendered on each page with FAQPage JSON-LD. */
+export const conditionFaqs: Record<string, { q: string; a: string }[]> = {
+  "back-pain": [
+    { q: "How long does back pain take to get better?", a: "Most everyday (mechanical) back pain improves within 2–6 weeks with the right movement and posture care. Pain lasting longer, or spreading down the leg, should be assessed by a physiotherapist." },
+    { q: "Should I rest or stay active with back pain?", a: "Staying gently active helps most back pain more than bed rest. Short walks and the right exercises keep the spine healthy — avoid only what sharply worsens the pain." },
+    { q: "Can online physiotherapy really help back pain?", a: "Yes. For most back pain, a video assessment plus a personalised home-exercise plan and posture coaching is very effective — no clinic visit needed." },
+  ],
+  "neck-pain": [
+    { q: "Why does my neck hurt from my phone and laptop?", a: "Looking down for hours loads the neck muscles — often called 'tech neck'. Raising your screen, taking breaks, and doing chin-tucks and stretches usually settles it." },
+    { q: "Are neck cracks or clicks dangerous?", a: "Painless clicking is usually harmless. But if you have persistent pain, headaches, or tingling into the arms, get assessed by a physiotherapist." },
+    { q: "What's the fastest way to relieve neck stiffness?", a: "Gentle range-of-motion, heat, chin-tucks and upper-back mobility give the quickest relief, alongside better screen and desk posture." },
+  ],
+  "knee-pain": [
+    { q: "Do I need surgery for knee pain?", a: "Most knee pain — including early arthritis — improves with strengthening and does not need surgery. Building the muscles around the knee is one of the most effective treatments." },
+    { q: "Is it safe to exercise with knee pain?", a: "Usually yes. Mild discomfort during exercise that settles within a day is fine. A physiotherapist can grade the exercises so you strengthen safely." },
+    { q: "What exercises are best for knee pain?", a: "Quad sets, straight-leg raises and glute bridges are safe starting points because they strengthen the knee without heavy joint loading." },
+  ],
+  "sciatica": [
+    { q: "How do I know if it's sciatica?", a: "Sciatica is pain that travels from the lower back or buttock down one leg, often with tingling or numbness. A physiotherapist can confirm the cause." },
+    { q: "What makes sciatica worse?", a: "Prolonged sitting, and coughing or sneezing, often aggravate sciatica. Gentle movement and nerve glides usually help more than rest." },
+    { q: "When is sciatica an emergency?", a: "Seek urgent care if you develop leg weakness, or any change in bladder or bowel control — these are rare but serious warning signs." },
+  ],
+  "frozen-shoulder": [
+    { q: "How long does frozen shoulder last?", a: "Frozen shoulder moves through freezing, frozen and thawing stages and can take 12–18 months to fully settle — physiotherapy speeds up recovery and reduces stiffness." },
+    { q: "Should I push through the pain to loosen it?", a: "No. Gentle, frequent stretching to a comfortable range works better than forcing it. Aggressive stretching in the painful stage can flare it up." },
+    { q: "What helps a frozen shoulder at home?", a: "Pendulum swings, towel stretches and wall finger-walks — done little and often, with heat beforehand — restore movement over time." },
+  ],
+  "sports-injury": [
+    { q: "Should I use ice or heat on a new injury?", a: "For a fresh injury, relative rest, gentle movement and ice for comfort are sensible early on. A physiotherapist will guide when to progress to loading and heat." },
+    { q: "How soon can I return to sport?", a: "Return depends on the injury and how it responds to progressive loading — rushing back is the main cause of re-injury. A staged plan gets you back safely." },
+    { q: "Can physiotherapy prevent future injuries?", a: "Yes — strength, mobility and movement-technique work significantly reduce the risk of the injury coming back." },
+  ],
+  "post-surgery-rehab": [
+    { q: "When should I start physiotherapy after surgery?", a: "It depends on the operation, but guided rehab often begins within days to weeks. Following a protocol matched to your surgery is key to a safe recovery." },
+    { q: "Can I do rehab at home after surgery?", a: "Much post-surgical rehab can be done at home with a physiotherapist guiding you over video and progressing the exercises safely at each stage." },
+    { q: "What if an exercise hurts after surgery?", a: "Some discomfort is expected, but sharp or increasing pain is a signal to ease off and check in with your physiotherapist." },
+  ],
+  "neuro-elderly-care": [
+    { q: "Can physiotherapy help after a stroke?", a: "Yes. The brain keeps rewiring for months and years, and regular task-focused physiotherapy helps rebuild strength, balance and independence." },
+    { q: "How can we prevent falls in older adults?", a: "Balance training, leg strengthening and home-safety advice substantially reduce falls. A physiotherapist can assess and build a tailored program." },
+    { q: "Is physiotherapy safe for elderly patients?", a: "Absolutely — programs are gentle, paced and matched to the person's ability, with caregiver guidance where helpful." },
+  ],
+  "arthritis": [
+    { q: "Will exercise damage my arthritic joints?", a: "No — appropriate exercise protects joints and reduces pain. Movement nourishes cartilage; the key is the right type and dose, which a physiotherapist can set." },
+    { q: "What's the best exercise for arthritis?", a: "Low-impact strengthening (quad sets, bridges) plus gentle activity like walking, cycling or pool work protects joints while keeping you fit." },
+    { q: "Can I reduce arthritis pain without medication?", a: "Many people reduce pain through strengthening, movement, weight management and pacing — often alongside, and sometimes instead of, medication." },
+  ],
+  "plantar-fasciitis": [
+    { q: "Why is heel pain worst in the morning?", a: "The plantar fascia tightens overnight, so the first steps stretch it suddenly. Gentle calf and foot stretches before getting up make mornings easier." },
+    { q: "How long does plantar fasciitis take to heal?", a: "With consistent stretching and load management, most cases improve within a few weeks to a few months." },
+    { q: "Do I need special shoes for plantar fasciitis?", a: "Supportive footwear helps, and avoiding barefoot walking on hard floors. A physiotherapist can advise on footwear and any inserts." },
+  ],
+  "cervical-spondylosis": [
+    { q: "Is cervical spondylosis serious?", a: "It's a common age-related change and usually manageable with exercise and posture care. Seek assessment if you get arm weakness, numbness or clumsiness." },
+    { q: "What exercises help cervical spondylosis?", a: "Chin-tucks, gentle neck rotations, and shoulder-blade and upper-back strengthening keep the neck mobile and supported." },
+    { q: "Can neck pain from spondylosis be cured?", a: "The changes don't reverse, but symptoms can be well-controlled — most people stay comfortable with the right routine and habits." },
+  ],
+  "tennis-elbow": [
+    { q: "How long does tennis elbow take to recover?", a: "Tendon problems are slow to settle — often several weeks to a few months. A progressive strengthening program is the most reliable path." },
+    { q: "Should I rest my elbow completely?", a: "Complete rest rarely fixes tennis elbow. Modifying aggravating activities while doing graded strengthening works far better." },
+    { q: "Do I need a brace for tennis elbow?", a: "A strap can ease symptoms during activity, but it's an aid, not a cure — the strengthening program is what resolves it." },
+  ],
+  "carpal-tunnel": [
+    { q: "Can carpal tunnel go away without surgery?", a: "Many mild-to-moderate cases improve with nerve-gliding exercises, night splinting and workstation changes, avoiding surgery." },
+    { q: "Why is carpal tunnel worse at night?", a: "Wrist positions during sleep can compress the nerve, so symptoms often wake you. A neutral wrist splint at night usually helps." },
+    { q: "What exercises help carpal tunnel?", a: "Nerve-gliding and tendon-gliding movements, plus wrist and forearm stretches, can ease symptoms — a physiotherapist will show the correct technique." },
+  ],
+};

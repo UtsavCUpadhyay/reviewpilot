@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/posture-check`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${base}/refer`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${base}/blog`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${base}/glossary`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     ...blogPosts.map((p) => ({
       url: `${base}/blog/${p.slug}`,
       lastModified: new Date(p.date),
