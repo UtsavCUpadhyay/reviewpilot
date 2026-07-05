@@ -18,9 +18,11 @@ export default function AboutPage() {
     >
       <ContentHeading>Our story</ContentHeading>
       <p>
-        DrPhysioAI was founded by <strong>{site.founder}</strong>, a physiotherapist who saw two
-        problems every day: students drowning in scattered notes with no one to explain concepts at
-        2am, and patients — especially in smaller towns — unable to reach quality physiotherapy care.
+        DrPhysioAI was founded by <strong>{site.founder}</strong> — a physiotherapist (BPT,
+        Sumandeep Vidyapeeth Deemed University, Vadodara) with a Master of Advanced Public Health
+        from Queensland, Australia. He saw two problems every day: students drowning in scattered
+        notes with no one to explain concepts at 2am, and patients — especially in smaller towns —
+        unable to reach quality physiotherapy care.
       </p>
       <p>
         So we built one platform that solves both: a 24/7 AI study tutor for physiotherapy students,

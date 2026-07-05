@@ -1,4 +1,4 @@
-import { MessageCircle, Mail, ShieldCheck, Languages, Sparkles, Stethoscope } from "lucide-react";
+import { MessageCircle, Mail, GraduationCap, Languages, Sparkles, Stethoscope } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/content";
@@ -14,10 +14,10 @@ import { site } from "@/lib/content";
 const FOUNDER_PHOTO = ""; // e.g. "/founder.jpg"
 
 const trust = [
-  { icon: Stethoscope, text: "Licensed physiotherapist" },
+  { icon: GraduationCap, text: "BPT · Sumandeep Vidyapeeth, Vadodara" },
+  { icon: GraduationCap, text: "MPH (Advanced Public Health) · Australia" },
   { icon: Sparkles, text: "Founder, DrPhysioAI" },
   { icon: Languages, text: "English · हिन्दी · ગુજરાતી" },
-  { icon: ShieldCheck, text: "Made in India" },
 ];
 
 export function Founder() {
@@ -69,11 +69,15 @@ export function Founder() {
               Built by a physiotherapist, <span className="text-gradient">for India</span>
             </h2>
             <p className="mt-3 text-lg font-semibold">Dr. Utsav Chiragkumar Upadhyay</p>
+            <p className="mt-1 text-sm font-medium text-teal-600">
+              BPT, Sumandeep Vidyapeeth Deemed University · Master of Advanced Public Health, Australia
+            </p>
             <p className="mt-4 max-w-xl text-muted-foreground">
-              A practising physiotherapist who saw two problems every day: students drowning in
-              scattered notes with no one to explain concepts at 2am, and patients — especially in
-              smaller towns — unable to reach quality physiotherapy care. DrPhysioAI is his answer:
-              one platform that teaches students like a great professor and treats patients like family.
+              A physiotherapist with a public-health background who saw two problems every day:
+              students drowning in scattered notes with no one to explain concepts at 2am, and
+              patients — especially in smaller towns — unable to reach quality physiotherapy care.
+              DrPhysioAI is his answer: one platform that teaches students like a great professor
+              and treats patients like family.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-2">
