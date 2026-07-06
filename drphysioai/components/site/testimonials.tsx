@@ -1,5 +1,6 @@
-import { Quote, Star } from "lucide-react";
+import { Quote, Star, ArrowRight, PenLine } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { testimonials } from "@/lib/content";
@@ -46,6 +47,15 @@ export function Testimonials() {
               </Card>
             </Reveal>
           ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <Button asChild>
+            <a href="/reviews"><PenLine className="h-4 w-4" /> Leave a review</a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="/reviews">Read all reviews <ArrowRight className="h-4 w-4" /></a>
+          </Button>
         </div>
       </div>
     </section>
