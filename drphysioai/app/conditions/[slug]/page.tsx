@@ -6,6 +6,7 @@ import { Footer } from "@/components/site/footer";
 import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ShareRow } from "@/components/site/share-row";
 import { getLocale } from "@/lib/i18n-server";
 import { conditions, getCondition, conditionExercises, conditionFaqs } from "@/lib/conditions";
 import { getExercise } from "@/lib/exercises";
@@ -212,6 +213,13 @@ export default function ConditionPage({ params }: { params: { slug: string } }) 
             </div>
           </section>
         )}
+
+        {/* Share */}
+        <section className="pb-6">
+          <div className="container-page">
+            <ShareRow path={`/conditions/${c.slug}`} title={`${c.name} — physiotherapy that helps`} />
+          </div>
+        </section>
 
         {/* CTA band */}
         <section className="pb-16 sm:pb-24">
