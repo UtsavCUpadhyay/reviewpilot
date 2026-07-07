@@ -6,6 +6,7 @@ import { Footer } from "@/components/site/footer";
 import { WhatsAppFab } from "@/components/site/whatsapp-fab";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ShareRow } from "@/components/site/share-row";
 import { getLocale } from "@/lib/i18n-server";
 import { blogPosts, getPost } from "@/lib/blog";
 import { getCondition } from "@/lib/conditions";
@@ -114,6 +115,11 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 symptoms, consult a licensed physiotherapist.
               </p>
             </article>
+
+            {/* Share */}
+            <div className="mx-auto mt-8 max-w-3xl border-t border-border pt-6">
+              <ShareRow path={`/blog/${post.slug}`} title={post.title} />
+            </div>
 
             {/* Related conditions */}
             {related.length > 0 && (
