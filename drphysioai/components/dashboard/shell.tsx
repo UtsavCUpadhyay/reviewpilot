@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { usePathname } from "next/navigation";
 import {
   LayoutDashboard, Users, CalendarDays, Brain, FileText,
   Dumbbell, TrendingUp, CreditCard, Settings, Menu, X, Bell, Search,
@@ -10,19 +11,20 @@ import { ThemeToggle } from "@/components/site/theme-toggle";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { icon: LayoutDashboard, label: "Overview", active: true },
-  { icon: Users, label: "Patients" },
-  { icon: CalendarDays, label: "Appointments" },
-  { icon: Brain, label: "Assessments" },
-  { icon: FileText, label: "Documentation" },
-  { icon: Dumbbell, label: "Exercise Library" },
-  { icon: TrendingUp, label: "Outcomes" },
-  { icon: CreditCard, label: "Billing" },
-  { icon: Settings, label: "Settings" },
+  { icon: LayoutDashboard, label: "Overview", href: "/dashboard" },
+  { icon: Users, label: "Patients", href: "/patients" },
+  { icon: CalendarDays, label: "Appointments", href: "#" },
+  { icon: Brain, label: "Assessments", href: "/assistant" },
+  { icon: FileText, label: "Documentation", href: "/assistant" },
+  { icon: Dumbbell, label: "Exercise Library", href: "/exercises" },
+  { icon: TrendingUp, label: "Outcomes", href: "#" },
+  { icon: CreditCard, label: "Billing", href: "#" },
+  { icon: Settings, label: "Settings", href: "#" },
 ];
 
 export function DashboardShell({ children }: { children: React.ReactNode }) {
   const [open, setOpen] = React.useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="min-h-screen bg-muted/30">
@@ -40,20 +42,23 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           </button>
         </div>
         <nav className="space-y-1 px-3 py-2">
-          {navItems.map((item) => (
-            <a
-              key={item.label}
-              href="#"
-              className={cn(
-                "flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors",
-                item.active
-                  ? "bg-brand-soft text-teal-700 dark:text-teal-300"
-                  : "text-muted-foreground hover:bg-muted hover:text-foreground",
-              )}
-            >
-              <item.icon className="h-[1.15rem] w-[1.15rem]" /> {item.label}
-            </a>
-          ))}
+          {navItems.map((item) => {
+            const active = item.href !== "#" && pathname === item.href;
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors",
+                  active
+                    ? "bg-brand-soft text-teal-700 dark:text-teal-300"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground",
+                )}
+              >
+                <item.icon className="h-[1.15rem] w-[1.15rem]" /> {item.label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="absolute inset-x-3 bottom-4 rounded-2xl bg-brand-gradient p-4 text-white">
