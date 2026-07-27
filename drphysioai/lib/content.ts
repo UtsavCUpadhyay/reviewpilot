@@ -13,10 +13,10 @@ export const site = {
 };
 
 export const nav = [
-  { label: "AI Learning", href: "/ai" },
-  { label: "Consultation", href: "/consultation" },
-  { label: "Exercise Programs", href: "/consultation#services" },
-  { label: "Live Classes", href: "/#live" },
+  { label: "AI Assistant", href: "/assistant" },
+  { label: "Modules", href: "/#modules" },
+  { label: "Platform", href: "/#platform" },
+  { label: "Security", href: "/#security" },
   { label: "Pricing", href: "/#pricing" },
 ];
 

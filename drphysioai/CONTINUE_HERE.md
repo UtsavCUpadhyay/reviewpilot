@@ -4,6 +4,18 @@
 > committed and pushed to branch **`claude/drphysioai-platform-design-ekm6m3`**.
 > Nothing from the previous session is lost.
 
+> ## ⚠️ DIRECTION PIVOT (latest)
+> The product pivoted from a **consumer** app (students/patients) to a **B2B
+> clinical SaaS for physiotherapists** — "the operating system for
+> physiotherapy". See **`DEVELOPMENT_PLAN.md`** for the phased roadmap and
+> architecture. The homepage (`/`) is now clinician-focused; the flagship is
+> the **AI Clinical Assistant** at `/assistant` (`lib/clinical.ts` +
+> `components/clinical/assessment-wizard.tsx`). The old consumer pages
+> (`/ai`, `/consultation`) still exist in the repo but are no longer linked in
+> the nav — remove them if the pivot is permanent. Clinical safety framing
+> (decision-support only, clinician decides, not a medical device) is baked in
+> and must stay.
+
 ## What this project is
 
 **DrPhysioAI** — India's AI-powered physiotherapy platform: an AI study tutor

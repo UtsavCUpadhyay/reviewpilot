@@ -20,31 +20,31 @@ const SITE_URL = "https://drphysioai.com";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "DrPhysioAI — Your Personal AI Physiotherapist",
+    default: "DrPhysioAI — The Clinical AI Platform for Physiotherapists",
     template: "%s · DrPhysioAI",
   },
   description:
-    "Learn, recover and move better with DrPhysioAI — India's AI-powered physiotherapy platform. AI study tutor for physio students plus real online consultations, exercise programs and live classes.",
+    "DrPhysioAI is the AI-powered clinical operating system for physiotherapists: structured assessment, transparent clinical reasoning with ranked differentials, instant SOAP documentation, evidence-based exercise prescription and practice management. Decision support — the clinician decides.",
   keywords: [
-    "physiotherapy", "AI physiotherapist", "physio notes", "BPT exam prep",
-    "online physiotherapy consultation India", "exercise programs", "OSCE practice",
-    "physiotherapy students", "back pain", "knee pain", "rehab", "DrPhysioAI",
+    "physiotherapy software", "clinical reasoning assistant", "physio SOAP notes",
+    "assessment workflow", "exercise prescription software", "outcome measures",
+    "physiotherapy SaaS", "rehab clinical decision support", "practice management physio",
+    "DrPhysioAI",
   ],
   authors: [{ name: "Dr. Utsav Chiragkumar Upadhyay" }],
   openGraph: {
     type: "website",
-    locale: "en_IN",
     url: SITE_URL,
     siteName: "DrPhysioAI",
-    title: "DrPhysioAI — Your Personal AI Physiotherapist",
+    title: "DrPhysioAI — The Clinical AI Platform for Physiotherapists",
     description:
-      "AI study tutor for physiotherapy students + real online consultations, exercise programs and live classes. Learn. Recover. Move better.",
+      "Structured assessment, transparent reasoning, instant documentation and exercise prescription — the operating system for physiotherapy.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "DrPhysioAI — Your Personal AI Physiotherapist",
+    title: "DrPhysioAI — The Clinical AI Platform for Physiotherapists",
     description:
-      "India's AI-powered physiotherapy learning & consultation platform.",
+      "AI clinical decision-support for physiotherapists. The clinician always decides.",
   },
   alternates: { canonical: SITE_URL },
   robots: { index: true, follow: true },
@@ -66,16 +66,15 @@ const themeScript = `
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "MedicalBusiness",
+  "@type": "SoftwareApplication",
   name: "DrPhysioAI",
+  applicationCategory: "HealthApplication",
   description:
-    "AI-powered physiotherapy learning and online consultation platform in India.",
+    "AI-powered clinical decision-support platform for physiotherapists: assessment, clinical reasoning, documentation and exercise prescription.",
   url: SITE_URL,
-  telephone: "+91-97372-06393",
-  email: "UtsavCUpadhyay@gmail.com",
-  medicalSpecialty: "Physiotherapy",
-  areaServed: "IN",
-  founder: { "@type": "Person", name: "Dr. Utsav Chiragkumar Upadhyay" },
+  operatingSystem: "Web",
+  offers: { "@type": "Offer", category: "SaaS subscription" },
+  author: { "@type": "Person", name: "Dr. Utsav Chiragkumar Upadhyay" },
 };
 
 export default function RootLayout({

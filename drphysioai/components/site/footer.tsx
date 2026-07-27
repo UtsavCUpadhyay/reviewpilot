@@ -5,19 +5,19 @@ import { site } from "@/lib/content";
 const columns = [
   {
     title: "Platform",
-    links: ["AI Learning", "Doctor Consultation", "Exercise Programs", "Live Classes", "Pricing"],
+    links: ["AI Clinical Assistant", "Assessments", "Documentation", "Exercise Library", "Pricing"],
   },
   {
     title: "Company",
-    links: ["About Us", "Our Story", "Careers", "Blog", "Contact"],
+    links: ["About Us", "Evidence", "Careers", "Blog", "Contact"],
   },
   {
     title: "For",
-    links: ["Students", "Patients", "Doctors", "Elderly Care", "Fitness"],
+    links: ["Private clinics", "Hospitals", "Universities", "Sports teams", "Students"],
   },
   {
     title: "Legal",
-    links: ["Privacy Policy", "Terms", "Refund Policy", "Medical Disclaimer", "Cookie Policy"],
+    links: ["Privacy Policy", "Terms", "Data Processing", "Clinical Disclaimer", "Cookie Policy"],
   },
 ];
 
@@ -29,8 +29,8 @@ export function Footer() {
           <div>
             <Logo />
             <p className="mt-4 max-w-xs text-sm text-muted-foreground">
-              India&apos;s AI-powered physiotherapy platform for learning, recovery
-              and expert online consultation.
+              The AI-powered clinical operating system for physiotherapists —
+              assessment, reasoning, documentation and practice management.
             </p>
 
             <a
