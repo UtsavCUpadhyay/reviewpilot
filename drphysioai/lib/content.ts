@@ -14,9 +14,9 @@ export const site = {
 
 export const nav = [
   { label: "AI Assistant", href: "/assistant" },
+  { label: "Exercises", href: "/exercises" },
   { label: "Modules", href: "/#modules" },
   { label: "Platform", href: "/#platform" },
-  { label: "Security", href: "/#security" },
   { label: "Pricing", href: "/#pricing" },
 ];
 
