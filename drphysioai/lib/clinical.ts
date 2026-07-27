@@ -297,6 +297,47 @@ export const saasPlans = [
   },
 ];
 
+/** Feature comparison for the pricing page. `true`/`false` or a string value. */
+export const planComparison: { group: string; rows: { feature: string; solo: boolean | string; clinic: boolean | string; enterprise: boolean | string }[] }[] = [
+  {
+    group: "Clinical AI",
+    rows: [
+      { feature: "AI Clinical Assistant", solo: true, clinic: true, enterprise: true },
+      { feature: "All assessment modules", solo: true, clinic: true, enterprise: true },
+      { feature: "SOAP & report drafting", solo: true, clinic: true, enterprise: true },
+      { feature: "Exercise prescription & handouts", solo: true, clinic: true, enterprise: true },
+      { feature: "Outcome measure tracking", solo: true, clinic: true, enterprise: true },
+    ],
+  },
+  {
+    group: "Practice",
+    rows: [
+      { feature: "Clinicians included", solo: "1", clinic: "Up to 5", enterprise: "Unlimited" },
+      { feature: "Shared patient records", solo: false, clinic: true, enterprise: true },
+      { feature: "Scheduling & billing", solo: false, clinic: true, enterprise: true },
+      { feature: "Clinic dashboard & analytics", solo: false, clinic: true, enterprise: true },
+      { feature: "Role-based access", solo: false, clinic: true, enterprise: true },
+    ],
+  },
+  {
+    group: "Enterprise & compliance",
+    rows: [
+      { feature: "SSO & data isolation", solo: false, clinic: false, enterprise: true },
+      { feature: "Audit logs & compliance", solo: false, clinic: false, enterprise: true },
+      { feature: "University teaching mode", solo: false, clinic: false, enterprise: true },
+      { feature: "Dedicated support & SLA", solo: false, clinic: false, enterprise: true },
+    ],
+  },
+];
+
+export const pricingFaqs = [
+  { q: "Is there a free trial?", a: "Yes — every plan starts with a 7-day free trial. No charge until the trial ends, and you can cancel any time." },
+  { q: "Can I change plans later?", a: "Absolutely. Upgrade or downgrade whenever your practice changes — from Solo to Clinic to Enterprise." },
+  { q: "How is billing handled?", a: "Securely through our store checkout. Prices are per month; taxes/GST are shown at checkout. Contact us for annual or multi-year pricing." },
+  { q: "Is my patient data safe?", a: "Yes — encryption in transit and at rest, role-based access, audit logs and clinic-level data isolation are core to the platform." },
+  { q: "Is this a medical device?", a: "No. DrPhysioAI is clinical decision-support for qualified clinicians. It provides suggestions and documentation aids; the treating physiotherapist always makes the final decision." },
+];
+
 export const evidenceSources = [
   "Clinical practice guidelines", "Peer-reviewed rehab research", "Validated outcome measures",
   "Clinical prediction rules", "Open-access education", "Return-to-sport/work pathways",

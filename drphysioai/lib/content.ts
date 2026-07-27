@@ -17,7 +17,7 @@ export const nav = [
   { label: "Exercises", href: "/exercises" },
   { label: "Modules", href: "/#modules" },
   { label: "Platform", href: "/#platform" },
-  { label: "Pricing", href: "/#pricing" },
+  { label: "Pricing", href: "/pricing" },
 ];
 
 export const stats = [
