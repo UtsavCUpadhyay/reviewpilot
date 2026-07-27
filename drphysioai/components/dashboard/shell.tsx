@@ -2,8 +2,8 @@
 
 import * as React from "react";
 import {
-  LayoutDashboard, Sparkles, CalendarDays, Activity, FileText,
-  Trophy, Bookmark, CreditCard, Settings, Menu, X, Bell, Search,
+  LayoutDashboard, Users, CalendarDays, Brain, FileText,
+  Dumbbell, TrendingUp, CreditCard, Settings, Menu, X, Bell, Search,
 } from "lucide-react";
 import { Logo } from "@/components/site/logo";
 import { ThemeToggle } from "@/components/site/theme-toggle";
@@ -11,13 +11,13 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Overview", active: true },
-  { icon: Sparkles, label: "AI Learning" },
-  { icon: CalendarDays, label: "Consultations" },
-  { icon: Activity, label: "Exercise Programs" },
-  { icon: Trophy, label: "Achievements" },
-  { icon: FileText, label: "Reports" },
-  { icon: Bookmark, label: "Bookmarks" },
-  { icon: CreditCard, label: "Payments" },
+  { icon: Users, label: "Patients" },
+  { icon: CalendarDays, label: "Appointments" },
+  { icon: Brain, label: "Assessments" },
+  { icon: FileText, label: "Documentation" },
+  { icon: Dumbbell, label: "Exercise Library" },
+  { icon: TrendingUp, label: "Outcomes" },
+  { icon: CreditCard, label: "Billing" },
   { icon: Settings, label: "Settings" },
 ];
 
@@ -57,13 +57,13 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
         </nav>
 
         <div className="absolute inset-x-3 bottom-4 rounded-2xl bg-brand-gradient p-4 text-white">
-          <p className="text-sm font-bold">Go Ultimate</p>
-          <p className="mt-1 text-xs text-white/85">Unlimited AI, OSCE & case studies.</p>
+          <p className="text-sm font-bold">Trial · 5 days left</p>
+          <p className="mt-1 text-xs text-white/85">Upgrade to keep your caseload & notes.</p>
           <a
             href="/#pricing"
             className="mt-3 inline-flex rounded-full bg-white px-3 py-1.5 text-xs font-bold text-teal-700"
           >
-            Upgrade ₹499/mo
+            See plans
           </a>
         </div>
       </aside>
@@ -86,7 +86,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
           <div className="relative hidden max-w-sm flex-1 sm:block">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <input
-              placeholder="Search notes, topics, exercises…"
+              placeholder="Search patients, notes, assessments…"
               className="h-10 w-full rounded-full border border-input bg-background pl-9 pr-4 text-sm outline-none focus:ring-2 focus:ring-ring"
             />
           </div>
@@ -96,7 +96,7 @@ export function DashboardShell({ children }: { children: React.ReactNode }) {
               <Bell className="h-[1.15rem] w-[1.15rem]" />
               <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-coral-500" />
             </button>
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-gradient font-bold text-white">A</span>
+            <span className="grid h-10 w-10 place-items-center rounded-full bg-brand-gradient font-bold text-white">U</span>
           </div>
         </header>
 

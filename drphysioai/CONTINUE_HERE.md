@@ -57,10 +57,16 @@ Built as a **new Next.js 14 app in `drphysioai/`**, alongside the existing
 - **`/login` + `/signup`** — split-screen `AuthShell` + reusable `AuthForm`
   (Google / WhatsApp-OTP / email). UI-only; `onSubmit` is a stub → wire to
   Supabase auth.
-- **`/dashboard`** — `DashboardShell` (sidebar + topbar, mobile drawer) with
-  KPI cards (streak, AI questions, accuracy, badges), continue-learning
-  progress, next-consultation card, today's goal, activity feed. Mock data;
-  `robots: noindex`.
+- **`/dashboard`** — clinician **practice cockpit** (`DashboardShell` sidebar:
+  Patients, Appointments, Assessments, Documentation, Exercises, Outcomes,
+  Billing): caseload KPIs, today's schedule (clinic/telehealth), documentation
+  queue with urgency, outcome-measure bars. Mock data; `robots: noindex`.
+- **`/exercises`** — exercise library (search + region/type filters, full
+  detail) + prescription builder (editable dosage) + print-ready patient
+  handout. Data in `lib/exercises.ts`.
+- **`/assistant`** — assessment wizard now also drafts an editable **SOAP note**
+  (`buildSoapNote` in `lib/clinical.ts`); regions: Knee/Low back/Shoulder/Neck/
+  Ankle.
 
 All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
 `npm run build` is clean; all routes are static (~100–104 kB first load).
