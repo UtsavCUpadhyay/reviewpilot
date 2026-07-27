@@ -83,7 +83,26 @@ All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
 - **Dashboard data** — all mock/hard-coded. Replace with real user data once
   auth + DB are in place.
 
-## SHOPIFY — the reason for the fresh session
+## SHOPIFY — connected & wired ✅
+
+Store **DrPhysioAI** (`gyvjr4-qz.myshopify.com`, currency **AUD**) is connected.
+- Created ACTIVE B2B products: **Solo** (variant `48134070730939`, 1499) and
+  **Clinic** (variant `48134070763707`, 3999). Old consumer products archived.
+- Site pricing CTAs now link to real checkout permalinks
+  (`/cart/<variantId>:1`) via `STORE_DOMAIN` in `lib/clinical.ts`. Enterprise →
+  mailto.
+
+**Merchant setup still required for live checkout (do in Shopify admin):**
+1. **Currency:** store is AUD but pricing is intended INR — change in
+   Settings → Store details → Currency (only possible before real orders).
+2. **Storefront password:** turn OFF (Online Store → Preferences) so checkout
+   links are publicly reachable.
+3. **Payments:** add a provider (Settings → Payments) — e.g. Razorpay/UPI for India.
+4. **Recurring billing:** current products are one-time. For true monthly
+   subscriptions, install the **Shopify Subscriptions** app and attach selling
+   plans to the Solo/Clinic products.
+
+## (Earlier) SHOPIFY re-auth note
 
 In the previous session, calling `switch-shop` revoked the Shopify token and it
 could not be re-authorized inside that running session. **This new session

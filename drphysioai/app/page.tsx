@@ -227,7 +227,12 @@ export default function HomePage() {
                         ))}
                       </ul>
                       <Button variant={p.highlight ? "primary" : "outline"} size="lg" className="mt-8 w-full" asChild>
-                        <a href="/signup">{p.cta}</a>
+                        <a
+                          href={p.href}
+                          {...(p.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        >
+                          {p.cta}
+                        </a>
                       </Button>
                     </div>
                   </Card>

@@ -260,6 +260,10 @@ Differential reasoning documented in the assessment. Clinician to confirm/adjust
   };
 }
 
+/** Shopify store domain used to build checkout permalinks. */
+export const STORE_DOMAIN = "gyvjr4-qz.myshopify.com";
+const checkout = (variantId: string) => `https://${STORE_DOMAIN}/cart/${variantId}:1`;
+
 export const saasPlans = [
   {
     name: "Solo",
@@ -269,6 +273,7 @@ export const saasPlans = [
     desc: "For individual physiotherapists.",
     features: ["AI clinical assistant", "All assessment modules", "SOAP & report drafting", "Exercise prescription", "7-day free trial"],
     cta: "Start free trial",
+    href: checkout("48134070730939"),
   },
   {
     name: "Clinic",
@@ -278,6 +283,7 @@ export const saasPlans = [
     desc: "Multi-clinician practices.",
     features: ["Everything in Solo", "Shared patient records", "Scheduling & billing", "Clinic dashboard & analytics", "Role-based access"],
     cta: "Start free trial",
+    href: checkout("48134070763707"),
   },
   {
     name: "Enterprise",
@@ -287,6 +293,7 @@ export const saasPlans = [
     desc: "Hospitals, universities, NDIS.",
     features: ["Everything in Clinic", "SSO & data isolation", "Audit logs & compliance", "University teaching mode", "Dedicated support & SLA"],
     cta: "Book a demo",
+    href: "mailto:UtsavCUpadhyay@gmail.com?subject=DrPhysioAI%20Enterprise%20demo",
   },
 ];
 
