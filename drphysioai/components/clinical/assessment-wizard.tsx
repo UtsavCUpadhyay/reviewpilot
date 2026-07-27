@@ -3,12 +3,14 @@
 import * as React from "react";
 import {
   ArrowRight, ArrowLeft, AlertTriangle, Check, Stethoscope, FileText,
-  Activity, RefreshCw, ChevronRight, Info,
+  Activity, RefreshCw, ChevronRight, Info, Copy, ClipboardCheck, Lock,
 } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { regions, redFlags, type Differential } from "@/lib/clinical";
+import { regions, redFlags, buildSoapNote, type Differential } from "@/lib/clinical";
 import { cn } from "@/lib/utils";
+
+type Soap = ReturnType<typeof buildSoapNote>;
 
 const STEPS = ["Patient", "Region", "Red flags", "Objective", "Reasoning"] as const;
 
@@ -28,6 +30,9 @@ export function AssessmentWizard() {
   const [complaint, setComplaint] = React.useState<string | null>(null);
   const [flags, setFlags] = React.useState<string[]>([]);
   const [tests, setTests] = React.useState<string[]>([]);
+  const [soap, setSoap] = React.useState<Soap | null>(null);
+  const [copied, setCopied] = React.useState(false);
+  const [finalised, setFinalised] = React.useState(false);
 
   const data = regions[region];
   const hasRedFlag = flags.length > 0;
@@ -38,6 +43,24 @@ export function AssessmentWizard() {
 
   function reset() {
     setStep(0); setComplaint(null); setFlags([]); setTests([]);
+    setSoap(null); setCopied(false); setFinalised(false);
+  }
+
+  function draftSoap() {
+    const top = ranked[0];
+    setSoap(buildSoapNote({
+      age, sex, region, complaint, flags, tests,
+      topDx: top.dx, confidence: top.confidence,
+    }));
+    setCopied(false); setFinalised(false);
+  }
+
+  function copySoap() {
+    if (!soap) return;
+    const text = `SUBJECTIVE\n${soap.subjective}\n\nOBJECTIVE\n${soap.objective}\n\nASSESSMENT\n${soap.assessment}\n\nPLAN\n${soap.plan}`;
+    navigator.clipboard?.writeText(text);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
   }
 
   // Re-rank differentials: nudge confidence up for dx whose special tests were ticked.
@@ -219,9 +242,49 @@ export function AssessmentWizard() {
             </div>
 
             <div className="mt-5 flex flex-wrap gap-2.5">
-              <Button><FileText className="h-4 w-4" /> Draft SOAP note</Button>
+              <Button onClick={draftSoap}><FileText className="h-4 w-4" /> {soap ? "Regenerate SOAP note" : "Draft SOAP note"}</Button>
               <Button variant="outline" onClick={reset}><RefreshCw className="h-4 w-4" /> New assessment</Button>
             </div>
+
+            {/* Editable SOAP note (Phase 3 — instant documentation) */}
+            {soap && (
+              <div className="mt-6 animate-fade-up rounded-2xl border border-border bg-muted/30 p-5">
+                <div className="flex flex-wrap items-center gap-2">
+                  <FileText className="h-5 w-5 text-teal-600" />
+                  <h4 className="font-display text-base font-bold">Draft SOAP note</h4>
+                  <span className="rounded-full bg-teal-500/15 px-2.5 py-0.5 text-[11px] font-bold text-teal-600">Editable</span>
+                  <div className="ml-auto flex gap-2">
+                    <Button size="sm" variant="outline" onClick={copySoap}>
+                      {copied ? <><ClipboardCheck className="h-3.5 w-3.5" /> Copied</> : <><Copy className="h-3.5 w-3.5" /> Copy</>}
+                    </Button>
+                    <Button size="sm" onClick={() => setFinalised(true)} disabled={finalised}>
+                      {finalised ? <><Lock className="h-3.5 w-3.5" /> Finalised</> : <>Finalise &amp; sign</>}
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="mt-4 grid gap-3">
+                  {(["subjective", "objective", "assessment", "plan"] as const).map((k) => (
+                    <label key={k} className="block">
+                      <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-muted-foreground">{k}</span>
+                      <textarea
+                        value={soap[k]}
+                        disabled={finalised}
+                        onChange={(e) => setSoap((prev) => (prev ? { ...prev, [k]: e.target.value } : prev))}
+                        rows={k === "plan" ? 6 : 3}
+                        className="w-full resize-y rounded-xl border border-input bg-background p-3 text-sm leading-relaxed outline-none focus:ring-2 focus:ring-ring disabled:opacity-70"
+                      />
+                    </label>
+                  ))}
+                </div>
+
+                {finalised && (
+                  <p className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-teal-600">
+                    <Lock className="h-3.5 w-3.5" /> Note finalised & signed by clinician (demo). In production this locks the version and writes an audit entry.
+                  </p>
+                )}
+              </div>
+            )}
 
             <p className="mt-5 rounded-xl bg-muted/60 p-3 text-xs text-muted-foreground">
               <span className="font-semibold text-foreground">Clinician note:</span> these are AI-generated

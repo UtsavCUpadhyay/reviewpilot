@@ -179,7 +179,86 @@ export const regions: Record<string, RegionData> = {
       },
     ],
   },
+  Neck: {
+    complaints: ["Neck pain with stiffness", "Pain radiating to arm", "Headache from neck", "Pain with sustained postures"],
+    specialTests: ["Spurling's test", "Neuro screen (C5–T1)", "Upper limb tension test", "Cervical ROM", "Distraction test"],
+    differentials: [
+      {
+        dx: "Non-specific mechanical neck pain",
+        confidence: "High",
+        rationale: "Movement/posture-related pain, no neuro deficit, no red flags — the most common presentation.",
+        evidence: "Guidelines support exercise, education and manual therapy as adjunct for mechanical neck pain.",
+        furtherTests: ["Cervical ROM", "Postural/movement screen", "Yellow-flag screen"],
+        management: ["Education & reassurance", "Active ROM + strengthening", "Manual therapy adjunct", "Ergonomic advice"],
+        exercises: ["Deep neck flexor activation", "Scapular setting", "Cervical AROM", "Postural endurance"],
+      },
+      {
+        dx: "Cervical radiculopathy",
+        confidence: "Moderate",
+        rationale: "Arm pain with a positive Spurling's + matching dermatome/myotome raises suspicion of nerve-root involvement.",
+        evidence: "Wainner cluster (Spurling's, distraction, ULTT, ROM<60°) improves diagnostic accuracy.",
+        furtherTests: ["Full neuro screen", "Wainner cluster", "Monitor for progressive deficit"],
+        management: ["Neural mobilisation as tolerated", "Deloading/retraining", "Refer if progressive deficit"],
+        exercises: ["Nerve gliders", "Deep neck flexor control", "Scapular strengthening"],
+      },
+    ],
+  },
+  Ankle: {
+    complaints: ["Lateral ankle pain after sprain", "Pain with weight-bearing", "Recurrent giving way", "Swelling & bruising"],
+    specialTests: ["Anterior drawer (ankle)", "Talar tilt", "Ottawa ankle rules", "Single-leg balance", "Squeeze test"],
+    differentials: [
+      {
+        dx: "Lateral ankle ligament sprain (ATFL)",
+        confidence: "High",
+        rationale: "Inversion mechanism, lateral pain/swelling, positive anterior drawer, Ottawa rules negative for fracture.",
+        evidence: "Ottawa Ankle Rules are highly sensitive for ruling out fracture and reducing unnecessary imaging.",
+        furtherTests: ["Ottawa ankle rules", "Anterior drawer", "Weight-bearing tolerance"],
+        management: ["Early protected loading", "Balance/proprioception", "Progressive strengthening", "Bracing early phase"],
+        exercises: ["Ankle alphabet / AROM", "Single-leg balance", "Calf raises", "Peroneal strengthening"],
+      },
+      {
+        dx: "Ankle fracture (screen)",
+        confidence: "Low",
+        rationale: "Apply Ottawa rules — bony tenderness at malleoli or inability to weight-bear 4 steps warrants imaging.",
+        evidence: "Ottawa Ankle Rules: ~100% sensitivity for clinically significant fractures.",
+        furtherTests: ["Ottawa ankle rules", "Refer for X-ray if positive"],
+        management: ["Refer for imaging if Ottawa positive", "Protect & offload until cleared"],
+        exercises: ["Defer loading until fracture excluded"],
+      },
+    ],
+  },
 };
+
+/**
+ * Build an editable draft SOAP note from an assessment. Pure string assembly —
+ * in Phase 5 this becomes a Claude call over the structured assessment + RAG.
+ */
+export function buildSoapNote(a: {
+  age: string; sex: string; region: string; complaint: string | null;
+  flags: string[]; tests: string[]; topDx: string; confidence: string;
+}) {
+  const flags = a.flags.length ? a.flags.join(", ") : "None reported";
+  const tests = a.tests.length ? a.tests.join(", ") : "Not documented";
+  return {
+    subjective:
+`${a.sex}, ${a.age}y. Presenting complaint: ${a.complaint ?? "not specified"} (${a.region}).
+Red-flag screen: ${flags}.
+History and aggravating/easing factors to be completed by clinician.`,
+    objective:
+`Region assessed: ${a.region}.
+Special tests performed: ${tests}.
+Observation, ROM, strength and neurological findings to be completed by clinician.`,
+    assessment:
+`Working hypothesis: ${a.topDx} (${a.confidence.toLowerCase()} confidence) — AI-suggested, pending clinician confirmation.
+Differential reasoning documented in the assessment. Clinician to confirm/adjust.`,
+    plan:
+`1. Confirm hypothesis with relevant objective findings/tests.
+2. Commence evidence-based management for ${a.topDx.toLowerCase()}.
+3. Prescribe home exercise program with progressions.
+4. Educate patient; agree goals and expected timeframe.
+5. Review and re-assess with an outcome measure at follow-up.${a.flags.length ? "\n6. Red flags present — arrange appropriate referral/medical review." : ""}`,
+  };
+}
 
 export const saasPlans = [
   {
