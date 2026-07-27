@@ -5,19 +5,39 @@ import { site } from "@/lib/content";
 const columns = [
   {
     title: "Platform",
-    links: ["AI Clinical Assistant", "Assessments", "Documentation", "Exercise Library", "Pricing"],
+    links: [
+      { label: "AI Clinical Assistant", href: "/assistant" },
+      { label: "Assessments", href: "/assistant" },
+      { label: "Exercise Library", href: "/exercises" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Dashboard", href: "/dashboard" },
+    ],
   },
   {
     title: "Company",
-    links: ["About Us", "Evidence", "Careers", "Blog", "Contact"],
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Contact", href: "/contact" },
+      { label: "Modules", href: "/#modules" },
+      { label: "Security", href: "/#security" },
+    ],
   },
   {
     title: "For",
-    links: ["Private clinics", "Hospitals", "Universities", "Sports teams", "Students"],
+    links: [
+      { label: "Private clinics", href: "/#pricing" },
+      { label: "Hospitals", href: "/#pricing" },
+      { label: "Universities", href: "/#pricing" },
+      { label: "Sports teams", href: "/#pricing" },
+    ],
   },
   {
     title: "Legal",
-    links: ["Privacy Policy", "Terms", "Data Processing", "Clinical Disclaimer", "Cookie Policy"],
+    links: [
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Clinical Disclaimer", href: "/disclaimer" },
+    ],
   },
 ];
 
@@ -58,12 +78,12 @@ export function Footer() {
               <h4 className="text-sm font-bold">{col.title}</h4>
               <ul className="mt-4 space-y-2.5">
                 {col.links.map((l) => (
-                  <li key={l}>
+                  <li key={l.label}>
                     <a
-                      href="#"
+                      href={l.href}
                       className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                     >
-                      {l}
+                      {l.label}
                     </a>
                   </li>
                 ))}
