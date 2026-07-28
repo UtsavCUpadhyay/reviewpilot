@@ -3,16 +3,16 @@ import { AuthShell } from "@/components/site/auth-shell";
 import { AuthForm } from "@/components/site/auth-form";
 
 export const metadata: Metadata = {
-  title: "Sign up",
+  title: "Sign up free",
   description:
-    "Create your DrPhysioAI account — AI notes, a monthly consultation and a live class every month from ₹199.",
+    "Create a free DrPhysioAI account — AI notes, a free monthly consultation and a free live class every month.",
 };
 
 export default function SignupPage() {
   return (
     <AuthShell
-      title="Create your account"
-      subtitle="Plans from ₹199/month. Get AI learning + a monthly consultation & live class."
+      title="Start free today"
+      subtitle="No card needed. Get AI learning + a free consultation & live class every month."
     >
       <AuthForm mode="signup" />
     </AuthShell>

@@ -4,6 +4,18 @@
 > committed and pushed to branch **`claude/drphysioai-platform-design-ekm6m3`**.
 > Nothing from the previous session is lost.
 
+> ## ⚠️ DIRECTION PIVOT (latest)
+> The product pivoted from a **consumer** app (students/patients) to a **B2B
+> clinical SaaS for physiotherapists** — "the operating system for
+> physiotherapy". See **`DEVELOPMENT_PLAN.md`** for the phased roadmap and
+> architecture. The homepage (`/`) is now clinician-focused; the flagship is
+> the **AI Clinical Assistant** at `/assistant` (`lib/clinical.ts` +
+> `components/clinical/assessment-wizard.tsx`). The old consumer pages
+> (`/ai`, `/consultation`) still exist in the repo but are no longer linked in
+> the nav — remove them if the pivot is permanent. Clinical safety framing
+> (decision-support only, clinician decides, not a medical device) is baked in
+> and must stay.
+
 ## What this project is
 
 **DrPhysioAI** — India's AI-powered physiotherapy platform: an AI study tutor
@@ -45,118 +57,75 @@ Built as a **new Next.js 14 app in `drphysioai/`**, alongside the existing
 - **`/login` + `/signup`** — split-screen `AuthShell` + reusable `AuthForm`
   (Google / WhatsApp-OTP / email). UI-only; `onSubmit` is a stub → wire to
   Supabase auth.
-- **`/dashboard`** — `DashboardShell` (sidebar + topbar, mobile drawer) with
-  KPI cards (streak, AI questions, accuracy, badges), continue-learning
-  progress, next-consultation card, today's goal, activity feed. Mock data;
-  `robots: noindex`.
+- **`/dashboard`** — clinician **practice cockpit** (`DashboardShell` sidebar:
+  Patients, Appointments, Assessments, Documentation, Exercises, Outcomes,
+  Billing): caseload KPIs, today's schedule (clinic/telehealth), documentation
+  queue with urgency, outcome-measure bars. Mock data; `robots: noindex`.
+- **`/exercises`** — exercise library (search + region/type filters, full
+  detail) + prescription builder (editable dosage) + print-ready patient
+  handout. Data in `lib/exercises.ts`.
+- **`/assistant`** — assessment wizard now also drafts an editable **SOAP note**
+  (`buildSoapNote` in `lib/clinical.ts`); regions: Knee/Low back/Shoulder/Neck/
+  Ankle.
 
 All copy is centralised in **`lib/content.ts`** (ready for Hindi/Gujarati i18n).
 `npm run build` is clean; all routes are static (~100–104 kB first load).
 
 ## KNOWN STUBS (wire these when ready)
 
-- **AI tutor** — WIRED. `ai-chat-demo.tsx` is now a real input that POSTs to
-  `app/api/tutor/route.ts` (Claude via `@anthropic-ai/sdk`, model
-  `claude-opus-4-8`). Set `ANTHROPIC_API_KEY` (server-side; see `.env.example`)
-  to go live — without it the route returns 503 and the UI falls back to the
-  canned `demoAnswer` samples with a notice. Format toggles re-ask live; in
-  fallback they swap the canned sample.
-- **Shopify checkout** — LIVE. `lib/shopify.ts` now ships the real DrPhysioAI
-  store domain (`drphysioai.com`) + live variant ids for all 8 products, so the
-  Pricing (`plan-cta.tsx`) and booking (`booking-widget.tsx` `confirm()`)
-  buttons redirect to real Shopify hosted checkout. Env vars still override.
-  ⚠️ **Currency:** the store's base currency is **AUD**, but the app UI is
-  priced in **₹ INR** — checkout will show A$ amounts until the store currency
-  is switched to INR (Settings → General; possible while the store has no real
-  orders) or an Indian market is configured. See the Shopify section below.
-- **Live Classes join** — `/live-classes` + `live-schedule.tsx` are built with
-  a filterable weekly timetable and a reserve dialog; "Reserve my spot" routes
-  to sign-up. Wire the join link + reminders to real backend once auth exists.
-- **Auth** — WIRED to Supabase. `auth-form.tsx` does real email+password
-  sign-up/login (+ Google OAuth button) via `@supabase/ssr`; `middleware.ts`
-  gates `/dashboard` (redirects to `/login?next=…`); `app/auth/callback` and
-  `app/auth/signout` handle the OAuth/magic-link and sign-out flows.
-  **Dedicated project `DrPhysioAI` = `uyakkdalfopuamkacxqd`** (Mumbai
-  ap-south-1, ACTIVE) — its own auth users, isolated from the ReviewPilot
-  project. Public URL + publishable key baked into `lib/supabase/config.ts`
-  (env overridable). Notes: Google OAuth needs a provider client id/secret set
-  in the Supabase dashboard; email confirmation is ON by default (signup shows
-  a "check your email" state) — disable it in Auth settings for instant signup.
-- **`profiles` table** — created in the DrPhysioAI project with RLS + an
-  `on_auth_user_created` trigger that auto-inserts a profile (with `full_name`
-  from signup metadata). Columns: `streak_days`, `ai_questions`,
-  `quiz_accuracy`, `badges` (default 0). The dashboard reads these for the
-  greeting + KPI cards, so a new user sees an honest zero-state.
-- **Dashboard data** — name, greeting and KPI cards are now real (from
-  `profiles`). The "continue learning", "next consultation", "today's goal"
-  and activity feed are still illustrative placeholders (no data pipeline yet).
+- **AI tutor** — `ai-chat-demo.tsx` uses canned answers from `lib/content.ts`
+  (`demoAnswer`). Swap `choose()` for a `fetch('/api/tutor')` call. Needs a
+  Claude-backed route (`@anthropic-ai/sdk` + `ANTHROPIC_API_KEY`).
+- **Booking checkout** — `booking-widget.tsx` `confirm()` fakes success on a
+  timer. Replace with a Shopify/Stripe checkout redirect.
+- **Auth** — `auth-form.tsx` `onSubmit` is a no-op. Wire to Supabase auth;
+  gate `/dashboard` behind a session.
+- **Dashboard data** — all mock/hard-coded. Replace with real user data once
+  auth + DB are in place.
 
-## SHOPIFY — connected & catalog live
+## SHOPIFY — connected & wired ✅
 
-Store **DrPhysioAI** (`drphysioai.com`, myshopify `gyvjr4-qz.myshopify.com`).
-8 products created (ACTIVE, published to Online Store, availableForSale) and
-wired into `lib/shopify.ts` by catalog key → variant id:
+Store **DrPhysioAI** (`gyvjr4-qz.myshopify.com`, currency **AUD**) is connected.
+- Created ACTIVE B2B products: **Solo** (variant `48134070730939`, 1499) and
+  **Clinic** (variant `48134070763707`, 3999). Old consumer products archived.
+- Site pricing CTAs now link to real checkout permalinks
+  (`/cart/<variantId>:1`) via `STORE_DOMAIN` in `lib/clinical.ts`. Enterprise →
+  mailto.
 
-| Catalog key | Product | Variant id | Price |
-|---|---|---|---|
-| `plan:Ultimate Student` | Ultimate Student — Monthly Membership | 48044581552315 | 499 |
-| `plan:Complete Care` | Complete Care — Monthly Membership | 48044581585083 | 1499 |
-| `service:Video Consultation` | Video Consultation | 48044581617851 | 499 |
-| `service:Exercise Prescription` | Exercise Prescription | 48044581650619 | 699 |
-| `service:Pain Management` | Pain Management | 48044581683387 | 599 |
-| `service:Post-Surgical Rehab` | Post-Surgical Rehab | 48044581716155 | 799 |
-| `service:Sports Injury Rehab` | Sports Injury Rehab | 48044581748923 | 799 |
-| `service:Neuro & Elderly Care` | Neuro & Elderly Care | 48044581781691 | 699 |
+**Merchant setup still required for live checkout (do in Shopify admin):**
+1. **Currency:** store is AUD but pricing is intended INR — change in
+   Settings → Store details → Currency (only possible before real orders).
+2. **Storefront password:** turn OFF (Online Store → Preferences) so checkout
+   links are publicly reachable.
+3. **Payments:** add a provider (Settings → Payments) — e.g. Razorpay/UPI for India.
+4. **Recurring billing:** current products are one-time. For true monthly
+   subscriptions, install the **Shopify Subscriptions** app and attach selling
+   plans to the Solo/Clinic products.
 
-**Open items:**
-- **Currency is AUD, app is ₹ INR** — switch store base currency to INR, or set
-  up an India market, so checkout amounts match the UI.
-- **Plans are one-time products** — real recurring billing needs a Shopify
-  subscription app/Selling Plans API (follow-up).
-- 4 leftover "Example product" samples can be deleted from the store.
+## (Earlier) SHOPIFY re-auth note
 
-## (historical) SHOPIFY — earlier re-authorization notes
-
-As of the latest session the Shopify MCP token was **expired again**
-(`get-shop-info` / `search_products` both returned "requires re-authorization").
-It can't be re-authorized inside a non-interactive session — the user must
-re-connect Shopify (claude.ai connector settings, or `/mcp` in an interactive
-CLI session). So the store still hasn't been verified and no live product/
-variant ids have been pulled.
-
-The checkout code is nonetheless done and waiting (see `lib/shopify.ts`). Once
-Shopify is back:
+In the previous session, calling `switch-shop` revoked the Shopify token and it
+could not be re-authorized inside that running session. **This new session
+should have a valid token.** First actions to try:
 
 1. `mcp__Shopify__get-shop-info` → confirm it's the **DrPhysioAI** store
-   (NOT "PawHappiness" or "shrivyajewell").
-2. `search_products` → get the numeric **variant** ids for the plans/services.
-3. Set `NEXT_PUBLIC_SHOPIFY_DOMAIN` + `NEXT_PUBLIC_SHOPIFY_VARIANTS` (JSON map,
-   keys like `plan:Complete Care`, `service:Video Consultation` — see
-   `.env.example` and the `codeDefaults` map in `lib/shopify.ts`). Checkout goes
-   live with no further code changes.
+   (previously the connection defaulted to "PawHappiness" — a pet store — so
+   verify the name/domain).
+2. If it's the wrong store, the user's other stores include PawHappiness and
+   shrivyajewell; DrPhysioAI is the target.
+3. Then: `search_products` to see catalog, and plan wiring the Pricing +
+   "Confirm & Pay" buttons to real Shopify checkout.
 
 > Note: Shopify is a storefront/checkout system, not a foundation for the AI +
 > consultation app. Use it as the payments/subscription layer only.
 
 ## SUGGESTED NEXT STEPS (user is open to "keep going")
 
-1. ~~Connect Shopify → wire Pricing & booking "Pay" to checkout.~~ Checkout is
-   **wired** (`lib/shopify.ts`); just needs the store re-authorized + env ids.
-2. ~~Auth + user dashboard shell.~~ Auth screens + dashboard shell done (auth
-   `onSubmit` still a stub → Supabase).
-3. ~~**Live Classes** page (schedule + join flow).~~ Done → `/live-classes`.
-4. ~~Make the AI tutor real (`/api/tutor` with Claude).~~ Done → just needs
-   `ANTHROPIC_API_KEY` set to switch from sample answers to live.
-5. ~~Wire auth to Supabase; gate `/dashboard`.~~ Done.
-6. **i18n (Hindi/Gujarati)** — STARTED. Cookie-based locale (`lib/i18n.ts` +
-   `lib/i18n-server.ts`), a `LanguageSwitcher` in the navbar (EN/हिं/ગુ), and
-   full translations for the shared **navbar** + homepage **hero** (SSR, no
-   flash). Extend by adding keys to the three dicts in `lib/i18n.ts` and
-   swapping literals for `d.*` in more components (stats/features/pricing/faq/
-   footer still English). Localized pages read `getLocale()` and are now
-   dynamically rendered.
-7. Real dashboard/user data (schema + RLS) — profiles table done; wire more
-   real data pipelines (progress, activity) as features ship.
+1. Connect Shopify → wire Pricing & booking "Pay" to checkout.
+2. **Auth + user dashboard** shell (progress, streaks, consultations, history).
+3. **Live Classes** page (schedule + join flow).
+4. Make the AI tutor real (`/api/tutor` with Claude).
+5. i18n (Hindi/Gujarati) using `lib/content.ts`.
 
 ## How to run
 
