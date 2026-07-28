@@ -25,20 +25,20 @@ export function AuthShell({
 
         <div className="relative mt-auto">
           <blockquote className="max-w-md font-display text-2xl font-bold leading-snug">
-            “I cleared my BPT exams with DrPhysioAI. It explains like my favourite
-            professor — but at 2am.”
+            Reason through any case, document it in seconds, and prescribe with
+            confidence — you always make the final call.
           </blockquote>
-          <p className="mt-4 text-sm text-white/80">Ananya R. · Final-year BPT student</p>
+          <p className="mt-4 text-sm text-white/80">The clinical operating system for physiotherapy</p>
 
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/85">
             <span className="inline-flex items-center gap-1.5">
-              <Star className="h-4 w-4 fill-amber-300 text-amber-300" /> 4.9/5 rating
+              <Star className="h-4 w-4 fill-amber-300 text-amber-300" /> Evidence-referenced
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4" /> Doctor-reviewed
+              <ShieldCheck className="h-4 w-4" /> Privacy-by-design
             </span>
             <span className="inline-flex items-center gap-1.5">
-              <Sparkles className="h-4 w-4" /> 1.7L+ users
+              <Sparkles className="h-4 w-4" /> Clinician decides
             </span>
           </div>
         </div>
