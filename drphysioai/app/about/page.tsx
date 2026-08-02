@@ -87,6 +87,9 @@ export default function AboutPage() {
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-teal-600">Founder</p>
                   <h3 className="mt-1 font-display text-xl font-bold">{site.founder}</h3>
+                  <p className="mt-1 text-sm font-semibold text-muted-foreground">
+                    BPT, Sumandeep Vidyapeeth Deemed University (Vadodara) · Master of Advanced Public Health, Queensland, Australia
+                  </p>
                   <p className="mt-2 max-w-xl text-sm text-muted-foreground">
                     A physiotherapist on a mission to make world-class clinical reasoning and
                     documentation available to every practitioner — from a solo home-visit physio
